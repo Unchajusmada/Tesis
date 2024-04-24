@@ -1,0 +1,62 @@
+/*INTENTA NO MOVER LA ALTURA, Y SI LA VAS A MOVER, HAS QUE ABARQUE TODO LO QUEE PUEDA*/
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+/*INTENTA NO MOVER ESTO, ES LO QUE HACE QUE VAYAN HACIA ABAJO EL CONTENEDOR-MEDIO, Y INDICE*/
+body,
+.contenedor-medio {
+  flex-direction: column;
+}
+
+/*MUEVE LO QUE QUIERAS MENOS EL FLEX AUTO, ESO DEBES DEJARLO COMO ESTA*/
+main {
+  border: 2px solid purple;
+  padding: 40px;
+  flex: auto;
+  gap: 40px;
+}
+
+/*INTENTA NO MOVER ESTO, ES PARTE DE LO QUE MEE PERMITE ALINEAR EL CONTENEDOR-MEDIO, CON INDICE, Y EL CONTENIDO MEDIO*/
+body,
+main,
+.indice,
+.contenedor-medio {
+  display: flex;
+}
+
+/*INTENTA NO MOVER ESTO, ES LO QUE HACE QUE TEXTO-INDICE ABARQUE EL TAMAÑO DE INDICE, Y CONTENEDOR MEDIO TODA LA IZQUIERDA*/
+.contenedor-medio,
+.texto-indice {
+  flex: 1;
+}
+
+/*CONTENEDOR DEL MEDIO, AQUI VAN TUS DIVS CON INFO*/
+.contenedor-medio {
+  border: 2px solid blue;
+  padding: 20px;
+  gap: 30px;
+}
+
+/*CONTENIDO DEL CONTENDOR DEL MEDIO, METE TODOS TUS DIVS AQUI Y DEJALOS EN AUTO PARA QUE SE AJUSTE AL CONTENIDO*/
+.texto-medio,
+.mas-texto-medio,
+.aun-mas-texto-medio {
+  height: 200px;
+  border: 2px solid orangered;
+}
+
+/*CONTENIDO DEL INDICE*/
+.texto-indice {
+  border: 2px solid orangered;
+  padding: 20px;
+}
+
+/*TAMAÑO DEL INDICE*/
+.indice {
+  border: 2px solid blue;
+  padding: 20px;
+  width: 300px;
+}
