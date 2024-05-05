@@ -59,10 +59,10 @@ main,
   width: 300px;
 }
 
-img {
+.img_banner {
   display: block;
   width: 80%;
-  height: 200px;
+  height: 50px;
   margin: 0 auto; /* Centrar la imagen horizontalmente */
 }
 
@@ -121,4 +121,11 @@ img {
 .indice,
 .texto-indice {
   width: 300px;
+}
+
+.logos {
+  height: 6em;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin: 5px 50px 5px 50px;
 }

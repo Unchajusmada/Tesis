@@ -32,11 +32,12 @@
   <body>
     <!-- Topbar Start -->
     <div class="container-fluid">
-      <div class="row align-items-center py-3 px-xl-5">
+      <div class="row align-items-center d-none py-3 px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">Pene</div>
         <div class="col-lg-3 d-none d-lg-block">
           <a href="#" class="text-decoration-none">
             <h1 class="m-0 display-5 font-weight-semi-bold">
-              <span class="text-primary font-weight-bold border px-3 mr-1"
+              <span class="text-primary font-weight-bold border px-1 mr-1"
                 >U</span
               >NEFA
             </h1>
@@ -46,10 +47,14 @@
     </div>
     <!-- Topbar End -->
 
-    <div class="contenedor-superior">
-      <!-- Mueve el contenido del banner dentro del contenedor-superior -->
-      <div class="banner d-md-block d-none">
-        <img src="img/imagen23 (1).jpg" alt="" />
+    <div class="bg-primary text-white container">
+      <div class="d-flex justify-content-between">
+        <div class="align-self-start ml-10">
+          <img class="logos" src="img/defensa logo.png" />
+        </div>
+        <div class="align-self-end">
+          <img class="logos" src="img/unefa.png" alt="" />
+        </div>
       </div>
     </div>
 
@@ -62,12 +67,12 @@
           >
             <a href="" class="text-decoration-none d-block d-lg-none">
               <h1 class="m-0 display-5 font-weight-semi-bold">
-                <span class="text-primary font-weight-bold border px-3 mr-1"
+                <span class="text-primary font-weight-bold border px-1 mr-1"
                   >U</span
                 >NEFA
               </h1>
             </a>
-            <div class="col-lg-6 col-6 text-left d-md-none d-block">
+            <div class="col-lg-6 col-6 text-left d-lg-none d-block">
               <form action="">
                 <div class="input-group">
                   <input
@@ -98,25 +103,36 @@
               <div class="navbar-nav mr-auto py-0">
                 <a href="index.html" class="nav-item nav-link">Inicio</a>
                 <a href="shop.html" class="nav-item nav-link">Todas</a>
-                <div class="nav-item dropdown d-block d-md-none">
+                <a
+                  href="contact.html"
+                  class="nav-item nav-link d-lg-none d-block"
+                  >Autor</a
+                >
+                <a href="shop.html" class="nav-item nav-link d-lg-none d-block"
+                  >Año</a
+                >
+                <a href="shop.html" class="nav-item nav-link d-lg-none d-block"
+                  >Titulo</a
+                >
+                <div class="nav-item dropdown d-block d-lg-none">
                   <a
                     href="#"
                     class="nav-link dropdown-toggle"
                     data-toggle="dropdown"
-                    >Organizar por</a
+                    >Carreras</a
                   >
                   <div class="dropdown-menu rounded-0 m-0">
-                    <a href="cart.html" class="dropdown-item">Autor</a>
-                    <a href="checkout.html" class="dropdown-item">Año</a>
-                    <a href="#" class="dropdown-item">Titulo</a>
-                    <a href="#" class="dropdown-item">Carrera</a>
+                    <a href="cart.html" class="dropdown-item">Ing Sistemas</a>
+                    <a href="checkout.html" class="dropdown-item"
+                      >Ing Telecom</a
+                    >
+                    <a href="#" class="dropdown-item">Ing Electrica</a>
+                    <a href="#" class="dropdown-item">Ing Civil</a>
                   </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link active"
-                  >Contacto</a
-                >
+                <a href="contact.html" class="nav-item nav-link">Contacto</a>
               </div>
-              <div class="col-lg-6 col-6 text-left d-md-block d-none">
+              <div class="col-lg-6 col-6 text-left d-lg-block d-none">
                 <form action="">
                   <div class="input-group">
                     Buscar
@@ -136,7 +152,9 @@
                 </form>
               </div>
               <div class="navbar-nav ml-auto py-0">
-                <a href="#" class="nav-item nav-link">Cargar</a>
+                <a href="../Admin/login.html" class="nav-item nav-link"
+                  >Cargar</a
+                >
               </div>
             </div>
           </nav>
@@ -147,7 +165,7 @@
 
     <main>
       <!--ESTE ES TU INDICE, MEETELE EL CONTENIDO QUE QUIERAS-->
-      <div class="indice d-md-block d-none">
+      <div class="indice d-lg-block d-none">
         <aside id="menu">
           <h2>Organizar por:</h2>
           <ul>
@@ -162,7 +180,7 @@
                 data-toggle="dropdown"
                 >Carrera</a
               >
-              <div class="dropdown-menu">
+              <div class="dropdown-menu rounded-0 m-0">
                 <a href="#" class="dropdown-item">Opción 1</a>
                 <a href="#" class="dropdown-item">Opción 2</a>
                 <a href="#" class="dropdown-item">Opción 3</a>
