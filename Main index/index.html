@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>EShopper - Bootstrap Shop Template</title>
+    <title>Sistema Administrativo para la Gestión de TEG</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
+    <link href="img/unefa.png" rel="icon" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -33,7 +33,6 @@
     <!-- Topbar Start -->
     <div class="container-fluid">
       <div class="row align-items-center d-none py-3 px-xl-5">
-        <div class="col-lg-3 d-none d-lg-block">Pene</div>
         <div class="col-lg-3 d-none d-lg-block">
           <a href="#" class="text-decoration-none">
             <h1 class="m-0 display-5 font-weight-semi-bold">
@@ -59,8 +58,8 @@
     </div>
 
     <!-- Navbar Start -->
-    <div class="container-fluid">
-      <div class="row border-top px-xl-5">
+    <div class="contenedor-navbar">
+      <div class="row px-xl-5">
         <div class="col-lg-12">
           <nav
             class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0"
@@ -101,20 +100,26 @@
               id="navbarCollapse"
             >
               <div class="navbar-nav mr-auto py-0">
-                <a href="index.html" class="nav-item nav-link">Inicio</a>
-                <a href="shop.html" class="nav-item nav-link">Todas</a>
-                <a
-                  href="contact.html"
-                  class="nav-item nav-link d-lg-none d-block"
-                  >Autor</a
+                <a href="index.html" class="nav-item nav-link pl-4 pl-md-2"
+                  >Inicio</a
                 >
-                <a href="shop.html" class="nav-item nav-link d-lg-none d-block"
-                  >Año</a
+                <a href="shop.html" class="nav-item nav-link pl-4 pl-md-2"
+                  >Todas</a
                 >
-                <a href="shop.html" class="nav-item nav-link d-lg-none d-block"
-                  >Titulo</a
-                >
-                <div class="nav-item dropdown d-block d-lg-none">
+                <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
+                    >Categorias</a
+                  >
+                  <div class="dropdown-menu rounded-0 m-0">
+                    <a href="contact.html" class="dropdown-item">Autor</a>
+                    <a href="shop.html" class="dropdown-item">Año</a>
+                    <a href="shop.html" class="dropdown-item">Titulo</a>
+                  </div>
+                </div>
+                <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
                   <a
                     href="#"
                     class="nav-link dropdown-toggle"
@@ -130,7 +135,9 @@
                     <a href="#" class="dropdown-item">Ing Civil</a>
                   </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contacto</a>
+                <a href="contact.html" class="nav-item nav-link pl-4 pl-md-2"
+                  >Contacto</a
+                >
               </div>
               <div class="col-lg-6 col-6 text-left d-lg-block d-none">
                 <form action="">
@@ -152,7 +159,9 @@
                 </form>
               </div>
               <div class="navbar-nav ml-auto py-0">
-                <a href="../Admin/blank.html" class="nav-item nav-link"
+                <a
+                  href="../Admin/login.html"
+                  class="nav-item nav-link pl-4 pl-md-2"
                   >Cargar</a
                 >
               </div>
@@ -167,11 +176,11 @@
       <!--ESTE ES TU INDICE, MEETELE EL CONTENIDO QUE QUIERAS-->
       <div class="indice d-lg-block d-none">
         <aside id="menu">
-          <h2>Organizar por:</h2>
+          <h3>Organizar por:</h3>
           <ul>
-            <li><a href="#autor">Autor</a></li>
-            <li><a href="#anio">Año</a></li>
-            <li><a href="#titulo">Título</a></li>
+            <li><a href="#autor" class="a-indice">Autor</a></li>
+            <li><a href="#anio" class="a-indice">Año</a></li>
+            <li><a href="#titulo" class="a-indice">Título</a></li>
             <li class="dropdown">
               <a
                 href="#"
@@ -181,27 +190,295 @@
                 >Carrera</a
               >
               <div class="dropdown-menu rounded-0 m-0">
-                <a href="#" class="dropdown-item">Opción 1</a>
-                <a href="#" class="dropdown-item">Opción 2</a>
-                <a href="#" class="dropdown-item">Opción 3</a>
+                <a href="cart.html" class="dropdown-item">Ing Sistemas</a>
+                <a href="checkout.html" class="dropdown-item">Ing Telecom</a>
+                <a href="#" class="dropdown-item">Ing Electrica</a>
+                <a href="#" class="dropdown-item">Ing Civil</a>
               </div>
             </li>
           </ul>
         </aside>
       </div>
-      <!--ESTE EES TU CONTENEDOR MEDIO, MEETELE EL CONTENIDO QUE QUIERAS-->
+      <!--ESTE ES TU CONTENEDOR MEDIO, MEETELE EL CONTENIDO QUE QUIERAS-->
       <div class="contenedor-medio">
-        <div class="texto">texto-medio</div>
-        <div class="texto">mas-texto-medio</div>
-        <div class="texto">aun-mas-texto-medio</div>
-        <div class="texto">mas-texto-medio</div>
-        <div class="texto">mas-texto-medio</div>
-        <div class="texto">mas-texto-medio</div>
-        <div class="texto">mas-texto-medio</div>
-        <div class="texto">mas-texto-medio</div>
-        <div class="texto">mas-texto-medio</div>
-        <div class="texto">mas-texto-medio</div>
-        <div class="texto">mas-texto-medio</div>
+        <!-- CONVERTIR ESTO EN UNA ALERTA -->
+        <div class="container texto">
+          <div class="row">
+            <div class="bienvenida col-md-12 d-flex justify-content-md-center">
+              <span
+                >BIENVENIDO AL SISTEMA DE GESTIÓN DE TRABAJOS ESPECIALES DE
+                GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- CONVERTIR ESTO EN UNA ALERTA -->
+
+        <div class="container texto">
+          <div class="row">
+            <div
+              class="cabezera col-md-12 d-none d-md-flex justify-content-md-center"
+            >
+              <p>Titulo:</p>
+            </div>
+            <br />
+            <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <span
+                >SISTEMA PARA MEJORAR LA GESTIÓN ADMINISTRATIVA DE TRABAJO
+                ESPECIAL DE GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="autor col-md-6">
+              <p>Autor: <span>Bruzual Roa, Carlos Luis.</span></p>
+            </div>
+            <div class="carrera col-md-6 d-flex justify-content-md-end">
+              <p>Carrera: <span>Ingenieria de Sistemas.</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="year col-md-6 d-flex justify-content-md-end">
+              <p>Año: <span>2024</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container texto">
+          <div class="row">
+            <div
+              class="cabezera col-md-12 d-none d-md-flex justify-content-md-center"
+            >
+              <p>Titulo:</p>
+            </div>
+            <br />
+            <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <span
+                >SISTEMA PARA MEJORAR LA GESTIÓN ADMINISTRATIVA DE TRABAJO
+                ESPECIAL DE GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="autor col-md-6">
+              <p>Autor: <span>Bruzual Roa, Carlos Luis.</span></p>
+            </div>
+            <div class="carrera col-md-6 d-flex justify-content-md-end">
+              <p>Carrera: <span>Ingenieria de Sistemas.</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="year col-md-6 d-flex justify-content-md-end">
+              <p>Año: <span>2024</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="container texto">
+          <div class="row">
+            <div
+              class="cabezera col-md-12 d-none d-md-flex justify-content-md-center"
+            >
+              <p>Titulo:</p>
+            </div>
+            <br />
+            <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <span
+                >SISTEMA PARA MEJORAR LA GESTIÓN ADMINISTRATIVA DE TRABAJO
+                ESPECIAL DE GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="autor col-md-6">
+              <p>Autor: <span>Bruzual Roa, Carlos Luis.</span></p>
+            </div>
+            <div class="carrera col-md-6 d-flex justify-content-md-end">
+              <p>Carrera: <span>Ingenieria de Sistemas.</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="year col-md-6 d-flex justify-content-md-end">
+              <p>Año: <span>2024</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="container texto">
+          <div class="row">
+            <div
+              class="cabezera col-md-12 d-none d-md-flex justify-content-md-center"
+            >
+              <p>Titulo:</p>
+            </div>
+            <br />
+            <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <span
+                >SISTEMA PARA MEJORAR LA GESTIÓN ADMINISTRATIVA DE TRABAJO
+                ESPECIAL DE GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="autor col-md-6">
+              <p>Autor: <span>Bruzual Roa, Carlos Luis.</span></p>
+            </div>
+            <div class="carrera col-md-6 d-flex justify-content-md-end">
+              <p>Carrera: <span>Ingenieria de Sistemas.</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="year col-md-6 d-flex justify-content-md-end">
+              <p>Año: <span>2024</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container texto">
+          <div class="row">
+            <div
+              class="cabezera col-md-12 d-none d-md-flex justify-content-md-center"
+            >
+              <p>Titulo:</p>
+            </div>
+            <br />
+            <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <span
+                >SISTEMA PARA MEJORAR LA GESTIÓN ADMINISTRATIVA DE TRABAJO
+                ESPECIAL DE GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="autor col-md-6">
+              <p>Autor: <span>Bruzual Roa, Carlos Luis.</span></p>
+            </div>
+            <div class="carrera col-md-6 d-flex justify-content-md-end">
+              <p>Carrera: <span>Ingenieria de Sistemas.</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="year col-md-6 d-flex justify-content-md-end">
+              <p>Año: <span>2024</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container texto">
+          <div class="row">
+            <div
+              class="cabezera col-md-12 d-none d-md-flex justify-content-md-center"
+            >
+              <p>Titulo:</p>
+            </div>
+            <br />
+            <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <span
+                >SISTEMA PARA MEJORAR LA GESTIÓN ADMINISTRATIVA DE TRABAJO
+                ESPECIAL DE GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="autor col-md-6">
+              <p>Autor: <span>Bruzual Roa, Carlos Luis.</span></p>
+            </div>
+            <div class="carrera col-md-6 d-flex justify-content-md-end">
+              <p>Carrera: <span>Ingenieria de Sistemas.</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="year col-md-6 d-flex justify-content-md-end">
+              <p>Año: <span>2024</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container texto">
+          <div class="row">
+            <div
+              class="cabezera col-md-12 d-none d-md-flex justify-content-md-center"
+            >
+              <p>Titulo:</p>
+            </div>
+            <br />
+            <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <span
+                >SISTEMA PARA MEJORAR LA GESTIÓN ADMINISTRATIVA DE TRABAJO
+                ESPECIAL DE GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="autor col-md-6">
+              <p>Autor: <span>Bruzual Roa, Carlos Luis.</span></p>
+            </div>
+            <div class="carrera col-md-6 d-flex justify-content-md-end">
+              <p>Carrera: <span>Ingenieria de Sistemas.</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="year col-md-6 d-flex justify-content-md-end">
+              <p>Año: <span>2024</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="container texto">
+          <div class="row">
+            <div
+              class="cabezera col-md-12 d-none d-md-flex justify-content-md-center"
+            >
+              <p>Titulo:</p>
+            </div>
+            <br />
+            <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <span
+                >SISTEMA PARA MEJORAR LA GESTIÓN ADMINISTRATIVA DE TRABAJO
+                ESPECIAL DE GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="autor col-md-6">
+              <p>Autor: <span>Bruzual Roa, Carlos Luis.</span></p>
+            </div>
+            <div class="carrera col-md-6 d-flex justify-content-md-end">
+              <p>Carrera: <span>Ingenieria de Sistemas.</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="year col-md-6 d-flex justify-content-md-end">
+              <p>Año: <span>2024</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="container texto">
+          <div class="row">
+            <div
+              class="cabezera col-md-12 d-none d-md-flex justify-content-md-center"
+            >
+              <p>Titulo:</p>
+            </div>
+            <br />
+            <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <span
+                >SISTEMA PARA MEJORAR LA GESTIÓN ADMINISTRATIVA DE TRABAJO
+                ESPECIAL DE GRADO EN LA UNEFA NÚCLEO MARACAY.</span
+              >
+            </div>
+          </div>
+          <div class="row">
+            <div class="autor col-md-6">
+              <p>Autor: <span>Bruzual Roa, Carlos Luis.</span></p>
+            </div>
+            <div class="carrera col-md-6 d-flex justify-content-md-end">
+              <p>Carrera: <span>Ingenieria de Sistemas.</span></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="year col-md-6 d-flex justify-content-md-end">
+              <p>Año: <span>2024</span></p>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 
@@ -348,7 +625,7 @@
         </div>
       </div> -->
       <div class="row border-top border-light mx-xl-5 py-4">
-        <div class="col-md-6 px-xl-0">
+        <div class="col-md-12 px-xl-0">
           <p class="mb-md-0 text-center text-md-left text-dark">
             &copy;
             <a class="text-dark font-weight-semi-bold" href="#"
