@@ -12,6 +12,10 @@ body,
   flex-direction: column;
 }
 
+.contenedor-medio {
+  align-items: center;
+}
+
 /*MUEVE LO QUE QUIERAS MENOS EL FLEX AUTO, ESO DEBES DEJARLO COMO ESTA*/
 main {
   padding: 40px;
@@ -71,6 +75,22 @@ main,
   }
 }
 
+.texto-bienvenida {
+  height: auto;
+  border-radius: 6em 0 6em 0;
+  background-color: #ffffff;
+  padding: 5px 10px;
+  width: 800px;
+}
+
+@media (max-width: 767px) {
+  .texto-bienvenida {
+    border-radius: 5em 0 5em 0;
+    font-size: 0.95em;
+    width: auto;
+  }
+}
+
 /*CONTENIDO DEL INDICE*/
 .texto-indice {
   border: 2px solid orangered;
@@ -82,7 +102,6 @@ main,
   border: 5px solid rgba(47, 47, 53, 0.74);
   border-radius: 0.5em;
   padding: 20px;
-  width: 300px;
   background-color: #ffffff;
 }
 
@@ -146,7 +165,30 @@ main,
 /* Establece el ancho del índice y el texto de arriba */
 .indice,
 .texto-indice {
-  width: 300px;
+  width: 214px;
+}
+
+.indice,
+.texto-indice,
+.texto,
+.contenedor-navbar {
+  font-size: 1em;
+}
+
+/* Tamaño de fuente para pantallas de 1080px o más */
+@media (min-width: 1820px) {
+  .indice,
+  .texto-indice,
+  .texto,
+  .contenedor-navbar {
+    font-size: 1.2em; /* Ajusta aquí el tamaño de fuente deseado */
+  }
+}
+
+/* Establece el ancho del índice y el texto de arriba */
+.indice,
+.texto-indice {
+  width: 214px;
 }
 
 .logos {
@@ -163,10 +205,17 @@ main,
 }
 
 .contenedor-navbar {
-  border: 0.4em solid #007bff;
+  border: 0.4em solid #2e58af;
   border-radius: 0 0 1em 1em;
   padding: 0 5px;
   background-color: #ffffff;
+}
+
+@media (min-width: 1820px) {
+  .contenedor-navbar {
+    padding: 0.6em 0 0.6em 0;
+    font-size: 1.4em;
+  }
 }
 
 li > a {
@@ -196,7 +245,7 @@ div:not(.bienvenida) > span {
 .bienvenida {
   text-align: center;
   font-size: 2em;
-  color: #007bff;
+  color: #2e58af;
   font-weight: 700;
 }
 
