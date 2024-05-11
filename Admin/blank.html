@@ -350,13 +350,18 @@
                       </h4>
                     </div>
                     <hr />
-                    <form class="user">
+                    <form
+                      class="user"
+                      method="POST"
+                      action="Paginas/ObtenerDatos.php"
+                    >
                       <div class="form-group">
                         <label>Titulo del TEG</label>
                         <input
                           type="text"
                           class="form-control form-control-user"
                           id="titulo"
+                          name="titulo"
                           placeholder="Titulo COMPLETO como en la portadada del TEG"
                         />
                       </div>
@@ -417,17 +422,16 @@
                           <option selected>
                             Escoja una Carrera de la siguiente lista
                           </option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
+                          <option value="Ing Sistemas">Ing Sistemas</option>
+                          <option value="Ing Electrica">Ing Electrica</option>
+                          <option value="Ing Civil">Ing Civil</option>
                         </select>
                       </div>
-                      <a
-                        href="Paginas/login.html"
+                      <input
+                        type="submit"
                         class="btn btn-primary btn-user btn-block"
-                      >
-                        Registrar
-                      </a>
+                        value="Enviar"
+                      />
                     </form>
                   </div>
                 </div>
