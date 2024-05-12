@@ -178,10 +178,17 @@ include '../Auth/leer_bbdd.php'
             </div>
             <div class="row">
               <div class="autor col-md-6">
-                <p>Autor: <span><?php echo $row['nombres_autor_teg']; ?>, <?php echo $row['apellidos_autor_teg']; ?></span></p>
+                <div class="row-md-6 d-flex justify-content-md-start pl-md-3">Autor: </div>
+                <div class="row-md-6 d-flex justify-content-md-start pl-md-3">
+                  <span><?php echo $row['nombres_autor_teg']; ?>,
+                    <br class="d-none d-md-block">
+                    <?php echo $row['apellidos_autor_teg']; ?></span>
+                </div>
               </div>
-              <div class="carrera col-md-6 d-flex justify-content-md-end">
-                <p>Carrera: <span><?php echo $row['nombre_carrera_autor']; ?></span></p>
+
+              <div class="carrera col-md-6">
+                <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
+                <div class="row-md-6 d-flex justify-content-md-start"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
               </div>
             </div>
             <div class="row">
