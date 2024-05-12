@@ -1,5 +1,5 @@
 <?php
-require '../../BBDD/connect_user.php';
+require '../BBDD/connect_user.php';
 
 // Obtén los valores que deseas insertar en la tabla teg
 $titulo_teg = $_POST['titulo'];

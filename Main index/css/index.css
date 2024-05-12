@@ -3,23 +3,26 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
-  background-color: #cce5ff;
 }
 
 /*INTENTA NO MOVER ESTO, ES LO QUE HACE QUE VAYAN HACIA ABAJO EL CONTENEDOR-MEDIO, Y INDICE*/
 body,
 .contenedor-medio {
   flex-direction: column;
-  align-self: center;
 }
 
 .contenedor-medio {
   align-items: center;
+  background-color: rgba(214, 195, 195, 0.548);
+  border: 0.5em rgb(124, 184, 241) solid;
+  border-radius: 1em;
+  padding-top: 40px;
+  gap: 25px;
 }
 
 /*MUEVE LO QUE QUIERAS MENOS EL FLEX AUTO, ESO DEBES DEJARLO COMO ESTA*/
 main {
-  padding: 40px;
+  padding: 1px 0px 40px 0px;
   flex: auto;
   gap: 40px;
 }
@@ -43,11 +46,6 @@ main,
 .contenedor-medio,
 .texto-indice {
   flex: 1;
-}
-
-/*CONTENEDOR DEL MEDIO, AQUI VAN TUS DIVS CON INFO*/
-.contenedor-medio {
-  gap: 25px;
 }
 
 .ordenar {
@@ -105,8 +103,6 @@ main,
 
 /*TAMAÑO DEL INDICE*/
 .indice {
-  border: 4px solid #2e58af;
-  border-radius: 0.5em;
   padding: 20px;
   background-color: #ffffff;
 }
@@ -211,9 +207,6 @@ main,
 }
 
 .contenedor-navbar {
-  border: 0.4em solid #2e58af;
-  border-radius: 0 0 1em 1em;
-  padding: 0 5px;
   background-color: #ffffff;
 }
 
