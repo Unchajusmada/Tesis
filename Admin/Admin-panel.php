@@ -274,7 +274,7 @@ include '../Auth/leer_bbdd.php'
                         <option value="Ingenieria Civil">
                           Ingenieria Civil
                         </option>
-                        <option value="Ingenieria de Telecomunicaciones">
+                        <option value="Ingenieria de Telecom.">
                           Ingenieria de Telecomunicaciones
                         </option>
                         <option value="Ingenieria Aeronautica">
