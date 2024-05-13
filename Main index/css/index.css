@@ -81,7 +81,8 @@ main,
 
 @media (max-width: 1680px) {
   .texto {
-    min-height: 200px;
+    width: 280px;
+    min-height: 220px;
   }
 }
 

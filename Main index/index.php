@@ -178,8 +178,8 @@ include '../Auth/leer_bbdd.php'
             </div>
             <div class="row">
               <div class="autor col-md-6">
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-3">Autor: </div>
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-3">
+                <div class="row-md-6 d-flex justify-content-md-start pl-md-2">Autor: </div>
+                <div class="row-md-6 d-flex justify-content-md-start pl-md-2">
                   <span><?php echo $row['nombres_autor_teg']; ?>,
                     <br class="d-none d-md-block">
                     <?php echo $row['apellidos_autor_teg']; ?></span>
