@@ -9,11 +9,11 @@ include '../Auth/leer_bbdd.php'
 
 <head>
   <meta charset="utf-8" />
-  <title>Sistema Administrativo para la Gestión de TEG</title>
+  <title>EShopper - Bootstrap Shop Template</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <!-- Favicon -->
-  <link href="img/unefa.png" rel="icon" />
+  <link href="img/favicon.ico" rel="icon" />
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -34,6 +34,7 @@ include '../Auth/leer_bbdd.php'
   <!-- Topbar Start -->
   <div class="container-fluid">
     <div class="row align-items-center d-none py-3 px-xl-5">
+      <div class="col-lg-3 d-none d-lg-block">Pene</div>
       <div class="col-lg-3 d-none d-lg-block">
         <a href="#" class="text-decoration-none">
           <h1 class="m-0 display-5 font-weight-semi-bold">
@@ -89,7 +90,7 @@ include '../Auth/leer_bbdd.php'
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categorias</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="autor.php" class="dropdown-item">Autor</a>
-                  <a href="shop.html" class="dropdown-item">Año</a>
+                  <a href="#" class="dropdown-item">Año</a>
                   <a href="titulo.php" class="dropdown-item">Titulo</a>
                 </div>
               </div>
@@ -118,7 +119,7 @@ include '../Auth/leer_bbdd.php'
               </form>
             </div>
             <div class="navbar-nav ml-auto py-0">
-              <a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-2">Cargar</a>
+              <a href="../Admin/login.html" class="nav-item nav-link pl-4 pl-md-2">Cargar</a>
             </div>
           </div>
         </nav>
@@ -133,7 +134,7 @@ include '../Auth/leer_bbdd.php'
       <aside id="menu">
         <h3>Organizar por:</h3>
         <ul>
-          <li><a href="autor.php" class="a-indice">Autor</a></li>
+          <li><a href="#" class="a-indice">Autor</a></li>
           <li><a href="#anio" class="a-indice">Año</a></li>
           <li><a href="titulo.php" class="a-indice">Título</a></li>
           <li class="dropdown">
@@ -148,22 +149,22 @@ include '../Auth/leer_bbdd.php'
         </ul>
       </aside>
     </div>
-    <!--ESTE ES TU CONTENEDOR MEDIO, MEETELE EL CONTENIDO QUE QUIERAS-->
-    <div class="contenedor-medio">
-      <!-- CONVERTIR ESTO EN UNA ALERTA -->
-      <div class="container texto-bienvenida">
-        <div class="row">
-          <div class="bienvenida col-md-12 d-flex justify-content-md-center">
-            <span>BIENVENIDO AL SISTEMA DE GESTIÓN DE TRABAJOS ESPECIALES DE
-              GRADO EN LA UNEFA NÚCLEO MARACAY.</span>
-          </div>
-        </div>
-      </div>
-      <!-- CONVERTIR ESTO EN UNA ALERTA -->
 
+    <!--ESTE EES TU CONTENEDOR MEDIO, MEETELE EL CONTENIDO QUE QUIERAS-->
+    <div class="contenedor-medio">
       <div class="ordenar">
         <?php
+        // Función de comparación para ordenar por nombre de autor
+        function compararPorNombreAutor($a, $b)
+        {
+          return strcmp($a['nombres_autor_teg'], $b['nombres_autor_teg']);
+        }
+
         $datos_teg = leer($conection);
+
+        // Ordenar el arreglo $datos_teg por nombre de autor
+        usort($datos_teg, 'compararPorNombreAutor');
+
         foreach ($datos_teg as $row) :
         ?>
           <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
@@ -237,7 +238,7 @@ include '../Auth/leer_bbdd.php'
     Vendor End -->
 
   <!-- Footer Start -->
-  <div class="container-fluid text-dark mt-5 pt-5">
+  <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
     <!-- <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
           <a href="#" class="text-decoration-none">
@@ -344,11 +345,11 @@ include '../Auth/leer_bbdd.php'
         </div>
       </div> -->
     <div class="row border-top border-light mx-xl-5 py-4">
-      <div class="col-md-12 px-xl-0">
+      <div class="col-md-6 px-xl-0">
         <p class="mb-md-0 text-center text-md-left text-dark">
           &copy;
           <a class="text-dark font-weight-semi-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
-          <a class="text-dark font-weight-semi-bold" href="#">Carlos Bruzual</a>
+          <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a>
         </p>
       </div>
     </div>
@@ -372,16 +373,18 @@ include '../Auth/leer_bbdd.php'
   <script src="js/main.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("carrera-link").addEventListener("click", function(e) {
-        e.preventDefault();
-        var carreraSelect = document.getElementById("carrera");
-        if (carreraSelect.style.display === "none") {
-          carreraSelect.style.display = "block";
-        } else {
-          carreraSelect.style.display = "none";
-        }
-      });
-    });
+      document
+        .getElementById("carrera-link")
+        .addEventListener("click", function(e) {
+          e.preventDefault()
+          var carreraSelect = document.getElementById("carrera")
+          if (carreraSelect.style.display === "none") {
+            carreraSelect.style.display = "block"
+          } else {
+            carreraSelect.style.display = "none"
+          }
+        })
+    })
   </script>
 
   <script>

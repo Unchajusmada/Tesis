@@ -243,17 +243,6 @@ div:not(.bienvenida, .titulo) > span {
   color: #6f6f6f;
 }
 
-@media (max-width: 767px) {
-  p > span:not(.bienvenida, .titulo),
-  div:not(.bienvenida, .titulo) > span {
-    margin-bottom: 0.25rem;
-    margin-top: 0.25rem;
-    font-size: 0.8em;
-    line-height: 1.2;
-    color: #6f6f6f;
-  }
-}
-
 .titulo {
   text-align: center;
   font-size: 1em;
