@@ -9,7 +9,7 @@ include '../Auth/leer_bbdd.php'
 
 <head>
   <meta charset="utf-8" />
-  <title>EShopper - Bootstrap Shop Template</title>
+  <title>Organizar por: AUTOR</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <!-- Favicon -->
@@ -34,7 +34,7 @@ include '../Auth/leer_bbdd.php'
   <!-- Topbar Start -->
   <div class="container-fluid">
     <div class="row align-items-center d-none py-3 px-xl-5">
-      <div class="col-lg-3 d-none d-lg-block">Pene</div>
+
       <div class="col-lg-3 d-none d-lg-block">
         <a href="#" class="text-decoration-none">
           <h1 class="m-0 display-5 font-weight-semi-bold">
@@ -84,13 +84,13 @@ include '../Auth/leer_bbdd.php'
           </button>
           <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
-              <a href="index.php" class="nav-item nav-link pl-4 pl-md-2">Inicio</a>
-              <a href="todas.php" class="nav-item nav-link pl-4 pl-md-2">Todas</a>
+              <a href="index.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Inicio</a>
+              <a href="todas.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Todas</a>
               <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categorias</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="autor.php" class="dropdown-item">Autor</a>
-                  <a href="#" class="dropdown-item">Año</a>
+                  <a href="publicacion.php" class="dropdown-item">Año</a>
                   <a href="titulo.php" class="dropdown-item">Titulo</a>
                 </div>
               </div>
@@ -98,12 +98,12 @@ include '../Auth/leer_bbdd.php'
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Carreras</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="cart.html" class="dropdown-item">Ing Sistemas</a>
-                  <a href="checkout.html" class="dropdown-item">Ing Telecom</a>
+                  <a href="publicacion.php" class="dropdown-item">Ing Telecom</a>
                   <a href="#" class="dropdown-item">Ing Electrica</a>
                   <a href="#" class="dropdown-item">Ing Civil</a>
                 </div>
               </div>
-              <a href="contact.html" class="nav-item nav-link pl-4 pl-md-2">Contacto</a>
+              <a href="contact.html" class="nav-item nav-link pl-4 pl-md-4">Contacto</a>
             </div>
             <div class="col-lg-6 col-6 text-left d-lg-block d-none">
               <form action="">
@@ -119,7 +119,7 @@ include '../Auth/leer_bbdd.php'
               </form>
             </div>
             <div class="navbar-nav ml-auto py-0">
-              <a href="../Admin/login.html" class="nav-item nav-link pl-4 pl-md-2">Cargar</a>
+              <a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-2">Cargar</a>
             </div>
           </div>
         </nav>
@@ -134,14 +134,14 @@ include '../Auth/leer_bbdd.php'
       <aside id="menu">
         <h3>Organizar por:</h3>
         <ul>
-          <li><a href="#" class="a-indice">Autor</a></li>
-          <li><a href="#anio" class="a-indice">Año</a></li>
+          <li><a href="autor.php" class="a-indice">Autor</a></li>
+          <li><a href="publicacion.php" class="a-indice">Año</a></li>
           <li><a href="titulo.php" class="a-indice">Título</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" id="carrera-link" data-toggle="dropdown">Carrera</a>
             <div class="dropdown-menu rounded-0 m-0">
               <a href="cart.html" class="dropdown-item">Ing Sistemas</a>
-              <a href="checkout.html" class="dropdown-item">Ing Telecom</a>
+              <a href="publicacion.php" class="dropdown-item">Ing Telecom</a>
               <a href="#" class="dropdown-item">Ing Electrica</a>
               <a href="#" class="dropdown-item">Ing Civil</a>
             </div>
@@ -152,6 +152,13 @@ include '../Auth/leer_bbdd.php'
 
     <!--ESTE EES TU CONTENEDOR MEDIO, MEETELE EL CONTENIDO QUE QUIERAS-->
     <div class="contenedor-medio">
+      <div class="container texto-categoria">
+        <div class="row">
+          <div class="categoria col-md-12 d-flex justify-content-md-center">
+            <span>Organizar por Autor (A-Z)</span>
+          </div>
+        </div>
+      </div>
       <div class="ordenar">
         <?php
         // Función de comparación para ordenar por nombre de autor
@@ -166,34 +173,39 @@ include '../Auth/leer_bbdd.php'
         usort($datos_teg, 'compararPorNombreAutor');
 
         foreach ($datos_teg as $row) :
+          // Obtener la primera letra del título del TEG
+          $primeraLetra = substr($row['nombres_autor_teg'], 0, 1);
         ?>
-          <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
-            <div class="row">
-              <div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">
-                <p>Titulo:</p>
-              </div>
-              <br />
-              <div class="titulo col-md-12 d-flex justify-content-md-center">
-                <span><?php echo $row['titulo_teg']; ?></span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="autor col-md-6">
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-3">Autor: </div>
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-3">
-                  <span><?php echo $row['nombres_autor_teg']; ?>,
-                    <br class="d-none d-md-block">
-                    <?php echo $row['apellidos_autor_teg']; ?></span>
+          <div class="clasificar">
+            <span style="font-size: 2em;"><?php echo $primeraLetra; ?></span>
+            <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
+              <div class="row">
+                <div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">
+                  <p>Titulo:</p>
+                </div>
+                <br />
+                <div class="titulo col-md-12 d-flex justify-content-md-center">
+                  <span><?php echo $row['titulo_teg']; ?></span>
                 </div>
               </div>
-              <div class="carrera col-md-6">
-                <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
-                <div class="row-md-6 d-flex justify-content-md-start"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
+              <div class="row">
+                <div class="autor col-md-6">
+                  <div class="row-md-6 d-flex justify-content-md-start pl-md-3">Autor: </div>
+                  <div class="row-md-6 d-flex justify-content-md-start pl-md-3">
+                    <span><?php echo $row['nombres_autor_teg']; ?>,
+                      <br class="d-none d-md-block">
+                      <?php echo $row['apellidos_autor_teg']; ?></span>
+                  </div>
+                </div>
+                <div class="carrera col-md-6">
+                  <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
+                  <div class="row-md-6 d-flex justify-content-md-start"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="year col-md-6 d-flex justify-content-md-end">
-                <p>Año: <span><?php echo $row['year_teg']; ?></span></p>
+              <div class="row">
+                <div class="year col-md-6 d-flex justify-content-md-end">
+                  <p>Año: <span><?php echo $row['year_teg']; ?></span></p>
+                </div>
               </div>
             </div>
           </div>
@@ -281,7 +293,7 @@ include '../Auth/leer_bbdd.php'
                 <a class="text-dark mb-2" href="cart.html"
                   ><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a
                 >
-                <a class="text-dark mb-2" href="checkout.html"
+                <a class="text-dark mb-2" href="publicacion.php"
                   ><i class="fa fa-angle-right mr-2"></i>Checkout</a
                 >
                 <a class="text-dark" href="contact.html"
@@ -304,7 +316,7 @@ include '../Auth/leer_bbdd.php'
                 <a class="text-dark mb-2" href="cart.html"
                   ><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a
                 >
-                <a class="text-dark mb-2" href="checkout.html"
+                <a class="text-dark mb-2" href="publicacion.php"
                   ><i class="fa fa-angle-right mr-2"></i>Checkout</a
                 >
                 <a class="text-dark" href="contact.html"

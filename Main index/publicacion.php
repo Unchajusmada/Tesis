@@ -9,11 +9,11 @@ include '../Auth/leer_bbdd.php'
 
 <head>
   <meta charset="utf-8" />
-  <title>Sistema Administrativo para la Gestión de TEG</title>
+  <title>Organizar por: AÑO</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <!-- Favicon -->
-  <link href="img/unefa.png" rel="icon" />
+  <link href="img/favicon.ico" rel="icon" />
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -34,6 +34,7 @@ include '../Auth/leer_bbdd.php'
   <!-- Topbar Start -->
   <div class="container-fluid">
     <div class="row align-items-center d-none py-3 px-xl-5">
+
       <div class="col-lg-3 d-none d-lg-block">
         <a href="#" class="text-decoration-none">
           <h1 class="m-0 display-5 font-weight-semi-bold">
@@ -148,51 +149,60 @@ include '../Auth/leer_bbdd.php'
         </ul>
       </aside>
     </div>
-    <!--ESTE ES TU CONTENEDOR MEDIO, MEETELE EL CONTENIDO QUE QUIERAS-->
+
+    <!--ESTE EES TU CONTENEDOR MEDIO, MEETELE EL CONTENIDO QUE QUIERAS-->
     <div class="contenedor-medio">
-      <!-- CONVERTIR ESTO EN UNA ALERTA -->
-      <div class="container texto-bienvenida">
+      <div class="container texto-categoria">
         <div class="row">
-          <div class="bienvenida col-md-12 d-flex justify-content-md-center">
-            <span>BIENVENIDO AL SISTEMA DE GESTIÓN DE TRABAJOS ESPECIALES DE
-              GRADO EN LA UNEFA NÚCLEO MARACAY.</span>
+          <div class="categoria col-md-12 d-flex justify-content-md-center">
+            <span>Organizar por Año de Publicación</span>
           </div>
         </div>
       </div>
-      <!-- CONVERTIR ESTO EN UNA ALERTA -->
-
       <div class="ordenar">
         <?php
+        // Función de comparación para ordenar por año de publicación
+        function compararPorYearTeg($a, $b)
+        {
+          return $a['year_teg'] - $b['year_teg'];
+        }
+
         $datos_teg = leer($conection);
+
+        // Ordenar el arreglo $datos_teg por año de publicación
+        usort($datos_teg, 'compararPorYearTeg');
+
         foreach ($datos_teg as $row) :
         ?>
-          <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
-            <div class="row">
-              <div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">
-                <p>Titulo:</p>
-              </div>
-              <br />
-              <div class="titulo col-md-12 d-flex justify-content-md-center">
-                <span><?php echo $row['titulo_teg']; ?></span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="autor col-md-6">
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-3">Autor: </div>
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-3">
-                  <span><?php echo $row['nombres_autor_teg']; ?>,
-                    <br class="d-none d-md-block">
-                    <?php echo $row['apellidos_autor_teg']; ?></span>
+          <div class="clasificar"><span style="font-size: 1.5em;"><?php echo $row['year_teg']; ?></span>
+            <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
+              <div class="row">
+                <div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">
+                  <p>Titulo:</p>
+                </div>
+                <br />
+                <div class="titulo col-md-12 d-flex justify-content-md-center">
+                  <span><?php echo $row['titulo_teg']; ?></span>
                 </div>
               </div>
-              <div class="carrera col-md-6">
-                <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
-                <div class="row-md-6 d-flex justify-content-md-start"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
+              <div class="row">
+                <div class="autor col-md-6">
+                  <div class="row-md-6 d-flex justify-content-md-start pl-md-3">Autor: </div>
+                  <div class="row-md-6 d-flex justify-content-md-start pl-md-3">
+                    <span><?php echo $row['nombres_autor_teg']; ?>,
+                      <br class="d-none d-md-block">
+                      <?php echo $row['apellidos_autor_teg']; ?></span>
+                  </div>
+                </div>
+                <div class="carrera col-md-6">
+                  <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
+                  <div class="row-md-6 d-flex justify-content-md-start"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
+                </div>
               </div>
-            </div>
-            <div class="row d-flex align-item-end">
-              <div class="year col-md-6 d-flex justify-content-md-end">
-                <p>Año: <span><?php echo $row['year_teg']; ?></span></p>
+              <div class="row">
+                <div class="year col-md-6 d-flex justify-content-md-end">
+                  <p>Año: <span><?php echo $row['year_teg']; ?></span></p>
+                </div>
               </div>
             </div>
           </div>
@@ -237,7 +247,7 @@ include '../Auth/leer_bbdd.php'
     Vendor End -->
 
   <!-- Footer Start -->
-  <div class="container-fluid text-dark mt-5 pt-5">
+  <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
     <!-- <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
           <a href="#" class="text-decoration-none">
@@ -344,11 +354,11 @@ include '../Auth/leer_bbdd.php'
         </div>
       </div> -->
     <div class="row border-top border-light mx-xl-5 py-4">
-      <div class="col-md-12 px-xl-0">
+      <div class="col-md-6 px-xl-0">
         <p class="mb-md-0 text-center text-md-left text-dark">
           &copy;
           <a class="text-dark font-weight-semi-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
-          <a class="text-dark font-weight-semi-bold" href="#">Carlos Bruzual</a>
+          <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a>
         </p>
       </div>
     </div>
@@ -372,16 +382,18 @@ include '../Auth/leer_bbdd.php'
   <script src="js/main.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("carrera-link").addEventListener("click", function(e) {
-        e.preventDefault();
-        var carreraSelect = document.getElementById("carrera");
-        if (carreraSelect.style.display === "none") {
-          carreraSelect.style.display = "block";
-        } else {
-          carreraSelect.style.display = "none";
-        }
-      });
-    });
+      document
+        .getElementById("carrera-link")
+        .addEventListener("click", function(e) {
+          e.preventDefault()
+          var carreraSelect = document.getElementById("carrera")
+          if (carreraSelect.style.display === "none") {
+            carreraSelect.style.display = "block"
+          } else {
+            carreraSelect.style.display = "none"
+          }
+        })
+    })
   </script>
 
   <script>

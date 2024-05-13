@@ -71,12 +71,18 @@ main,
 
 /*CONTENIDO DEL CONTENDOR DEL MEDIO, METE TODOS TUS DIVS AQUI Y DEJALOS EN AUTO PARA QUE SE AJUSTE AL CONTENIDO*/
 .texto {
-  height: auto;
   width: 350px;
   border: 4px solid #2e58af;
   border-radius: 0.5em;
   background-color: #ffffff;
   padding: 5px 10px;
+  min-height: 250px;
+}
+
+@media (max-width: 1680px) {
+  .texto {
+    min-height: 200px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -87,7 +93,8 @@ main,
   }
 }
 
-.texto-bienvenida {
+.texto-bienvenida,
+.texto-categoria {
   height: auto;
   border-radius: 6em 0 6em 0;
   background-color: #ffffff;
@@ -96,8 +103,9 @@ main,
 }
 
 @media (max-width: 767px) {
-  .texto-bienvenida {
-    border-radius: 5em 0 5em 0;
+  .texto-bienvenida,
+  .texto-categoria {
+    border-radius: 2.5em 0 2.5em 0;
     font-size: 0.95em;
     width: auto;
   }
@@ -235,7 +243,7 @@ div > aside > h3 {
 }
 
 p > span:not(.bienvenida, .titulo),
-div:not(.bienvenida, .titulo) > span {
+div:not(.bienvenida, .titulo, .categoria) > span {
   margin-bottom: 0.25rem;
   margin-top: 0.25rem;
   font-size: 0.9em;
@@ -258,7 +266,8 @@ div:not(.bienvenida, .titulo) > span {
   }
 }
 
-.bienvenida {
+.bienvenida,
+.categoria {
   text-align: center;
   font-size: 2em;
   color: #2e58af;
@@ -266,7 +275,8 @@ div:not(.bienvenida, .titulo) > span {
 }
 
 @media (max-width: 767px) {
-  .bienvenida {
+  .bienvenida,
+  .categoria {
     font-size: 1.5em;
   }
 }
