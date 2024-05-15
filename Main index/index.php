@@ -28,6 +28,7 @@ include '../Auth/leer_bbdd.php'
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet" />
+  <link href="css/carrusel.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -45,13 +46,48 @@ include '../Auth/leer_bbdd.php'
   </div>
   <!-- Topbar End -->
 
-  <div class="bg-primary text-white container">
+  <div class="bg-primary text-white container pt-2 pb-2 pl-4 pr-4">
     <div class="d-flex justify-content-between">
-      <div class="align-self-start ml-10">
-        <img class="logos" src="img/defensa logo.png" />
+      <div class="align-self-right logos">
+        <img class="logos" src="img/defensa logo.png" alt="Unefa Logo" />
       </div>
-      <div class="align-self-end">
-        <img class="logos" src="img/unefa.png" alt="" />
+      <div class="banner d-lg-block d-none">
+        <div class="slide">
+          <div class="slide-inner">
+            <input class="slide-open" type="radio" id="slide-1" name="slide" aria-hidden="true" hidden="" checked="checked" />
+            <div class="slide-item">
+              <img src="img/banner.png" />
+            </div>
+            <input class="slide-open" type="radio" id="slide-2" name="slide" aria-hidden="true" hidden="" />
+            <div class="slide-item">
+              <img src="https://www.migueltroyano.com/wp-content/uploads/2020/09/postgres_copy.png" />
+            </div>
+            <input class="slide-open" type="radio" id="slide-3" name="slide" aria-hidden="true" hidden="" />
+            <div class="slide-item">
+              <img src="https://www.migueltroyano.com/wp-content/uploads/2020/09/excel_guardar_como_csv.jpg" />
+            </div>
+            <label for="slide-3" class="slide-control prev control-1">‹</label>
+            <label for="slide-2" class="slide-control next control-1">›</label>
+            <label for="slide-1" class="slide-control prev control-2">‹</label>
+            <label for="slide-3" class="slide-control next control-2">›</label>
+            <label for="slide-2" class="slide-control prev control-3">‹</label>
+            <label for="slide-1" class="slide-control next control-3">›</label>
+            <ol class="slide-indicador">
+              <li>
+                <label for="slide-1" class="slide-circulo">•</label>
+              </li>
+              <li>
+                <label for="slide-2" class="slide-circulo">•</label>
+              </li>
+              <li>
+                <label for="slide-3" class="slide-circulo">•</label>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="align-self-left">
+        <img class="logos" src="img/unefa.png" alt="Unefa Logo" />
       </div>
     </div>
   </div>
@@ -86,7 +122,7 @@ include '../Auth/leer_bbdd.php'
               <a href="index.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Inicio</a>
               <a href="todas.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Todas</a>
               <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categorias</a>
+                <a href="#" class="nav-link dropdown-toggle pl-4" data-toggle="dropdown">Categorias</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="autor.php" class="dropdown-item">Autor</a>
                   <a href="publicacion.php" class="dropdown-item">Año</a>
@@ -94,7 +130,7 @@ include '../Auth/leer_bbdd.php'
                 </div>
               </div>
               <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Carreras</a>
+                <a href="#" class="nav-link dropdown-toggle pl-4" data-toggle="dropdown">Carreras</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="cart.html" class="dropdown-item">Ing Sistemas</a>
                   <a href="publicacion.php" class="dropdown-item">Ing Telecom</a>
@@ -172,7 +208,7 @@ include '../Auth/leer_bbdd.php'
                 <p>Titulo:</p>
               </div>
               <br />
-              <div class="titulo col-md-12 d-flex justify-content-md-center">
+              <div class="titulo col-md-12 d-flex justify-content-center">
                 <span><?php echo $row['titulo_teg']; ?></span>
               </div>
             </div>
@@ -237,7 +273,7 @@ include '../Auth/leer_bbdd.php'
     Vendor End -->
 
   <!-- Footer Start -->
-  <div class="container-fluid text-dark mt-5 pt-5">
+  <div class="container-fluid text-dark mt-5">
     <!-- <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
           <a href="#" class="text-decoration-none">
@@ -343,12 +379,12 @@ include '../Auth/leer_bbdd.php'
           </div>
         </div>
       </div> -->
-    <div class="row border-top border-light mx-xl-5 py-4">
+    <div class="row footer border-top border-light py-4">
       <div class="col-md-12 px-xl-0">
-        <p class="mb-md-0 text-center text-md-left text-dark">
+        <p class="mb-md-0 text-center text-md-center text-light">
           &copy;
-          <a class="text-dark font-weight-semi-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
-          <a class="text-dark font-weight-semi-bold" href="#">Carlos Bruzual</a>
+          <a class="text-light font-weight-semi-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
+          <a class="text-light font-weight-semi-bold" href="#">Carlos Bruzual</a>
         </p>
       </div>
     </div>

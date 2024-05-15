@@ -46,7 +46,7 @@ include '../Auth/leer_bbdd.php'
   </div>
   <!-- Topbar End -->
 
-  <div class="bg-primary text-white container">
+  <div class="bg-primary text-white container pt-2 pb-2 pl-4 pr-4">
     <div class="d-flex justify-content-between">
       <div class="align-self-start ml-10">
         <img class="logos" src="img/defensa logo.png" />
