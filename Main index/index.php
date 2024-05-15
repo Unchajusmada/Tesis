@@ -56,15 +56,15 @@ include '../Auth/leer_bbdd.php'
           <div class="slide-inner">
             <input class="slide-open" type="radio" id="slide-1" name="slide" aria-hidden="true" hidden="" checked="checked" />
             <div class="slide-item">
-              <img src="img/banner.png" />
+              <img src="img/banner.jpg" />
             </div>
             <input class="slide-open" type="radio" id="slide-2" name="slide" aria-hidden="true" hidden="" />
             <div class="slide-item">
-              <img src="https://www.migueltroyano.com/wp-content/uploads/2020/09/postgres_copy.png" />
+              <img src="img/banner2.jpg" />
             </div>
             <input class="slide-open" type="radio" id="slide-3" name="slide" aria-hidden="true" hidden="" />
             <div class="slide-item">
-              <img src="https://www.migueltroyano.com/wp-content/uploads/2020/09/excel_guardar_como_csv.jpg" />
+              <img src="img/banner3.jpg" />
             </div>
             <label for="slide-3" class="slide-control prev control-1">‹</label>
             <label for="slide-2" class="slide-control next control-1">›</label>
@@ -86,7 +86,7 @@ include '../Auth/leer_bbdd.php'
           </div>
         </div>
       </div>
-      <div class="align-self-left">
+      <div class="align-self-left logos">
         <img class="logos" src="img/unefa.png" alt="Unefa Logo" />
       </div>
     </div>
@@ -121,16 +121,16 @@ include '../Auth/leer_bbdd.php'
             <div class="navbar-nav mr-auto py-0">
               <a href="index.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Inicio</a>
               <a href="todas.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Todas</a>
-              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
-                <a href="#" class="nav-link dropdown-toggle pl-4" data-toggle="dropdown">Categorias</a>
+              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4 pr-md-4">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categorias</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="autor.php" class="dropdown-item">Autor</a>
                   <a href="publicacion.php" class="dropdown-item">Año</a>
                   <a href="titulo.php" class="dropdown-item">Titulo</a>
                 </div>
               </div>
-              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
-                <a href="#" class="nav-link dropdown-toggle pl-4" data-toggle="dropdown">Carreras</a>
+              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4 pr-md-4">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Carreras</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="cart.html" class="dropdown-item">Ing Sistemas</a>
                   <a href="publicacion.php" class="dropdown-item">Ing Telecom</a>
@@ -138,7 +138,7 @@ include '../Auth/leer_bbdd.php'
                   <a href="#" class="dropdown-item">Ing Civil</a>
                 </div>
               </div>
-              <a href="contact.html" class="nav-item nav-link pl-4 pl-md-4">Contacto</a>
+              <a href="contact.html" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Contacto</a>
             </div>
             <div class="col-lg-6 col-6 text-left d-lg-block d-none">
               <form action="">
@@ -154,7 +154,7 @@ include '../Auth/leer_bbdd.php'
               </form>
             </div>
             <div class="navbar-nav ml-auto py-0">
-              <a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-2">Cargar</a>
+              <a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Cargar</a>
             </div>
           </div>
         </nav>
