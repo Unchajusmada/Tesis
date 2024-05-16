@@ -127,7 +127,7 @@ include '../Auth/leer_bbdd.php'
                   <a href="autor.php" class="dropdown-item">Autor</a>
                   <a href="publicacion.php" class="dropdown-item">Año</a>
                   <a href="titulo.php" class="dropdown-item">Titulo</a>
-                  <li><a href="tutor.php" class="a-indice">Tutor</a></li>
+                  <a href="tutor.php" class="dropdown-item">Tutor</a>
                 </div>
               </div>
               <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4 pr-md-4">

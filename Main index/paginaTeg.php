@@ -86,16 +86,16 @@ include '../Auth/leer_bbdd.php'
             <div class="navbar-nav mr-auto py-0">
               <a href="index.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Inicio</a>
               <a href="todas.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Todas</a>
-              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
+              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categorias</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="autor.php" class="dropdown-item">Autor</a>
                   <a href="publicacion.php" class="dropdown-item">Año</a>
                   <a href="titulo.php" class="dropdown-item">Titulo</a>
-                  <li><a href="tutor.php" class="a-indice">Tutor</a></li>
+                  <a href="tutor.php" class="dropdown-item">Tutor</a>
                 </div>
               </div>
-              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
+              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Carreras</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="carreras.php?carrera=Aeronautica" class="dropdown-item">Ing. Aeronautica</a>
@@ -122,7 +122,7 @@ include '../Auth/leer_bbdd.php'
               </form>
             </div>
             <div class="navbar-nav ml-auto py-0">
-              <a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-2">Cargar</a>
+              <a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-4">Cargar</a>
             </div>
           </div>
         </nav>

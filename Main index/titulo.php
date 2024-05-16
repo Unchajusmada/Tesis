@@ -180,7 +180,7 @@ include '../Auth/leer_bbdd.php'
 					$primeraLetra = substr($row['titulo_teg'], 0, 1);
 				?>
 					<div class="clasificar">
-						<span style="font-size: 2em;"><?php echo $primeraLetra; ?></span>
+						<span style="font-size: 2em; color: white; text-shadow: black 3px 3px 3px; font-weight: bold;"><?php echo $primeraLetra; ?></span>
 						<div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
 							<div class="row">
 								<div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">

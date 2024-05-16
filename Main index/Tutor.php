@@ -86,16 +86,16 @@ include '../Auth/leer_bbdd.php'
             <div class="navbar-nav mr-auto py-0">
               <a href="index.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Inicio</a>
               <a href="todas.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Todas</a>
-              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
+              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categorias</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="autor.php" class="dropdown-item">Autor</a>
                   <a href="publicacion.php" class="dropdown-item">Año</a>
                   <a href="titulo.php" class="dropdown-item">Titulo</a>
-                  <li><a href="tutor.php" class="a-indice">Tutor</a></li>
+                  <a href="tutor.php" class="dropdown-item">Tutor</a>
                 </div>
               </div>
-              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
+              <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Carreras</a>
                 <div class="dropdown-menu rounded-0 m-0">
                   <a href="carreras.php?carrera=Aeronautica" class="dropdown-item">Ing. Aeronautica</a>
@@ -122,7 +122,7 @@ include '../Auth/leer_bbdd.php'
               </form>
             </div>
             <div class="navbar-nav ml-auto py-0">
-              <a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-2">Cargar</a>
+              <a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-4">Cargar</a>
             </div>
           </div>
         </nav>
@@ -183,7 +183,7 @@ include '../Auth/leer_bbdd.php'
           $primeraLetra = substr($row['nombres_tutor'], 0, 1);
         ?>
           <div class="clasificar">
-            <span style="font-size: 2em;"><?php echo $primeraLetra; ?></span>
+            <span style="font-size: 2em; color: white; text-shadow: black 3px 3px 3px; font-weight: bold;"><?php echo $primeraLetra; ?></span>
             <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
               <div class="row">
                 <div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">
