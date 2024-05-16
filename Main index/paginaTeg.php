@@ -38,7 +38,7 @@ include '../Auth/leer_bbdd.php'
       <div class="col-lg-3 d-none d-lg-block">
         <a href="#" class="text-decoration-none">
           <h1 class="m-0 display-5 font-weight-semi-bold">
-            <span class="text-primary font-weight-bold border px-1 mr-1">U</span>NEFA
+            <span class="text-primary font-weight-bold border">U</span>NEFA
           </h1>
         </a>
       </div>
@@ -64,7 +64,7 @@ include '../Auth/leer_bbdd.php'
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
           <a href="" class="text-decoration-none d-block d-lg-none">
             <h1 class="m-0 display-5 font-weight-semi-bold">
-              <span class="text-primary font-weight-bold border px-1 mr-1">U</span>NEFA
+              <span class="text-primary font-weight-bold border">U</span>NEFA
             </h1>
           </a>
           <div class="col-lg-6 col-6 text-left d-lg-none d-block">
@@ -208,13 +208,11 @@ include '../Auth/leer_bbdd.php'
                 <p><span style="font-weight: bold;">Año:</span>&nbsp; <span><?php echo $row['year_teg']; ?></span></p>
               </div>
             </div>
-            <div class="row pl-md-2 d-flex justify-content-center align-items-center">
-              <div class="pdf text-center">
-                <a href="../Admin/PDF_TEG/<?php echo $row['archivo_pdf']; ?>" target="_blank">
-                  <p class="pdf">¡Leer PDF!</p>
-                  <span><img src="img/pdf.png" alt="" style="width: 10%;"></span>
+            <div class="contenedor-pdf">
+                <a href="../Admin/PDF_TEG/<?php echo $row['archivo_pdf']; ?>" target="_blank" >
+                  <span><img src="img/pdf.png" alt=""></span>
+                  <p>¡Leer PDF!</p>
                 </a>
-              </div>
             </div>
           </div>
         <?php endforeach; ?>
