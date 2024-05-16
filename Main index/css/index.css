@@ -1,10 +1,11 @@
-/*INTENTA NO MOVER LA ALTURA, Y SI LA VAS A MOVER, HAS QUE ABARQUE TODO LO QUEE PUEDA*/
+/* Reset de estilos básicos */
 body {
   padding: 0;
   margin: 0;
   height: 100%;
 }
 
+/* Eliminación de viñetas de listas */
 ul {
   padding: 0;
   margin-bottom: 1px;
@@ -13,21 +14,22 @@ li {
   list-style: none;
 }
 
-/*INTENTA NO MOVER ESTO, ES LO QUE HACE QUE VAYAN HACIA ABAJO EL CONTENEDOR-MEDIO, Y INDICE*/
+/* Estilos para el diseño principal */
+/* Establece la dirección de la columna para el cuerpo y el contenedor-medio */
 body,
 .contenedor-medio {
   flex-direction: column;
 }
 
+/* Estilos específicos del contenedor-medio */
 .contenedor-medio {
   align-items: center;
-  background-color: rgba(214, 195, 195, 0.548);
-  border: 0.5em rgb(124, 184, 241) solid;
-  border-radius: 1em;
   padding-top: 40px;
+  padding-bottom: 20px;
   gap: 25px;
 }
 
+/* Estilos del pie de página */
 .footer {
   background-color: #2e58af;
   margin: 0;
@@ -37,28 +39,26 @@ body,
   align-items: center;
 }
 
-.btn.btn-primary {
-  border: 1px solid whitesmoke;
-}
-
+/* Estilos para contenedor-fluid */
 .container-fluid {
   padding: 0;
 }
 
-/*MUEVE LO QUE QUIERAS MENOS EL FLEX AUTO, ESO DEBES DEJARLO COMO ESTA*/
+/* Estilos para el contenido principal */
+/* Ajusta el tamaño del contenido principal */
 main {
-  padding: 1px 0px 40px 0px;
   flex: auto;
   gap: 40px;
+  border-top: 0.25em #2e58af solid;
+  background-image: url(../img/fondo.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.9;
 }
 
-@media (max-width: 767px) {
-  main {
-    padding: 0;
-  }
-}
-
-/*INTENTA NO MOVER ESTO, ES PARTE DE LO QUE MEE PERMITE ALINEAR EL CONTENEDOR-MEDIO, CON INDICE, Y EL CONTENIDO MEDIO*/
+/* Estilos para alinear el contenedor-medio, el índice y el contenido principal */
 body,
 main,
 .indice,
@@ -67,82 +67,87 @@ main,
   display: flex;
 }
 
-/*INTENTA NO MOVER ESTO, ES LO QUE HACE QUE TEXTO-INDICE ABARQUE EL TAMAÑO DE INDICE, Y CONTENEDOR MEDIO TODA LA IZQUIERDA*/
+/* Ajusta el tamaño del contenedor-medio y el texto del índice */
 .contenedor-medio,
 .texto-indice {
   flex: 1;
 }
 
+/* Estilos específicos para el ordenar */
 .ordenar {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
 
-@media (max-width: 767px) {
-  .contenedor-medio {
-    padding: 5px 5px;
-    gap: 10px;
-  }
-}
-
-/*CONTENIDO DEL CONTENDOR DEL MEDIO, METE TODOS TUS DIVS AQUI Y DEJALOS EN AUTO PARA QUE SE AJUSTE AL CONTENIDO*/
+/* Estilos para el texto de los cuadros dentro del contenedor-medio */
 .texto {
   width: 350px;
-  border: 4px solid #2e58af;
+  border: 2px solid black;
   border-radius: 0.5em;
-  background-color: #ffffff;
+  background-color: #fffffff2;
   padding: 5px 10px;
+  min-height: 250px;
+  transition: 0.3s;
+}
+
+.texto:hover {
+  cursor: pointer;
+  background-color: rgb(206, 206, 206);
+  transform: scale(1.05);
+}
+.texto:not(:hover) {
+  transition-duration: 0.3s;
+  transform: scale(1);
+}
+
+.texto-teg {
+  width: auto;
+  border: 2px solid black;
+  border-radius: 0.5em;
+  background-color: #fffffff2;
+  padding: 5px 10px 20px 5px;
+  margin: 10px;
   min-height: 250px;
 }
 
+/* Ajusta el tamaño del texto de los cuadros en pantallas medianas */
 @media (max-width: 1680px) {
   .texto {
     width: 280px;
     min-height: 220px;
   }
-}
-
-@media (max-width: 767px) {
-  .texto {
-    width: auto;
-    border: 5px solid rgba(47, 47, 53, 0.74);
-    border-radius: 1em;
-    font-size: 0.95em;
+  .texto-teg {
+    min-height: 220px;
   }
 }
 
+/* Estilos para los textos de bienvenida y categoría */
 .texto-bienvenida,
 .texto-categoria {
   height: auto;
-  border-radius: 6em 0 6em 0;
-  background-color: #ffffff;
+  border-radius: 6em;
+  background-color: #fefefe6e;
   padding: 25px;
   margin: 10px;
   width: auto;
 }
 
-@media (max-width: 767px) {
-  .texto-bienvenida,
-  .texto-categoria {
-    border-radius: 2.5em 0 2.5em 0;
-    font-size: 0.95em;
-    width: auto;
-  }
-}
-
-/*CONTENIDO DEL INDICE*/
+/* Estilos para el texto del índice */
 .texto-indice {
   border: 2px solid orangered;
   padding: 20px;
 }
 
-/*TAMAÑO DEL INDICE*/
+/* Estilos para el contenedor del índice */
 .indice {
   padding: 20px;
   background-color: #ffffff;
+  border-right: 1px solid black;
+  text-shadow: grey 1px 1px 1px;
 }
 
+/* Estilos para la imagen del banner */
 .img_banner {
   display: block;
   width: 80%;
@@ -150,6 +155,7 @@ main,
   margin: 0 auto; /* Centrar la imagen horizontalmente */
 }
 
+/* Estilos para el menú */
 #menu {
   position: sticky;
   top: 20px; /* Límite superior del contenedor */
@@ -177,23 +183,19 @@ main,
   display: block;
 }
 
-.dropdown-menu.show {
-  display: block;
-}
-
-/* Añade un nuevo contenedor para el índice y el texto de arriba */
+/* Estilos para el contenedor superior */
 .contenedor-superior {
   display: flex;
 }
 
-/* Establece la dirección de la columna para el contenedor-superior en pantallas más grandes */
-@media (min-width: 992px) {
+@media (min-width: 990px) {
+  /* Ajusta la dirección de la columna para el contenedor-superior en pantallas grandes */
   .contenedor-superior {
     flex-direction: column;
   }
 }
 
-/* Mueve el estilo del banner a la nueva columna */
+/* Estilos para el banner */
 .banner {
   width: 800px;
   margin-left: 20px;
@@ -206,12 +208,13 @@ main,
   align-self: center;
 }
 
-/* Establece el ancho del índice y el texto de arriba */
+/* Ajusta el tamaño del índice y el texto del índice */
 .indice,
 .texto-indice {
   width: 214px;
 }
 
+/* Ajusta el tamaño de fuente para algunos elementos */
 .indice,
 .texto-indice,
 .texto,
@@ -219,68 +222,58 @@ main,
   font-size: 1em;
 }
 
-/* Tamaño de fuente para pantallas de 1080px o más */
+/* Ajusta el tamaño de fuente para algunos elementos */
+.texto-teg {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1820px) {
+  /* Ajusta el tamaño de fuente para pantallas más pequeñas */
+  .texto-teg {
+    font-size: 1.2em;
+  }
+}
+
 @media (min-width: 1820px) {
+  /* Ajusta el tamaño de fuente para pantallas grandes */
   .indice,
   .texto-indice,
   .texto,
   .contenedor-navbar {
     font-size: 1.2em; /* Ajusta aquí el tamaño de fuente deseado */
   }
-}
 
-/* Establece el ancho del índice y el texto de arriba */
-.indice,
-.texto-indice {
-  width: 214px;
-}
-
-.logos {
-  height: 11em;
-  align-self: center;
-}
-
-@media (max-width: 990px) {
-  .contenedor-medio {
-    border: 0.2em rgb(124, 184, 241) solid;
-  }
-  .logos {
-    height: 8em;
-  }
-}
-
-@media (max-width: 750px) {
-  .logos {
-    height: 5em;
-  }
-}
-
-@media (max-width: 990px) {
-  .contenedor-medio {
-    border: 0.2em rgb(124, 184, 241) solid;
-  }
-}
-
-.contenedor-navbar {
-  background-color: #ffffff;
-}
-
-@media (min-width: 1820px) {
+  /* Ajusta el padding y el tamaño de fuente del contenedor-navbar en pantallas grandes */
   .contenedor-navbar {
     padding: 0.6em 0 0.6em 0;
     font-size: 1.4em;
   }
 }
 
+/* Estilos para el logotipo */
+.logos {
+  height: 11em;
+  align-self: center;
+}
+
+/* Estilos para el contenedor del navbar */
+.contenedor-navbar {
+  background-color: #ffffff;
+}
+
+/* Ajusta el tamaño de fuente y el padding de los enlaces en la lista */
 li > a {
   font-size: 1.2em;
   padding-left: 0.8em;
 }
 
+/* Ajusta el margen inferior del encabezado */
 div > aside > h3 {
   margin-bottom: 20px;
 }
 
+/* Ajusta el margen de los párrafos y los spans */
 p > span:not(.bienvenida, .titulo),
 div:not(.bienvenida, .titulo, .categoria) > span {
   margin-bottom: 0.25rem;
@@ -290,6 +283,7 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   color: #6f6f6f;
 }
 
+/* Estilos para los títulos */
 .titulo {
   text-align: center;
   font-size: 1em;
@@ -299,23 +293,75 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   font-weight: 500;
 }
 
-@media (max-width: 767px) {
-  div:not(.bienvenida) > span {
-    text-align: center;
+@media (max-width: 990px) {
+  /* Ajusta el tamaño del logotipo en pantallas medianas */
+  .logos {
+    height: 8em !important;
   }
 }
 
+@media (max-width: 767px) {
+  /* Ajusta el padding del contenido principal en pantallas pequeñas */
+  main {
+    padding: 0;
+  }
+  /* Ajusta el tamaño del texto de los cuadros en pantallas pequeñas */
+  .texto {
+    width: auto;
+    min-width: 310px;
+    max-width: 310px;
+    border: 2px solid black;
+    border-radius: 1em;
+    font-size: 0.95em;
+  }
+  /* Ajusta el padding y el gap del contenedor-medio en pantallas pequeñas */
+  .contenedor-medio {
+    padding: 5px 5px;
+    gap: 10px;
+  }
+  /* Ajusta el alineado del texto en pantallas pequeñas */
+  div:not(.bienvenida) > span {
+    text-align: center;
+  }
+  /* Ajusta el tamaño del texto de bienvenida y categoría en pantallas pequeñas */
+  .bienvenida,
+  .categoria {
+    font-size: 1.2em !important;
+  }
+  /* Ajusta el tamaño del texto de bienvenida y categoría en pantallas pequeñas */
+  .texto-bienvenida,
+  .texto-categoria {
+    border-radius: 2.5em 0 2.5em 0;
+    font-size: 0.95em;
+    width: auto;
+  }
+  /* Ajusta el tamaño del logotipo en pantallas pequeñas */
+  .logos {
+    height: 5em;
+  }
+  /* Ajusta el tamaño de fuente para pantallas más pequeñas */
+  .texto-teg {
+    font-size: 0.95em;
+  }
+}
+
+/* Estilos para el texto de bienvenida y categoría */
 .bienvenida,
 .categoria {
   text-align: center;
   font-size: 2em;
-  color: #2e58af;
+  color: black;
+  text-shadow: grey 1px 1px 1px;
   font-weight: 700;
 }
 
-@media (max-width: 767px) {
-  .bienvenida,
-  .categoria {
-    font-size: 1.2em;
-  }
+.pdf {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  width: auto;
+}
+.pdf img:hover,
+.pdf p:hover {
+  color: #2e58af;
+  cursor: pointer;
 }

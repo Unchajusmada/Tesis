@@ -174,7 +174,7 @@ a {
 }
 
 a:hover {
-  color: #ba6a62;
+  color: #2e58af;
   text-decoration: underline;
 }
 
@@ -2499,8 +2499,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: #212529;
-  background-color: #2e58af;
+  color: white;
+  background-color: #0a3183;
   border-color: #2e58af;
 }
 
@@ -3400,7 +3400,7 @@ input[type="button"].btn-block {
 .dropdown-item {
   display: block;
   width: 100%;
-  padding: 0.25rem 1.5rem;
+  padding: 0.25rem 0.5rem;
   clear: both;
   font-weight: 400;
   color: #212529;

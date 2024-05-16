@@ -99,7 +99,7 @@ include '../Auth/leer_bbdd.php'
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
           <a href="" class="text-decoration-none d-block d-lg-none">
             <h1 class="m-0 display-5 font-weight-semi-bold">
-              <span class="text-primary font-weight-bold border px-1 mr-1">U</span>NEFA
+              <span class="text-primary font-weight-bold border pl-1">U</span>NEFA
             </h1>
           </a>
           <div class="col-lg-6 col-6 text-left d-lg-none d-block">
@@ -127,15 +127,18 @@ include '../Auth/leer_bbdd.php'
                   <a href="autor.php" class="dropdown-item">Autor</a>
                   <a href="publicacion.php" class="dropdown-item">Año</a>
                   <a href="titulo.php" class="dropdown-item">Titulo</a>
+                  <li><a href="tutor.php" class="a-indice">Tutor</a></li>
                 </div>
               </div>
               <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4 pr-md-4">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Carreras</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                  <a href="cart.html" class="dropdown-item">Ing Sistemas</a>
-                  <a href="publicacion.php" class="dropdown-item">Ing Telecom</a>
-                  <a href="#" class="dropdown-item">Ing Electrica</a>
-                  <a href="#" class="dropdown-item">Ing Civil</a>
+                  <a href="carreras.php?carrera=Aeronautica" class="dropdown-item">Ing. Aeronautica</a>
+                  <a href="carreras.php?carrera=Civil" class="dropdown-item">Ing. Civil</a>
+                  <a href="carreras.php?carrera=Electrica" class="dropdown-item">Ing. Electrica</a>
+                  <a href="carreras.php?carrera=Electronica" class="dropdown-item">Ing. Electronica</a>
+                  <a href="carreras.php?carrera=Sistemas" class="dropdown-item">Ing. de <br>Sistemas</a>
+                  <a href="carreras.php?carrera=Telecom" class="dropdown-item">Ing. de <br>Telecomunicaciones</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Contacto</a>
@@ -171,16 +174,19 @@ include '../Auth/leer_bbdd.php'
         <ul>
           <li><a href="autor.php" class="a-indice">Autor</a></li>
           <li><a href="publicacion.php" class="a-indice">Año</a></li>
-          <li><a href="titulo.php" class="a-indice">Título</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" id="carrera-link" data-toggle="dropdown">Carrera</a>
             <div class="dropdown-menu rounded-0 m-0">
-              <a href="cart.html" class="dropdown-item">Ing Sistemas</a>
-              <a href="publicacion.php" class="dropdown-item">Ing Telecom</a>
-              <a href="#" class="dropdown-item">Ing Electrica</a>
-              <a href="#" class="dropdown-item">Ing Civil</a>
+              <a href="carreras.php?carrera=Aeronautica" class="dropdown-item">Ing. Aeronautica</a>
+              <a href="carreras.php?carrera=Civil" class="dropdown-item">Ing. Civil</a>
+              <a href="carreras.php?carrera=Electrica" class="dropdown-item">Ing. Electrica</a>
+              <a href="carreras.php?carrera=Electronica" class="dropdown-item">Ing. Electronica</a>
+              <a href="carreras.php?carrera=Sistemas" class="dropdown-item">Ing. de <br>Sistemas</a>
+              <a href="carreras.php?carrera=Telecom" class="dropdown-item">Ing. de <br>Telecomunicaciones</a>
             </div>
           </li>
+          <li><a href="titulo.php" class="a-indice">Título</a></li>
+          <li><a href="tutor.php" class="a-indice">Tutor</a></li>
         </ul>
       </aside>
     </div>
@@ -191,7 +197,7 @@ include '../Auth/leer_bbdd.php'
         <div class="row">
           <div class="bienvenida col-md-12 d-flex justify-content-md-center">
             <span>BIENVENIDO AL SISTEMA DE GESTIÓN DE TRABAJOS ESPECIALES DE
-              GRADO EN LA UNEFA NÚCLEO MARACAY.</span>
+              GRADO EN LA UNEFA NÚCLEO MARACAY</span>
           </div>
         </div>
       </div>
@@ -273,7 +279,7 @@ include '../Auth/leer_bbdd.php'
     Vendor End -->
 
   <!-- Footer Start -->
-  <div class="container-fluid text-dark mt-5">
+  <div class="container-fluid text-dark">
     <!-- <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
           <a href="#" class="text-decoration-none">
@@ -379,7 +385,7 @@ include '../Auth/leer_bbdd.php'
           </div>
         </div>
       </div> -->
-    <div class="row footer border-top border-light py-4">
+    <div class="row footer py-4">
       <div class="col-md-12 px-xl-0">
         <p class="mb-md-0 text-center text-md-center text-light">
           &copy;
@@ -430,8 +436,8 @@ include '../Auth/leer_bbdd.php'
         // Obtener el ID_teg del elemento actual
         var idTeg = this.getAttribute('data-id-teg');
 
-        // Construir la URL con el ID_teg y redireccionar al usuario
-        var url = 'https://www.ejemplo.com/' + idTeg;
+        // Redireccionar al usuario a paginaTeg.php con el ID_teg como parámetro
+        var url = 'paginaTeg.php?id_teg=' + idTeg;
         window.location.href = url;
       });
     }
