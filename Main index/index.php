@@ -184,7 +184,7 @@ include '../Auth/leer_bbdd.php'
                 <div class="row-md-6 d-flex justify-content-md-start"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
               </div>
             </div>
-            <div class="row d-flex align-item-end">
+            <div class="row d-flex justify-content-md-end">
               <div class="year col-md-6 d-flex justify-content-md-end">
                 <p>Año: <span><?php echo $row['year_teg']; ?></span></p>
               </div>

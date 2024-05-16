@@ -3,8 +3,8 @@ require '../BBDD/connect_user.php';
 
 // Obtén los valores que deseas insertar en la tabla teg
 $titulo_teg = $_POST['titulo'];
-$nombres_autor_teg = $_POST['nombres'];
-$apellidos_autor_teg = $_POST['apellidos'];
+$nombres_autor_teg = trim($_POST['nombres']);
+$apellidos_autor_teg = trim($_POST['apellidos']);
 $correo_autor = $_POST['correo'];
 $year_teg = $_POST['year'];
 $nombre_carrera_autor = $_POST['nombre_carrera_autor'];
@@ -36,6 +36,7 @@ if ($stmt = mysqli_prepare($conection, $sql)) {
       // Ejecuta la consulta
       if (mysqli_stmt_execute($stmt)) {
         echo "Registro insertado correctamente";
+        header("Location: ../Admin/Admin-panel.php");
       } else {
         echo "Error al ejecutar la consulta: " . mysqli_error($conection);
       }
