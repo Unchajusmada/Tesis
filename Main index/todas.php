@@ -32,20 +32,6 @@ include '../Auth/leer_bbdd.php'
 
 <body>
   <!-- Topbar Start -->
-  <div class="container-fluid">
-    <div class="row align-items-center d-none py-3 px-xl-5">
-
-      <div class="col-lg-3 d-none d-lg-block">
-        <a href="#" class="text-decoration-none">
-          <h1 class="m-0 display-5 font-weight-semi-bold">
-            <span class="text-primary font-weight-bold border px-1 mr-1">U</span>NEFA
-          </h1>
-        </a>
-      </div>
-    </div>
-  </div>
-  <!-- Topbar End -->
-
   <div class="bg-primary text-white container pt-2 pb-2 pl-4 pr-4">
     <div class="d-flex justify-content-between">
       <div class="align-self-start ml-10">
@@ -56,7 +42,7 @@ include '../Auth/leer_bbdd.php'
       </div>
     </div>
   </div>
-
+  <!-- Topbar End -->
   <!-- Navbar Start -->
   <div class="contenedor-navbar">
     <div class="row px-xl-5">
@@ -64,7 +50,7 @@ include '../Auth/leer_bbdd.php'
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
           <a href="" class="text-decoration-none d-block d-lg-none">
             <h1 class="m-0 display-5 font-weight-semi-bold">
-              <span class="text-primary font-weight-bold border px-1 mr-1">U</span>NEFA
+              <span class="text-primary font-weight-bold border pl-3">U</span>NEFA
             </h1>
           </a>
           <div class="col-lg-6 col-6 text-left d-lg-none d-block">
@@ -206,148 +192,8 @@ include '../Auth/leer_bbdd.php'
     </div>
   </main>
 
-  <!-- Vendor Start
-  <div class="container-fluid py-5">
-    <div class="row px-xl-5">
-      <div class="col">
-        <div class="owl-carousel vendor-carousel">
-          <div class="vendor-item border p-4">
-            <img src="img/vendor-1.jpg" alt="" />
-          </div>
-          <div class="vendor-item border p-4">
-            <img src="img/vendor-2.jpg" alt="" />
-          </div>
-          <div class="vendor-item border p-4">
-            <img src="img/vendor-3.jpg" alt="" />
-          </div>
-          <div class="vendor-item border p-4">
-            <img src="img/vendor-4.jpg" alt="" />
-          </div>
-          <div class="vendor-item border p-4">
-            <img src="img/vendor-5.jpg" alt="" />
-          </div>
-          <div class="vendor-item border p-4">
-            <img src="img/vendor-6.jpg" alt="" />
-          </div>
-          <div class="vendor-item border p-4">
-            <img src="img/vendor-7.jpg" alt="" />
-          </div>
-          <div class="vendor-item border p-4">
-            <img src="img/vendor-8.jpg" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  Vendor End -->
-
   <!-- Footer Start -->
   <div class="container-fluid text-dark">
-    <!-- <div class="row px-xl-5 pt-5">
-      <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-        <a href="#" class="text-decoration-none">
-          <h1 class="mb-4 display-5 font-weight-semi-bold">
-            <span
-              class="text-primary font-weight-bold border border-white px-3 mr-1"
-              >E</span
-            >Shopper
-          </h1>
-        </a>
-        <p>
-          Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no
-          sit erat lorem et magna ipsum dolore amet erat.
-        </p>
-        <p class="mb-2">
-          <i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street,
-          New York, USA
-        </p>
-        <p class="mb-2">
-          <i class="fa fa-envelope text-primary mr-3"></i>info@example.com
-        </p>
-        <p class="mb-0">
-          <i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890
-        </p>
-      </div>
-      <div class="col-lg-8 col-md-12">
-        <div class="row">
-          <div class="col-md-4 mb-5">
-            <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-            <div class="d-flex flex-column justify-content-start">
-              <a class="text-dark mb-2" href="index.html"
-                ><i class="fa fa-angle-right mr-2"></i>Home</a
-              >
-              <a class="text-dark mb-2" href="shop.html"
-                ><i class="fa fa-angle-right mr-2"></i>Our Shop</a
-              >
-              <a class="text-dark mb-2" href="detail.html"
-                ><i class="fa fa-angle-right mr-2"></i>Shop Detail</a
-              >
-              <a class="text-dark mb-2" href="cart.html"
-                ><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a
-              >
-              <a class="text-dark mb-2" href="publicacion.php"
-                ><i class="fa fa-angle-right mr-2"></i>Checkout</a
-              >
-              <a class="text-dark" href="contact.html"
-                ><i class="fa fa-angle-right mr-2"></i>Contact Us</a
-              >
-            </div>
-          </div>
-          <div class="col-md-4 mb-5">
-            <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-            <div class="d-flex flex-column justify-content-start">
-              <a class="text-dark mb-2" href="index.html"
-                ><i class="fa fa-angle-right mr-2"></i>Home</a
-              >
-              <a class="text-dark mb-2" href="shop.html"
-                ><i class="fa fa-angle-right mr-2"></i>Our Shop</a
-              >
-              <a class="text-dark mb-2" href="detail.html"
-                ><i class="fa fa-angle-right mr-2"></i>Shop Detail</a
-              >
-              <a class="text-dark mb-2" href="cart.html"
-                ><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a
-              >
-              <a class="text-dark mb-2" href="publicacion.php"
-                ><i class="fa fa-angle-right mr-2"></i>Checkout</a
-              >
-              <a class="text-dark" href="contact.html"
-                ><i class="fa fa-angle-right mr-2"></i>Contact Us</a
-              >
-            </div>
-          </div>
-          <div class="col-md-4 mb-5">
-            <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
-            <form action="">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control border-0 py-4"
-                  placeholder="Your Name"
-                  required="required"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="email"
-                  class="form-control border-0 py-4"
-                  placeholder="Your Email"
-                  required="required"
-                />
-              </div>
-              <div>
-                <button
-                  class="btn btn-primary btn-block border-0 py-3"
-                  type="submit"
-                >
-                  Subscribe Now
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <div class="row footer py-4">
       <div class="col-md-12 px-xl-0">
         <p class="mb-md-0 text-center text-md-center text-light">

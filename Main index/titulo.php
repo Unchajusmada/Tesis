@@ -32,20 +32,6 @@ include '../Auth/leer_bbdd.php'
 
 <body>
 	<!-- Topbar Start -->
-	<div class="container-fluid">
-		<div class="row align-items-center d-none py-3 px-xl-5">
-
-			<div class="col-lg-3 d-none d-lg-block">
-				<a href="#" class="text-decoration-none">
-					<h1 class="m-0 display-5 font-weight-semi-bold">
-						<span class="text-primary font-weight-bold border px-1 mr-1">U</span>NEFA
-					</h1>
-				</a>
-			</div>
-		</div>
-	</div>
-	<!-- Topbar End -->
-
 	<div class="bg-primary text-white container pt-2 pb-2 pl-4 pr-4">
 		<div class="d-flex justify-content-between">
 			<div class="align-self-start ml-10">
@@ -56,7 +42,7 @@ include '../Auth/leer_bbdd.php'
 			</div>
 		</div>
 	</div>
-
+	<!-- Topbar End -->
 	<!-- Navbar Start -->
 	<div class="contenedor-navbar">
 		<div class="row px-xl-5">
@@ -64,7 +50,7 @@ include '../Auth/leer_bbdd.php'
 				<nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
 					<a href="" class="text-decoration-none d-block d-lg-none">
 						<h1 class="m-0 display-5 font-weight-semi-bold">
-							<span class="text-primary font-weight-bold border px-1 mr-1">U</span>NEFA
+							<span class="text-primary font-weight-bold border pl-3">U</span>NEFA
 						</h1>
 					</a>
 					<div class="col-lg-6 col-6 text-left d-lg-none d-block">
@@ -86,21 +72,24 @@ include '../Auth/leer_bbdd.php'
 						<div class="navbar-nav mr-auto py-0">
 							<a href="index.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Inicio</a>
 							<a href="todas.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Todas</a>
-							<div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
+							<div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categorias</a>
 								<div class="dropdown-menu rounded-0 m-0">
 									<a href="autor.php" class="dropdown-item">Autor</a>
 									<a href="publicacion.php" class="dropdown-item">Año</a>
 									<a href="titulo.php" class="dropdown-item">Titulo</a>
+									<a href="tutor.php" class="dropdown-item">Tutor</a>
 								</div>
 							</div>
-							<div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-2">
+							<div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Carreras</a>
 								<div class="dropdown-menu rounded-0 m-0">
-									<a href="cart.html" class="dropdown-item">Ing Sistemas</a>
-									<a href="publicacion.php" class="dropdown-item">Ing Telecom</a>
-									<a href="#" class="dropdown-item">Ing Electrica</a>
-									<a href="#" class="dropdown-item">Ing Civil</a>
+									<a href="carreras.php?carrera=Aeronautica" class="dropdown-item">Ing. Aeronautica</a>
+									<a href="carreras.php?carrera=Civil" class="dropdown-item">Ing. Civil</a>
+									<a href="carreras.php?carrera=Electrica" class="dropdown-item">Ing. Electrica</a>
+									<a href="carreras.php?carrera=Electronica" class="dropdown-item">Ing. Electronica</a>
+									<a href="carreras.php?carrera=Sistemas" class="dropdown-item">Ing. de <br>Sistemas</a>
+									<a href="carreras.php?carrera=Telecom" class="dropdown-item">Ing. de <br>Telecomunicaciones</a>
 								</div>
 							</div>
 							<a href="contact.html" class="nav-item nav-link pl-4 pl-md-4">Contacto</a>
@@ -119,7 +108,7 @@ include '../Auth/leer_bbdd.php'
 							</form>
 						</div>
 						<div class="navbar-nav ml-auto py-0">
-							<a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-2">Cargar</a>
+							<a href="../Admin/Paginas/login.html" class="nav-item nav-link pl-4 pl-md-4">Cargar</a>
 						</div>
 					</div>
 				</nav>
@@ -259,7 +248,7 @@ include '../Auth/leer_bbdd.php'
 				<a href="#" class="text-decoration-none">
 					<h1 class="mb-4 display-5 font-weight-semi-bold">
 						<span
-							class="text-primary font-weight-bold border border-white px-3 mr-1"
+							class="text-primary font-weight-bold border pl-3 border-white px-3 mr-1"
 							>E</span
 						>Shopper
 					</h1>
