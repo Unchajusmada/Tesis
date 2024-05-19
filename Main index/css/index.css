@@ -120,13 +120,18 @@ main,
 }
 
 .texto-teg {
-  width: auto;
+  font-size: 1.5em;
   border: 2px solid black;
   border-radius: 0.5em;
   background-color: #fffffff2;
-  padding: 5px 10px 20px 5px;
-  margin: 10px;
+  padding: 30px;
+  margin-bottom: 20px;
   min-height: 250px;
+  max-width: 50em;
+}
+
+.ordenar-teg {
+  padding: 0 20px 0 20px;
 }
 
 /* Ajusta el tamaño del texto de los cuadros en pantallas medianas */
@@ -238,12 +243,6 @@ main,
 .texto,
 .contenedor-navbar {
   font-size: 1em;
-}
-
-/* Ajusta el tamaño de fuente para algunos elementos */
-.texto-teg {
-  font-size: 1.5em;
-  margin-bottom: 20px;
 }
 
 @media (max-width: 1820px) {
@@ -360,6 +359,7 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   /* Ajusta el tamaño de fuente para pantallas más pequeñas */
   .texto-teg {
     font-size: 0.95em;
+    padding: 5px 10px 20px 5px;
   }
 }
 

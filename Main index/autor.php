@@ -22,9 +22,6 @@ include '../Auth/leer_bbdd.php'
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- Libraries Stylesheet -->
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet" />
@@ -158,44 +155,11 @@ include '../Auth/leer_bbdd.php'
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-  <!-- Contact Javascript File -->
-  <script src="mail/jqBootstrapValidation.min.js"></script>
-  <script src="mail/contact.js"></script>
-
-  <!-- Template Javascript -->
+  <!-- Javascript personalizados -->
   <script src="js/main.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("carrera-link").addEventListener("click", function(e) {
-        e.preventDefault();
-        var carreraSelect = document.getElementById("carrera");
-        if (carreraSelect.style.display === "none") {
-          carreraSelect.style.display = "block";
-        } else {
-          carreraSelect.style.display = "none";
-        }
-      });
-    });
-  </script>
-
-  <script>
-    // Obtener todos los elementos con la clase "enlace-teg"
-    var tegDivs = document.getElementsByClassName('enlace-teg');
-
-    // Agregar el evento de clic a cada elemento
-    for (var i = 0; i < tegDivs.length; i++) {
-      tegDivs[i].addEventListener('click', function() {
-        // Obtener el ID_teg del elemento actual
-        var idTeg = this.getAttribute('data-id-teg');
-
-        // Redireccionar al usuario a paginaTeg.php con el ID_teg como parámetro
-        var url = 'paginaTeg.php?id_teg=' + idTeg;
-        window.location.href = url;
-      });
-    }
-  </script>
+  <script src="js/redireccion-teg.js"></script>
+  <script src="js/filtro-carreras.js"></script>
 </body>
 
 </html>

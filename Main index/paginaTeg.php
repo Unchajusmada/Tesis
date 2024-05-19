@@ -22,9 +22,6 @@ include '../Auth/leer_bbdd.php'
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- Libraries Stylesheet -->
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet" />
@@ -90,7 +87,7 @@ include '../Auth/leer_bbdd.php'
           </div>
         </div>
 
-        <div class="ordenar">
+        <div class="ordenar-teg">
           <div class="container texto-teg enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
             <div class="autor col-md-12">
               <div class="row pl-md-2 justify-content-center justify-content-md-start">
@@ -120,12 +117,21 @@ include '../Auth/leer_bbdd.php'
                 <span><?php echo strtoupper($row['factibilidad']); ?></span>
               </div>
             </div>
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-center justify-content-md-end">
               <div class="year">
                 <p><span style="font-weight: bold;">Año:</span>&nbsp; <span><?php echo $row['year_teg']; ?></span></p>
               </div>
             </div>
-            <div class="contenedor-pdf">
+
+            <div class="resumen col-md-12 pt-2">
+              <div class="row pl-md-2 justify-content-center justify-content-md-start">
+                <span style="font-weight: bold;">Resumen:</span>&nbsp;
+                <br class="d-block d-md-none">
+                <span class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad accusantium aliquam laudantium ex, magni ullam impedit possimus labore tempore suscipit saepe reprehenderit sint hic quibusdam nihil modi quidem sapiente perspiciatis?</span>
+              </div>
+            </div>
+
+            <div class="contenedor-pdf pt-4">
               <a href="../Admin/PDF_TEG/<?php echo $row['archivo_pdf']; ?>" target="_blank">
                 <span><img src="img/pdf.png" alt=""></span>
                 <p>¡Leer PDF!</p>
@@ -159,27 +165,10 @@ include '../Auth/leer_bbdd.php'
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-  <!-- Contact Javascript File -->
-  <script src="mail/jqBootstrapValidation.min.js"></script>
-  <script src="mail/contact.js"></script>
-
-  <!-- Template Javascript -->
+  <!-- Javascript personalizados -->
   <script src="js/main.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("carrera-link").addEventListener("click", function(e) {
-        e.preventDefault();
-        var carreraSelect = document.getElementById("carrera");
-        if (carreraSelect.style.display === "none") {
-          carreraSelect.style.display = "block";
-        } else {
-          carreraSelect.style.display = "none";
-        }
-      });
-    });
-  </script>
+  <script src="js/filtro-carreras.js"></script>
 </body>
 
 </html>
