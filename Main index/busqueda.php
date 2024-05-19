@@ -1,8 +1,11 @@
 <?php
 require '../BBDD/connect_user.php';
-include '../Auth/leer_bbdd.php'
+include '../Auth/leer_bbdd.php';
 
+$busquedaTEG = $_POST['busquedaTEG']
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -141,69 +144,72 @@ include '../Auth/leer_bbdd.php'
       </aside>
     </div>
 
-    <?php
-    // Obtener el ID_teg de la URL
-    $idTeg = $_GET['id_teg'];
-
-    // Obtener los datos del TEG con el mismo ID
-    $datos_teg_id = leer_teg($conection, $idTeg);
-    foreach ($datos_teg_id as $row) :
-    ?>
-      <div class="contenedor-medio">
-        <div class="container texto-categoria">
-          <div class="row">
-            <div class="categoria col-md-12 d-flex justify-content-md-center">
-              <span><?php echo $row['titulo_teg']; ?></span>
-            </div>
+    <div class="contenedor-medio">
+      <div class="container texto-categoria">
+        <div class="row">
+          <div class="categoria col-md-12 d-flex justify-content-md-center">
+            <span>Resultados de: <?php echo $busquedaTEG; ?></span>
           </div>
         </div>
+      </div>
 
+      <?php
+      // Obtener las coincidencias de la busqueda TEG
+      $datos_teg_busqueda = buscar($conection, $busquedaTEG);
+      foreach ($datos_teg_busqueda as $row) :
+      ?>
         <div class="ordenar">
-          <div class="container texto-teg enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
-            <div class="autor col-md-12">
-              <div class="row pl-md-2 justify-content-center justify-content-md-start">
-                <span style="font-weight: bold;">Autor:</span>&nbsp;
-                <br class="d-block d-md-none">
-                <span><?php echo $row['nombres_autor_teg']; ?>, <?php echo $row['apellidos_autor_teg']; ?></span>
+          <div class="clasificar">
+            <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
+              <div class="row">
+                <div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">
+                  <p>Titulo:</p>
+                </div>
+                <br />
+                <div class="titulo col-md-12 d-flex justify-content-md-center">
+                  <span><?php echo $row['titulo_teg']; ?></span>
+                </div>
               </div>
-            </div>
-            <div class="autor col-md-12">
-              <div class="row pl-md-2 justify-content-center justify-content-md-start">
-                <span style="font-weight: bold;">Tutor:</span>&nbsp;
-                <br class="d-block d-md-none">
-                <span><?php echo $row['nombres_tutor']; ?></span>
+              <div class="row">
+                <?php
+                if ($row['nombres_tutor'] !== '') {
+                  // El resultado corresponde a un tutor
+                  echo '
+                          <div class="autor col-md-6">
+                            <div class="row-md-6 d-flex justify-content-md-start pl-md-2">' . ((strpos(strtolower($row['nombres_autor_teg']), strtolower($busquedaTEG)) !== false || strpos(strtolower($row['apellidos_autor_teg']), strtolower($busquedaTEG)) !== false) ? 'Autor' : 'Tutor') . ': </div>
+                            <div class="row-md-6 d-flex justify-content-md-start pl-md-2">
+                              <span>' . ((strpos(strtolower($row['nombres_autor_teg']), strtolower($busquedaTEG)) !== false || strpos(strtolower($row['apellidos_autor_teg']), strtolower($busquedaTEG)) !== false) ? $row['nombres_autor_teg'] . ',<br class="d-none d-md-block">' . $row['apellidos_autor_teg'] : $row['nombres_tutor']) . '</span>
+                            </div>
+                          </div>
+                        ';
+                } else {
+                  // El resultado corresponde a un autor
+                  echo '
+                          <div class="autor col-md-6">
+                            <div class="row-md-6 d-flex justify-content-md-start pl-md-2">Autor: </div>
+                            <div class="row-md-6 d-flex justify-content-md-start pl-md-2">
+                              <span>' . $row['nombres_autor_teg'] . ',<br class="d-none d-md-block">' . $row['apellidos_autor_teg'] . '</span>
+                            </div>
+                          </div>
+                        ';
+                }
+                ?>
+                <div class="carrera col-md-6">
+                  <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
+                  <div class="row-md-6 d-flex justify-content-md-start"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
+                </div>
               </div>
-            </div>
-            <div class="carrera col-md-12">
-              <div class="row pl-md-2 justify-content-center justify-content-md-start">
-                <span style="font-weight: bold;">Carrera:</span>&nbsp;
-                <br class="d-block d-md-none">
-                <span><?php echo $row['nombre_carrera_autor']; ?></span>
+              <div class="row d-flex justify-content-md-end">
+                <div class="year col-md-6 d-flex justify-content-md-end">
+                  <p>Año: <span><?php echo $row['year_teg']; ?></span></p>
+                </div>
               </div>
-            </div>
-            <div class="autor col-md-12">
-              <div class="row pl-md-2 justify-content-center justify-content-md-start">
-                <span style="font-weight: bold;">¿Fue implementado?:</span>&nbsp;
-                <br class="d-block d-md-none">
-                <span><?php echo strtoupper($row['factibilidad']); ?></span>
-              </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-              <div class="year">
-                <p><span style="font-weight: bold;">Año:</span>&nbsp; <span><?php echo $row['year_teg']; ?></span></p>
-              </div>
-            </div>
-            <div class="contenedor-pdf">
-              <a href="../Admin/PDF_TEG/<?php echo $row['archivo_pdf']; ?>" target="_blank">
-                <span><img src="img/pdf.png" alt=""></span>
-                <p>¡Leer PDF!</p>
-              </a>
             </div>
           </div>
         <?php endforeach; ?>
         </div>
 
-      </div>
+    </div>
   </main>
 
   <!-- Footer Start -->
