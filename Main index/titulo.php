@@ -54,12 +54,12 @@ include '../Auth/leer_bbdd.php'
 						</h1>
 					</a>
 					<div class="col-lg-6 col-6 text-left d-lg-none d-block">
-						<form action="">
+						<form action="busqueda.php" method="POST">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="¿Que deseas encontrar?" />
+								<input type="text" class="form-control" placeholder="¿Que deseas encontrar?" name="busquedaTEG" />
 								<div class="input-group-append">
 									<span class="input-group-text bg-transparent text-primary">
-										<i class="fa fa-search"></i>
+										<button type="submit"><i class="fa fa-search"></i></button>
 									</span>
 								</div>
 							</div>
@@ -95,13 +95,12 @@ include '../Auth/leer_bbdd.php'
 							<a href="contact.html" class="nav-item nav-link pl-4 pl-md-4">Contacto</a>
 						</div>
 						<div class="col-lg-6 col-6 text-left d-lg-block d-none">
-							<form action="">
+							<form action="busqueda.php" method="POST">
 								<div class="input-group">
-									Buscar
-									<input type="text" class="form-control" placeholder="¿Que deseas encontrar?" />
+									<input type="text" class="form-control" placeholder="¿Que deseas encontrar?" name="busquedaTEG" required />
 									<div class="input-group-append">
 										<span class="input-group-text bg-transparent text-primary">
-											<i class="fa fa-search"></i>
+											<button type="submit" class="button-10">Buscar &nbsp;<i class="fa fa-search"></i></button>
 										</span>
 									</div>
 								</div>
