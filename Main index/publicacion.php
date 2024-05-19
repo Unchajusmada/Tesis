@@ -94,7 +94,8 @@ include '../Auth/leer_bbdd.php'
 
         foreach ($datos_teg as $row) :
         ?>
-          <div class="clasificar"><span style="font-size: 1.8em; color: white; text-shadow: black 3px 3px 3px; font-weight: bold;"><?php echo $row['year_teg']; ?></span>
+          <div class="clasificar d-md-flex">
+            <span style="font-size: 1.8em; color: white; text-shadow: black 3px 3px 3px; font-weight: bold;"><?php echo $row['year_teg']; ?></span>
             <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
               <div class="row">
                 <div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">

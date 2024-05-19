@@ -382,7 +382,7 @@ include '../Auth/leer_bbdd.php'
           <button class="btn btn-secondary" type="button" data-dismiss="modal">
             Volver
           </button>
-          <a class="btn btn-primary" href="../Main index/index.php">Salir</a>
+          <a class="btn btn-primary" href="../index.php">Salir</a>
         </div>
       </div>
     </div>

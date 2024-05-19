@@ -88,7 +88,7 @@ $busquedaTEG = $_POST['busquedaTEG']
       foreach ($datos_teg_busqueda as $row) :
       ?>
         <div class="ordenar">
-          <div class="clasificar">
+          <div class="clasificar d-md-flex">
             <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
               <div class="row">
                 <div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">

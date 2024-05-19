@@ -99,7 +99,7 @@ include '../Auth/leer_bbdd.php'
 					// Obtener la primera letra del título del TEG
 					$primeraLetra = substr($row['titulo_teg'], 0, 1);
 				?>
-					<div class="clasificar">
+					<div class="clasificar d-md-flex">
 						<span style="font-size: 2em; color: white; text-shadow: black 3px 3px 3px; font-weight: bold;"><?php echo $primeraLetra; ?></span>
 						<div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
 							<div class="row">

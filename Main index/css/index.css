@@ -94,8 +94,12 @@ main,
 /* Estilos específicos para el ordenar */
 .ordenar {
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 20px 25px;
   justify-content: center;
+}
+
+.clasificar span {
+  padding-right: 15px;
 }
 
 /* Estilos para el texto de los cuadros dentro del contenedor-medio */
