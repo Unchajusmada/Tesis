@@ -57,12 +57,12 @@ $busquedaTEG = $_POST['busquedaTEG']
             </h1>
           </a>
           <div class="col-lg-6 col-6 text-left d-lg-none d-block">
-            <form action="">
+            <form action="busqueda.php" method="POST">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="¿Que deseas encontrar?" />
+                <input type="text" class="form-control" placeholder="¿Que deseas encontrar?" name="busquedaTEG" />
                 <div class="input-group-append">
                   <span class="input-group-text bg-transparent text-primary">
-                    <i class="fa fa-search"></i>
+                    <button type="submit"><i class="fa fa-search"></i></button>
                   </span>
                 </div>
               </div>
@@ -256,17 +256,20 @@ $busquedaTEG = $_POST['busquedaTEG']
   </script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("carrera-link").addEventListener("click", function(e) {
-        e.preventDefault();
-        var carreraSelect = document.getElementById("carrera");
-        if (carreraSelect.style.display === "none") {
-          carreraSelect.style.display = "block";
-        } else {
-          carreraSelect.style.display = "none";
-        }
+    // Obtener todos los elementos con la clase "enlace-teg"
+    var tegDivs = document.getElementsByClassName('enlace-teg');
+
+    // Agregar el evento de clic a cada elemento
+    for (var i = 0; i < tegDivs.length; i++) {
+      tegDivs[i].addEventListener('click', function() {
+        // Obtener el ID_teg del elemento actual
+        var idTeg = this.getAttribute('data-id-teg');
+
+        // Redireccionar al usuario a paginaTeg.php con el ID_teg como parámetro
+        var url = 'paginaTeg.php?id_teg=' + idTeg;
+        window.location.href = url;
       });
-    });
+    }
   </script>
 
 </body>
