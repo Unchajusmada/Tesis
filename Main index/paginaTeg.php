@@ -25,6 +25,7 @@ include '../Auth/leer_bbdd.php'
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -46,29 +47,9 @@ include '../Auth/leer_bbdd.php'
   <!-- Navbar End -->
 
   <main>
-    <!--ESTE ES TU INDICE, MEETELE EL CONTENIDO QUE QUIERAS-->
-    <div class="indice d-lg-block d-none">
-      <aside id="menu">
-        <h3>Organizar por:</h3>
-        <ul>
-          <li><a href="autor.php" class="a-indice">Autor</a></li>
-          <li><a href="publicacion.php" class="a-indice">Año</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" id="carrera-link" data-toggle="dropdown">Carrera</a>
-            <div class="dropdown-menu rounded-0 m-0">
-              <a href="carreras.php?carrera=Aeronautica" class="dropdown-item">Ing. Aeronautica</a>
-              <a href="carreras.php?carrera=Civil" class="dropdown-item">Ing. Civil</a>
-              <a href="carreras.php?carrera=Electrica" class="dropdown-item">Ing. Electrica</a>
-              <a href="carreras.php?carrera=Electronica" class="dropdown-item">Ing. Electronica</a>
-              <a href="carreras.php?carrera=Sistemas" class="dropdown-item">Ing. de <br>Sistemas</a>
-              <a href="carreras.php?carrera=Telecom" class="dropdown-item">Ing. de <br>Telecomunicaciones</a>
-            </div>
-          </li>
-          <li><a href="titulo.php" class="a-indice">Título</a></li>
-          <li><a href="tutor.php" class="a-indice">Tutor</a></li>
-        </ul>
-      </aside>
-    </div>
+    <!-- Indice Start -->
+    <?php include 'template/indice.php'; ?>
+    <!-- Indice End -->
 
     <?php
     // Obtener el ID_teg de la URL
@@ -124,10 +105,9 @@ include '../Auth/leer_bbdd.php'
             </div>
 
             <div class="resumen col-md-12 pt-2">
-              <div class="row pl-md-2 justify-content-center justify-content-md-start">
-                <span style="font-weight: bold;">Resumen:</span>&nbsp;
-                <br class="d-block d-md-none">
-                <span class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad accusantium aliquam laudantium ex, magni ullam impedit possimus labore tempore suscipit saepe reprehenderit sint hic quibusdam nihil modi quidem sapiente perspiciatis?</span>
+              <div class="row pl-md-2 justify-content-center">
+                <button id="mostrar" style="margin: 20px;">Mostrar resumen PDF</button>&nbsp;
+                <iframe id="miIframe" src="../Admin/PDF_TEG/<?php echo $row['archivo_pdf']; ?>" height="100%" width="100%" style="display: none;"></iframe>
               </div>
             </div>
 
@@ -169,6 +149,18 @@ include '../Auth/leer_bbdd.php'
   <!-- Javascript personalizados -->
   <script src="js/main.js"></script>
   <script src="js/filtro-carreras.js"></script>
+
+  <script>
+    // Obtener el botón y el iframe por su ID
+    var boton = document.getElementById("mostrar");
+    var iframe = document.getElementById("miIframe");
+
+    // Agregar un evento de clic al botón
+    boton.addEventListener("click", function() {
+      // Mostrar el iframe al hacer clic en el botón
+      iframe.style.display = "block";
+    });
+  </script>
 </body>
 
 </html>

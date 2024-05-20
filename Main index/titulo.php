@@ -28,6 +28,7 @@ include '../Auth/leer_bbdd.php'
 	<!-- Customized Bootstrap Stylesheet -->
 	<link href="css/style.css" rel="stylesheet" />
 	<link href="css/index.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -49,29 +50,10 @@ include '../Auth/leer_bbdd.php'
 	<!-- Navbar End -->
 
 	<main>
-		<!--ESTE ES TU INDICE, MEETELE EL CONTENIDO QUE QUIERAS-->
-		<div class="indice d-lg-block d-none">
-			<aside id="menu">
-				<h3>Organizar por:</h3>
-				<ul>
-					<li><a href="autor.php" class="a-indice">Autor</a></li>
-					<li><a href="publicacion.php" class="a-indice">Año</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" id="carrera-link" data-toggle="dropdown">Carrera</a>
-						<div class="dropdown-menu rounded-0 m-0">
-							<a href="#" class="dropdown-item">Ing. Aeronautica</a>
-							<a href="#" class="dropdown-item">Ing. Civil</a>
-							<a href="#" class="dropdown-item">Ing. Electrica</a>
-							<a href="#" class="dropdown-item">Ing. Electronica</a>
-							<a href="#" class="dropdown-item">Ing. de <br>Sistemas</a>
-							<a href="publicacion.php" class="dropdown-item">Ing. de <br>Telecomunicaciones</a>
-						</div>
-					</li>
-					<li><a href="titulo.php" class="a-indice">Título</a></li>
-					<li><a href="tutor.php" class="a-indice">Tutor</a></li>
-				</ul>
-			</aside>
-		</div>
+		<!-- Indice Start -->
+		<?php include 'template/indice.php'; ?>
+		<!-- Indice End -->
+
 
 		<!--ESTE EES TU CONTENEDOR MEDIO, MEETELE EL CONTENIDO QUE QUIERAS-->
 		<div class="contenedor-medio">
@@ -162,6 +144,8 @@ include '../Auth/leer_bbdd.php'
 	<script src="js/main.js"></script>
 	<script src="js/redireccion-teg.js"></script>
 	<script src="js/filtro-carreras.js"></script>
+	<script src="js/indice.js"></script>
+	<script src="js/flecha-indice.js"></script>
 </body>
 
 </html>

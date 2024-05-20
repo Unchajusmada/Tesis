@@ -184,7 +184,6 @@ main,
 
 /* Estilos para el menú */
 #menu {
-  position: sticky;
   top: 20px; /* Límite superior del contenedor */
   bottom: 20px; /* Límite inferior del contenedor */
   padding: 10px;
@@ -236,9 +235,11 @@ main,
 }
 
 /* Ajusta el tamaño del índice y el texto del índice */
-.indice,
-.texto-indice {
+.indice {
   width: 214px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Ajusta el tamaño de fuente para algunos elementos */
@@ -321,11 +322,16 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   /* Ajusta el padding del contenido principal en pantallas pequeñas */
   main {
     padding: 0;
   }
+
+  .indice {
+    display: none;
+  }
+
   /* Ajusta el tamaño del texto de los cuadros en pantallas pequeñas */
   .texto {
     width: auto;
@@ -389,7 +395,8 @@ div:not(.bienvenida, .titulo, .categoria) > span {
 }
 
 /* CSS */
-.button-10 {
+.button-10,
+#boton-indice {
   flex-direction: column;
   align-items: center;
   padding: 6px 14px;
@@ -399,16 +406,28 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   color: #fff;
   background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
   background-origin: border-box;
-  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
-    inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
 
-.button-10:focus {
-  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2),
-    0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
+.button-10:focus,
+#boton-indice:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
     0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
   outline: 0;
+}
+
+.ocultar {
+  visibility: hidden;
+}
+
+.indice.a-crecer {
+  width: 100px;
+}
+
+.contenedor-boton {
+  display: flex;
+  justify-content: center;
 }

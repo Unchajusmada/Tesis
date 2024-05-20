@@ -26,6 +26,7 @@ include 'Auth/leer_bbdd.php'
   <link href="Main index/css/style.css" rel="stylesheet" />
   <link href="Main index/css/index.css" rel="stylesheet" />
   <link href="Main index/css/carrusel.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -66,29 +67,10 @@ include 'Auth/leer_bbdd.php'
   <!-- Navbar End -->
 
   <main>
-    <!--ESTE ES TU INDICE, MEETELE EL CONTENIDO QUE QUIERAS-->
-    <div class="indice d-lg-block d-none">
-      <aside id="menu">
-        <h3>Organizar por:</h3>
-        <ul>
-          <li><a href="Main index/autor.php" class="a-indice">Autor</a></li>
-          <li><a href="Main index/publicacion.php" class="a-indice">Año</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" id="carrera-link" data-toggle="dropdown">Carrera</a>
-            <div class="dropdown-menu rounded-0 m-0">
-              <a href="Main index/carreras.php?carrera=Aeronautica" class="dropdown-item">Ing. Aeronautica</a>
-              <a href="Main index/carreras.php?carrera=Civil" class="dropdown-item">Ing. Civil</a>
-              <a href="Main index/carreras.php?carrera=Electrica" class="dropdown-item">Ing. Electrica</a>
-              <a href="Main index/carreras.php?carrera=Electronica" class="dropdown-item">Ing. Electronica</a>
-              <a href="Main index/carreras.php?carrera=Sistemas" class="dropdown-item">Ing. de <br>Sistemas</a>
-              <a href="Main index/carreras.php?carrera=Telecom" class="dropdown-item">Ing. de <br>Telecomunicaciones</a>
-            </div>
-          </li>
-          <li><a href="Main index/titulo.php" class="a-indice">Título</a></li>
-          <li><a href="Main index/tutor.php" class="a-indice">Tutor</a></li>
-        </ul>
-      </aside>
-    </div>
+    <!-- Indice Start -->
+    <?php include 'Main index/template/indice-index.php'; ?>
+    <!-- Indice End -->
+
     <!--ESTE ES TU CONTENEDOR MEDIO, MEETELE EL CONTENIDO QUE QUIERAS-->
     <div class="contenedor-medio">
       <!-- CONVERTIR ESTO EN UNA ALERTA -->
@@ -168,6 +150,8 @@ include 'Auth/leer_bbdd.php'
   <script src="Main index/js/main.js"></script>
   <script src="Main index/js/redireccion-teg-index.js"></script>
   <script src="Main index/js/filtro-carreras.js"></script>
+  <script src="Main index/js/indice.js"></script>
+  <script src="Main index/js/flecha-indice.js"></script>
 </body>
 
 </html>
