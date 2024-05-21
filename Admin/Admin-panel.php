@@ -152,9 +152,15 @@ include '../Auth/leer_bbdd.php'
                       </div>
                     </div>
 
-                    <div class="form-group">
-                      <label>Correo del Autor</label>
-                      <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Ejemplo: Correo@gmail.com" required />
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label>Correo del Autor</label>
+                        <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Ejemplo: Correo@gmail.com" required />
+                      </div>
+                      <div class="col-sm-6">
+                        <label>Resumen del TEG (Pagina del resumen del TEG en formato pdf)</label>
+                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf_resumen" accept=".pdf" />
+                      </div>
                     </div>
 
                     <div class="form-group row">
@@ -245,7 +251,8 @@ include '../Auth/leer_bbdd.php'
                         <th class="text-center" style="vertical-align: middle;">Nombre del Tutor</th>
                         <th class="text-center" style="vertical-align: middle;">¿Implementado?</th>
                         <th class="text-center" style="vertical-align: middle;">Carrera del Autor</th>
-                        <th class="text-center" style="vertical-align: middle;">PDF</th>
+                        <th class="text-center" style="vertical-align: middle;">TEG PDF</th>
+                        <th class="text-center" style="vertical-align: middle;">RESUMEN PDF</th>
                         <th class="text-center" style="vertical-align: middle;">Modificar</th>
                       </tr>
                     </thead>
@@ -258,7 +265,8 @@ include '../Auth/leer_bbdd.php'
                         <th class="text-center" style="vertical-align: middle;">Nombre del Tutor</th>
                         <th class="text-center" style="vertical-align: middle;">¿Implementado?</th>
                         <th class="text-center" style="vertical-align: middle;">Carrera del Autor</th>
-                        <th class="text-center" style="vertical-align: middle;">PDF</th>
+                        <th class="text-center" style="vertical-align: middle;">TEG PDF</th>
+                        <th class="text-center" style="vertical-align: middle;">RESUMEN PDF</th>
                         <th class="text-center" style="vertical-align: middle;">Modificar</th>
                       </tr>
                     </tfoot>
@@ -267,6 +275,7 @@ include '../Auth/leer_bbdd.php'
                       $datos_teg = leer($conection);
                       foreach ($datos_teg as $row) : ?>
                         <tr>
+                          <?php $ID_teg = $row['ID_teg']; ?>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['titulo_teg']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombres_autor_teg']; ?>, <?php echo $row['apellidos_autor_teg']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['correo_autor']; ?></td>
@@ -275,7 +284,16 @@ include '../Auth/leer_bbdd.php'
                           <td class="text-center" style="vertical-align: middle;"><?php echo strtoupper($row['factibilidad']); ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_carrera_autor']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['archivo_pdf']; ?></td>
-                          <td class="text-center" style="vertical-align: middle;"><button>Modificar</button></td>
+                          <td class="text-center" style="vertical-align: middle;">
+                            <?php if (!empty($row['archivo_pdf_resumen'])) : ?>
+                              <?php echo $row['archivo_pdf_resumen']; ?>
+                            <?php else : ?>
+                              <p>No</p>
+                            <?php endif; ?>
+                          </td>
+                          <td class="text-center" style="vertical-align: middle;">
+                            <button href="#" data-toggle="modal" data-target="#ModificationModal" data-id-teg="<?php echo $ID_teg; ?>">Modificar</button>
+                          </td>
                         </tr>
                       <?php endforeach; ?>
                     </tbody>
@@ -307,7 +325,8 @@ include '../Auth/leer_bbdd.php'
                         <th class="text-center" style="vertical-align: middle;">Nombre del Tutor</th>
                         <th class="text-center" style="vertical-align: middle;">¿Implementado?</th>
                         <th class="text-center" style="vertical-align: middle;">Carrera del Autor</th>
-                        <th class="text-center" style="vertical-align: middle;">PDF</th>
+                        <th class="text-center" style="vertical-align: middle;">TEG PDF</th>
+                        <th class="text-center" style="vertical-align: middle;">RESUMEN PDF</th>
                       </tr>
                     </thead>
                     <tfoot>
@@ -319,7 +338,8 @@ include '../Auth/leer_bbdd.php'
                         <th class="text-center" style="vertical-align: middle;">Nombre del Tutor</th>
                         <th class="text-center" style="vertical-align: middle;">¿Implementado?</th>
                         <th class="text-center" style="vertical-align: middle;">Carrera del Autor</th>
-                        <th class="text-center" style="vertical-align: middle;">PDF</th>
+                        <th class="text-center" style="vertical-align: middle;">TEG PDF</th>
+                        <th class="text-center" style="vertical-align: middle;">RESUMEN PDF</th>
                       </tr>
                     </tfoot>
                     <tbody>
@@ -335,6 +355,13 @@ include '../Auth/leer_bbdd.php'
                           <td class="text-center" style="vertical-align: middle;"><?php echo strtoupper($row['factibilidad']); ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_carrera_autor']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['archivo_pdf']; ?></td>
+                          <td class="text-center" style="vertical-align: middle;">
+                            <?php if (!empty($row['archivo_pdf_resumen'])) : ?>
+                              <?php echo $row['archivo_pdf_resumen']; ?>
+                            <?php else : ?>
+                              <p>No</p>
+                            <?php endif; ?>
+                          </td>
                         </tr>
                       <?php endforeach; ?>
                     </tbody>
@@ -367,26 +394,123 @@ include '../Auth/leer_bbdd.php'
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Logout Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Saliendo</h5>
+          <h5 class="modal-title" id="logoutModalLabel">Saliendo</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">¿Desea salir del modo administrador?</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">
-            Volver
-          </button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
           <a class="btn btn-primary" href="../index.php">Salir</a>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Modificar TEG Modal -->
+  <div class="modal fade" id="ModificationModal" tabindex="-1" role="dialog" aria-labelledby="modificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 900px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modificationModalLabel" style="display: inline;">Modificar</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <?php
+          $datos_teg = modificar($conection, $ID_teg);
+          foreach ($datos_teg as $row) : ?>
+            <form class="user" method="POST" action="../Auth/ModifDatos.php" enctype="multipart/form-data">
+              <input type="text" id="ID_teg" name="ID_teg" value="<?php echo htmlspecialchars($row['ID_teg']); ?>" hidden />
+              <div class="form-group">
+                <label>Titulo del TEG</label>
+                <input type="text" class="form-control form-control-user" id="titulo" name="titulo" placeholder="Titulo COMPLETO como en la portada del TEG" value="<?php echo htmlspecialchars($row['titulo_teg']); ?>" />
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Nombres del Autor</label>
+                  <input type="text" class="form-control form-control-user" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" value="<?php echo htmlspecialchars($row['nombres_autor_teg']); ?>" />
+                </div>
+                <div class="col-sm-6">
+                  <label>Apellidos del Autor</label>
+                  <input type="text" class="form-control form-control-user" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" value="<?php echo htmlspecialchars($row['apellidos_autor_teg']); ?>" />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Correo del Autor</label>
+                  <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Ejemplo: Correo@gmail.com" value="<?php echo htmlspecialchars($row['correo_autor']); ?>" />
+                </div>
+                <div class="col-sm-6">
+                  <label>Resumen del TEG (Pagina del resumen del TEG en formato pdf)</label>
+                  <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" />
+                  <?php if (!empty($row['archivo_pdf_resumen'])) : ?>
+                    <small>Archivo actual: <?php echo htmlspecialchars($row['archivo_pdf_resumen']); ?></small>
+                  <?php endif; ?>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Nombre y Apellido del Tutor</label>
+                  <input type="text" class="form-control form-control-user" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" value="<?php echo htmlspecialchars($row['nombres_tutor']); ?>" />
+                </div>
+                <div class="col-sm-6">
+                  <label>¿Se implemento o se implementara?</label>
+                  <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example">
+                    <option disabled>Escoja una opcion de la siguiente lista</option>
+                    <option value="si" <?php echo ($row['factibilidad'] == 'si') ? 'selected' : ''; ?>>Si</option>
+                    <option value="no" <?php echo ($row['factibilidad'] == 'no') ? 'selected' : ''; ?>>No</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Año en que se realizo</label>
+                  <input type="number" class="form-control form-control-user" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required value="<?php echo htmlspecialchars($row['year_teg']); ?>" />
+                </div>
+                <div class="col-sm-6">
+                  <label>Archivo del TEG</label>
+                  <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf" accept=".pdf" />
+                  <?php if (!empty($row['archivo_pdf'])) : ?>
+                    <small>Archivo actual: <?php echo htmlspecialchars($row['archivo_pdf']); ?></small>
+                  <?php endif; ?>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Carrera del graduando</label>
+                <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example">
+                  <option disabled>Escoja una Carrera de la siguiente lista</option>
+                  <option value="Ingenieria Civil" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Civil') ? 'selected' : ''; ?>>Ingenieria Civil</option>
+                  <option value="Ingenieria de Telecom." <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria de Telecom.') ? 'selected' : ''; ?>>Ingenieria de Telecomunicaciones</option>
+                  <option value="Ingenieria Aeronautica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Aeronautica') ? 'selected' : ''; ?>>Ingenieria Aeronautica</option>
+                  <option value="Ingenieria Electrica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Electrica') ? 'selected' : ''; ?>>Ingenieria Electrica</option>
+                  <option value="Ingenieria Electronica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Electronica') ? 'selected' : ''; ?>>Ingenieria Electronica</option>
+                  <option value="Ingenieria de Sistemas" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria de Sistemas') ? 'selected' : ''; ?>>Ingenieria de Sistemas</option>
+                </select>
+              </div>
+              <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" />
+            </form>
+          <?php endforeach; ?>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>

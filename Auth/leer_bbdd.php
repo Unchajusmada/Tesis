@@ -55,3 +55,14 @@ function buscar($conection, $busquedaTEG)
   }
   return $data;
 }
+
+function modificar($conection, $ID_teg)
+{
+  $consulta = "SELECT * FROM teg WHERE ID_teg = $ID_teg";
+  $ejecutar = mysqli_query($conection, $consulta);
+  $data = [];
+  while ($fila = mysqli_fetch_assoc($ejecutar)) {
+    $data[] = $fila;
+  }
+  return $data;
+}

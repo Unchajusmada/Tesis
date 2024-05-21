@@ -130,7 +130,7 @@ main,
   background-color: #fffffff2;
   padding: 30px;
   margin-bottom: 20px;
-  min-height: 250px;
+  height: auto;
   max-width: 50em;
 }
 
@@ -239,7 +239,8 @@ main,
   width: 214px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
+  align-items: center;
 }
 
 /* Ajusta el tamaño de fuente para algunos elementos */

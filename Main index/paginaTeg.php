@@ -104,17 +104,21 @@ include '../Auth/leer_bbdd.php'
               </div>
             </div>
 
-            <div class="resumen col-md-12 pt-2">
+            <div class="resumen col-md-12 pt-2 d-none d-lg-block">
               <div class="row pl-md-2 justify-content-center">
-                <button id="mostrar" style="margin: 20px;">Mostrar resumen PDF</button>&nbsp;
-                <iframe id="miIframe" src="../Admin/PDF_TEG/<?php echo $row['archivo_pdf']; ?>" height="100%" width="100%" style="display: none;"></iframe>
+                <?php if (!empty($row['archivo_pdf_resumen'])) : ?>
+                  <button id="mostrar" style="margin: 20px;">Mostrar resumen PDF</button>
+                <?php else : ?>
+                  <p>Este TEG no tiene un resumen.</p>
+                <?php endif; ?>
+                <iframe id="iframe-resumen" src="../Admin/PDF_RESUMEN/<?php echo $row['archivo_pdf_resumen']; ?>#toolbar=0" style="display: none; height: 660px; width: 100%; min-width: 450px;"></iframe>
               </div>
             </div>
-
+            <hr class="hr" />
             <div class="contenedor-pdf pt-4">
-              <a href="../Admin/PDF_TEG/<?php echo $row['archivo_pdf']; ?>" target="_blank">
+              <a href="../Admin/PDF_TEG/<?php echo $row['archivo_pdf']; ?>#toolbar=0" target="_blank">
                 <span><img src="img/pdf.png" alt=""></span>
-                <p>¡Leer PDF!</p>
+                <p>¡Leer TEG completo!</p>
               </a>
             </div>
           </div>
@@ -149,16 +153,30 @@ include '../Auth/leer_bbdd.php'
   <!-- Javascript personalizados -->
   <script src="js/main.js"></script>
   <script src="js/filtro-carreras.js"></script>
+  <script src="js/indice.js"></script>
+  <script src="js/flecha-indice.js"></script>
 
   <script>
-    // Obtener el botón y el iframe por su ID
-    var boton = document.getElementById("mostrar");
-    var iframe = document.getElementById("miIframe");
+    // Obtener referencia al botón y al iframe
+    var botonMostrar = document.getElementById('mostrar');
+    var iframeResumen = document.getElementById('iframe-resumen');
 
-    // Agregar un evento de clic al botón
-    boton.addEventListener("click", function() {
-      // Mostrar el iframe al hacer clic en el botón
-      iframe.style.display = "block";
+    // Variable para realizar el seguimiento del estado actual
+    var mostrando = false;
+
+    // Agregar evento click al botón
+    botonMostrar.addEventListener('click', function() {
+      if (!mostrando) {
+        // Si está oculto, mostrar el iframe
+        iframeResumen.style.display = 'block'; // O 'inline' dependiendo del caso
+        mostrando = true;
+        botonMostrar.textContent = 'Ocultar resumen PDF';
+      } else {
+        // Si está mostrando, ocultar el iframe
+        iframeResumen.style.display = 'none';
+        mostrando = false;
+        botonMostrar.textContent = 'Mostrar resumen PDF';
+      }
     });
   </script>
 </body>
