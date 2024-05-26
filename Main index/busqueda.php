@@ -77,10 +77,10 @@ $elementos_pagina = array_slice($datos_teg_busqueda, ($pagina_actual - 1) * $ele
         </div>
       </div>
 
-      <?php
-      foreach ($elementos_pagina as $row) :
-      ?>
-        <div class="ordenar">
+      <div class="ordenar">
+        <?php
+        foreach ($elementos_pagina as $row) :
+        ?>
           <div class="clasificar d-md-flex">
             <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
               <div class="row">
@@ -129,9 +129,21 @@ $elementos_pagina = array_slice($datos_teg_busqueda, ($pagina_actual - 1) * $ele
             </div>
           </div>
         <?php endforeach; ?>
-        </div>
+      </div>
+      <!-- Mostrar la paginación -->
+      <div class="pagination">
+        <?php if ($pagina_actual > 1) : ?>
+          <a class="arrow" href="?pagina=<?php echo $pagina_actual - 1; ?>"><i class="bi bi-arrow-left"></i></a>
+        <?php endif; ?>
 
-    </div>
+        <?php for ($i = 1; $i <= $total_paginas; $i++) : ?>
+          <a href="?pagina=<?php echo $i; ?>" <?php if ($i == $pagina_actual) echo 'class="active"'; ?>><?php echo $i; ?></a>
+        <?php endfor; ?>
+
+        <?php if ($pagina_actual < $total_paginas) : ?>
+          <a class="arrow" href="?pagina=<?php echo $pagina_actual + 1; ?>"><i class="bi bi-arrow-right"></i></a>
+        <?php endif; ?>
+      </div>
   </main>
 
   <!-- Footer Start -->
