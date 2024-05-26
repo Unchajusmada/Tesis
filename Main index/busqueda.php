@@ -20,8 +20,6 @@ $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 $elementos_pagina = array_slice($datos_teg_busqueda, ($pagina_actual - 1) * $elementos_por_pagina, $elementos_por_pagina);
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
