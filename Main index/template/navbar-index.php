@@ -49,7 +49,7 @@
             <a href="#" class="nav-item nav-link pl-4 pl-md-4">Contacto</a>
           </div>
           <div class="col-lg-6 col-6 text-left d-lg-block d-none">
-            <form action="Main index/busqueda.php" method="POST">
+            <form action="Main index/busqueda.php" method="GET">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="¿Que deseas encontrar?" name="busquedaTEG" required />
                 <div class="input-group-append">

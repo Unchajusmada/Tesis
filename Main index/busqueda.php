@@ -2,7 +2,7 @@
 require '../BBDD/connect_user.php';
 include '../Auth/leer_bbdd.php';
 
-$busquedaTEG = $_POST['busquedaTEG'];
+$busquedaTEG = isset($_GET['busquedaTEG']) ? $_GET['busquedaTEG'] : '';
 
 // Obtener las coincidencias de la busqueda TEG
 $datos_teg_busqueda = buscar($conection, $busquedaTEG);
@@ -130,18 +130,19 @@ $elementos_pagina = array_slice($datos_teg_busqueda, ($pagina_actual - 1) * $ele
           </div>
         <?php endforeach; ?>
       </div>
+
       <!-- Mostrar la paginación -->
       <div class="pagination">
         <?php if ($pagina_actual > 1) : ?>
-          <a class="arrow" href="?pagina=<?php echo $pagina_actual - 1; ?>"><i class="bi bi-arrow-left"></i></a>
+          <a class="arrow" href="?pagina=<?php echo $pagina_actual - 1; ?>&busquedaTEG=<?php echo urlencode($busquedaTEG); ?>"><i class="bi bi-arrow-left"></i></a>
         <?php endif; ?>
 
         <?php for ($i = 1; $i <= $total_paginas; $i++) : ?>
-          <a href="?pagina=<?php echo $i; ?>" <?php if ($i == $pagina_actual) echo 'class="active"'; ?>><?php echo $i; ?></a>
+          <a href="?pagina=<?php echo $i; ?>&busquedaTEG=<?php echo urlencode($busquedaTEG); ?>" <?php if ($i == $pagina_actual) echo 'class="active"'; ?>><?php echo $i; ?></a>
         <?php endfor; ?>
 
         <?php if ($pagina_actual < $total_paginas) : ?>
-          <a class="arrow" href="?pagina=<?php echo $pagina_actual + 1; ?>"><i class="bi bi-arrow-right"></i></a>
+          <a class="arrow" href="?pagina=<?php echo $pagina_actual + 1; ?>&busquedaTEG=<?php echo urlencode($busquedaTEG); ?>"><i class="bi bi-arrow-right"></i></a>
         <?php endif; ?>
       </div>
   </main>
