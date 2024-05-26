@@ -1,7 +1,29 @@
 <?php
 require '../BBDD/connect_user.php';
-include '../Auth/leer_bbdd.php'
+include '../Auth/leer_bbdd.php';
 
+// Función de comparación para ordenar por nombre de autor
+function compararPorNombreAutor($a, $b)
+{
+  return strcmp($a['nombres_autor_teg'], $b['nombres_autor_teg']);
+}
+
+$datos_teg = leer($conection);
+
+// Ordenar el arreglo $datos_teg por nombre de autor
+usort($datos_teg, 'compararPorNombreAutor');
+
+// Definir el número de elementos por página
+$elementos_por_pagina = 6;
+
+// Obtener el número total de páginas
+$total_paginas = ceil(count($datos_teg) / $elementos_por_pagina);
+
+// Obtener el número de página actual
+$pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+// Obtener los elementos correspondientes a la página actual
+$elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_por_pagina, $elementos_por_pagina);
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +47,7 @@ include '../Auth/leer_bbdd.php'
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet" />
+  <link href="css/extras.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -62,18 +85,7 @@ include '../Auth/leer_bbdd.php'
       </div>
       <div class="ordenar">
         <?php
-        // Función de comparación para ordenar por nombre de autor
-        function compararPorNombreAutor($a, $b)
-        {
-          return strcmp($a['nombres_autor_teg'], $b['nombres_autor_teg']);
-        }
-
-        $datos_teg = leer($conection);
-
-        // Ordenar el arreglo $datos_teg por nombre de autor
-        usort($datos_teg, 'compararPorNombreAutor');
-
-        foreach ($datos_teg as $row) :
+        foreach ($elementos_pagina as $row) :
           // Obtener la primera letra del título del TEG
           $primeraLetra = substr($row['nombres_autor_teg'], 0, 1);
         ?>
@@ -111,6 +123,21 @@ include '../Auth/leer_bbdd.php'
             </div>
           </div>
         <?php endforeach; ?>
+      </div>
+
+      <!-- Mostrar la paginación -->
+      <div class="pagination">
+        <?php if ($pagina_actual > 1) : ?>
+          <a class="arrow" href="?pagina=<?php echo $pagina_actual - 1; ?>"><i class="bi bi-arrow-left"></i></a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $total_paginas; $i++) : ?>
+          <a href="?pagina=<?php echo $i; ?>" <?php if ($i == $pagina_actual) echo 'class="active"'; ?>><?php echo $i; ?></a>
+        <?php endfor; ?>
+
+        <?php if ($pagina_actual < $total_paginas) : ?>
+          <a class="arrow" href="?pagina=<?php echo $pagina_actual + 1; ?>"><i class="bi bi-arrow-right"></i></a>
+        <?php endif; ?>
       </div>
     </div>
   </main>

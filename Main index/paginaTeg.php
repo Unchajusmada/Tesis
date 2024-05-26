@@ -25,6 +25,7 @@ include '../Auth/leer_bbdd.php'
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet" />
+  <link href="css/extras.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -105,13 +106,13 @@ include '../Auth/leer_bbdd.php'
             </div>
 
             <div class="resumen col-md-12 pt-2 d-none d-lg-block">
-              <div class="row pl-md-2 justify-content-center">
+              <div class="row justify-content-center">
                 <?php if (!empty($row['archivo_pdf_resumen'])) : ?>
-                  <button id="mostrar" style="margin: 20px;">Mostrar resumen PDF</button>
+                  <button id="mostrar" class="button-10">Mostrar resumen PDF</button>
                 <?php else : ?>
                   <p>Este TEG no tiene un resumen.</p>
                 <?php endif; ?>
-                <iframe id="iframe-resumen" src="../Admin/PDF_RESUMEN/<?php echo $row['archivo_pdf_resumen']; ?>#toolbar=0" style="display: none; height: 660px; width: 100%; min-width: 450px;"></iframe>
+                <iframe id="iframe-resumen" src="../Admin/PDF_RESUMEN/<?php echo $row['archivo_pdf_resumen']; ?>#toolbar=0"></iframe>
               </div>
             </div>
             <hr class="hr" />

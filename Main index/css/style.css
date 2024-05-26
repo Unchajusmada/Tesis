@@ -58,11 +58,6 @@ h1 {
   display: flex;
 }
 
-span {
-  display: flex;
-  justify-content: center;
-}
-
 span img {
   width: 100px;
 }

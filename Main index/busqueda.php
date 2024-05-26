@@ -2,7 +2,22 @@
 require '../BBDD/connect_user.php';
 include '../Auth/leer_bbdd.php';
 
-$busquedaTEG = $_POST['busquedaTEG']
+$busquedaTEG = $_POST['busquedaTEG'];
+
+// Obtener las coincidencias de la busqueda TEG
+$datos_teg_busqueda = buscar($conection, $busquedaTEG);
+
+// Definir el número de elementos por página
+$elementos_por_pagina = 6;
+
+// Obtener el número total de páginas
+$total_paginas = ceil(count($datos_teg_busqueda) / $elementos_por_pagina);
+
+// Obtener el número de página actual
+$pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+// Obtener los elementos correspondientes a la página actual
+$elementos_pagina = array_slice($datos_teg_busqueda, ($pagina_actual - 1) * $elementos_por_pagina, $elementos_por_pagina);
 ?>
 
 
@@ -28,6 +43,7 @@ $busquedaTEG = $_POST['busquedaTEG']
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet" />
+  <link href="css/extras.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -64,9 +80,7 @@ $busquedaTEG = $_POST['busquedaTEG']
       </div>
 
       <?php
-      // Obtener las coincidencias de la busqueda TEG
-      $datos_teg_busqueda = buscar($conection, $busquedaTEG);
-      foreach ($datos_teg_busqueda as $row) :
+      foreach ($elementos_pagina as $row) :
       ?>
         <div class="ordenar">
           <div class="clasificar d-md-flex">

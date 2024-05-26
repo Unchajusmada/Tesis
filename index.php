@@ -1,6 +1,21 @@
 <?php
 require 'BBDD/connect_user.php';
-include 'Auth/leer_bbdd.php'
+include 'Auth/leer_bbdd.php';
+
+// Obtener los datos de la base de datos
+$datos_teg = leer($conection);
+
+// Definir el número de elementos por página
+$elementos_por_pagina = 6;
+
+// Obtener el número total de páginas
+$total_paginas = ceil(count($datos_teg) / $elementos_por_pagina);
+
+// Obtener el número de página actual
+$pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+// Obtener los elementos correspondientes a la página actual
+$elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actual - 1];
 
 ?>
 
@@ -26,6 +41,7 @@ include 'Auth/leer_bbdd.php'
   <link href="Main index/css/style.css" rel="stylesheet" />
   <link href="Main index/css/index.css" rel="stylesheet" />
   <link href="Main index/css/carrusel.css" rel="stylesheet" />
+  <link href="Main index/css/extras.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
@@ -86,8 +102,8 @@ include 'Auth/leer_bbdd.php'
 
       <div class="ordenar">
         <?php
-        $datos_teg = leer($conection);
-        foreach ($datos_teg as $row) :
+        // Mostrar los elementos
+        foreach ($elementos_pagina as $row) :
         ?>
           <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
             <div class="row">
@@ -120,6 +136,21 @@ include 'Auth/leer_bbdd.php'
             </div>
           </div>
         <?php endforeach; ?>
+      </div>
+
+      <!-- Mostrar la paginación -->
+      <div class="pagination">
+        <?php if ($pagina_actual > 1) : ?>
+          <a class="arrow" href="?pagina=<?php echo $pagina_actual - 1; ?>"><i class="bi bi-arrow-left"></i></a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $total_paginas; $i++) : ?>
+          <a href="?pagina=<?php echo $i; ?>" <?php if ($i == $pagina_actual) echo 'class="active"'; ?>><?php echo $i; ?></a>
+        <?php endfor; ?>
+
+        <?php if ($pagina_actual < $total_paginas) : ?>
+          <a class="arrow" href="?pagina=<?php echo $pagina_actual + 1; ?>"><i class="bi bi-arrow-right"></i></a>
+        <?php endif; ?>
       </div>
     </div>
   </main>
