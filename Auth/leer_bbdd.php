@@ -134,22 +134,30 @@ function login($connection, $usuario, $pass)
           return $data;
         } else {
           // Si la contraseña no coincide
-          echo "La contraseña no coincide";
+          echo "La contraseña no coincide"; ?>
+          <br><a href="../Paginas/login.html">Volver</a>
+        <?php
           return $data = 403;
         }
       } else {
         // Si hay un error al preparar la consulta de contraseña
-        echo "Error en la consulta de contraseña";
+        echo "Error en la consulta de contraseña"; ?>
+        <br><a href="../Paginas/login.html">Volver</a>
+      <?php
         return $data = 501;
       }
     } else {
       // Si no se encuentra el usuario
-      echo "El usuario no existe";
+      echo "El usuario no existe"; ?>
+      <br><a href="../Paginas/login.html">Volver</a>
+    <?php
       return $data = 404;
     }
   } else {
     // Si hay un error al preparar la consulta de usuario
-    echo "Error en la consulta de usuario";
+    echo "Error en la consulta de usuario"; ?>
+    <br><a href="../Paginas/login.html">Volver</a>
+<?php
     return $data = 500;
   }
 }
