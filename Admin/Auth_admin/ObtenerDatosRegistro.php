@@ -1,0 +1,46 @@
+<?php
+require '../../BBDD/connect_user.php';
+
+// Obtén los valores que deseas insertar en la tabla admin
+$ID_admin = $_POST['cedula'];
+$usuario = $_POST['user'];
+$nivel_acceso = $_POST['nivel_acceso'];
+$nombre_user = $_POST['nombre'];
+$apellido_user = $_POST['apellido'];
+$correo_user = $_POST['correo'];
+$pass1 = $_POST['pass1'];
+$pass2 = $_POST['pass2'];
+
+// Verifica si todas las variables están definidas
+if (isset($nombre_user, $apellido_user, $correo_user, $pass1, $pass2)) {
+  // Prepara la consulta SQL utilizando un prepared statement
+  $sql = "INSERT INTO admin (ID_admin, usuario, password, nombre_usuario, apellido_usuario, correo, nivel_acceso) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+  if ($stmt = mysqli_prepare($conection, $sql)) {
+    // Vincula los parámetros a los marcadores de posición de la consulta
+    mysqli_stmt_bind_param($stmt, "sssssss", $ID_admin, $usuario, $pass1, $nombre_user, $apellido_user, $correo_user, $nivel_acceso);
+
+    // Verificar contraseña
+    if ($pass1 == $pass2) {
+      // Ejecuta la consulta
+      if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_close($stmt); // Cierra el prepared statement
+
+        // Redirecciona
+        header("Location: ../SuperAdmin-panel.php");
+        exit; // Termina la ejecución del script
+      } else {
+        echo "Error al ejecutar la consulta";
+      }
+    } else {
+      echo "Las contraseñas no coinciden";
+    }
+  } else {
+    echo "Error al preparar la consulta SQL";
+  }
+
+  // Cierra la conexión
+  mysqli_close($conection);
+} else {
+  echo "Faltan parámetros en el formulario";
+}

@@ -10,6 +10,17 @@ function leer($conection)
   return $data;
 }
 
+function leer_usuarios($conection)
+{
+  $consulta = "SELECT * FROM admin";
+  $ejecutar = mysqli_query($conection, $consulta);
+  $data = [];
+  while ($fila = mysqli_fetch_assoc($ejecutar)) {
+    $data[] = $fila;
+  }
+  return $data;
+}
+
 function leer_carrera($conection, $carrera)
 {
   $consulta = "SELECT * FROM teg WHERE nombre_carrera_autor LIKE '%$carrera%'";
@@ -65,4 +76,80 @@ function modificar($conection, $ID_teg)
     $data[] = $fila;
   }
   return $data;
+}
+
+function modificarUser($conection, $ID_admin)
+{
+  $consulta = "SELECT * FROM admin WHERE ID_admin = $ID_admin";
+  $ejecutar = mysqli_query($conection, $consulta);
+  $data = [];
+  while ($fila = mysqli_fetch_assoc($ejecutar)) {
+    $data[] = $fila;
+  }
+  return $data;
+}
+
+function login($connection, $usuario, $pass)
+{
+  // Utiliza una consulta preparada para evitar inyección SQL
+  $consulta = "SELECT * FROM admin WHERE usuario = ?";
+
+  // Prepara la consulta para verificar el usuario
+  if ($stmt = mysqli_prepare($connection, $consulta)) {
+    // Vincula los parámetros
+    mysqli_stmt_bind_param($stmt, "s", $usuario);
+
+    // Ejecuta la consulta
+    mysqli_stmt_execute($stmt);
+
+    // Obtiene el resultado
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Comprueba si hay resultados
+    if (mysqli_num_rows($result) > 0) {
+      // Si el usuario existe, ahora verificamos la contraseña
+      $consulta = "SELECT * FROM admin WHERE usuario = ? AND password = ?";
+
+      // Prepara la consulta para verificar la contraseña
+      if ($stmt = mysqli_prepare($connection, $consulta)) {
+        // Vincula los parámetros
+        mysqli_stmt_bind_param($stmt, "ss", $usuario, $pass);
+
+        // Ejecuta la consulta
+        mysqli_stmt_execute($stmt);
+
+        // Obtiene el resultado
+        $result = mysqli_stmt_get_result($stmt);
+
+        // Array para almacenar los datos
+        $data = [];
+
+        // Comprueba si hay resultados
+        if (mysqli_num_rows($result) > 0) {
+          // Recorre los resultados y los almacena en el array
+          while ($fila = mysqli_fetch_assoc($result)) {
+            $data[] = $fila;
+          }
+          // Retorna los datos
+          return $data;
+        } else {
+          // Si la contraseña no coincide
+          echo "La contraseña no coincide";
+          return $data = 403;
+        }
+      } else {
+        // Si hay un error al preparar la consulta de contraseña
+        echo "Error en la consulta de contraseña";
+        return $data = 501;
+      }
+    } else {
+      // Si no se encuentra el usuario
+      echo "El usuario no existe";
+      return $data = 404;
+    }
+  } else {
+    // Si hay un error al preparar la consulta de usuario
+    echo "Error en la consulta de usuario";
+    return $data = 500;
+  }
 }

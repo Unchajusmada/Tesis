@@ -8,7 +8,7 @@
           </h1>
         </a>
         <div class="col-lg-6 col-6 text-left d-lg-none d-block">
-          <form action="Main index/busqueda.php" method="POST">
+          <form action="Main index/busqueda.php" method="GET">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="¿Qué deseas encontrar?" name="busquedaTEG" required />
               <div class="input-group-append">
