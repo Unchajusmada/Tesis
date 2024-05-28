@@ -1,5 +1,5 @@
 <?php
-require '../../BBDD/connect_user.php';
+require '../BBDD/connect_user.php';
 
 // Obtén los valores que deseas insertar en la tabla admin
 $ID_admin = $_POST['cedula'];
@@ -27,20 +27,20 @@ if (isset($nombre_user, $apellido_user, $correo_user, $pass1, $pass2)) {
         mysqli_stmt_close($stmt); // Cierra el prepared statement
 
         // Redirecciona
-        header("Location: ../SuperAdmin-panel.php");
+        header("Location: ../Admin/SuperAdmin-panel.php?code=1");
         exit; // Termina la ejecución del script
       } else {
-        echo "Error al ejecutar la consulta";
+        header("Location: ../Admin/SuperAdmin-panel.php?code=500"); // Error al ejecutar la consulta
       }
     } else {
-      echo "Las contraseñas no coinciden";
+      header("Location: ../Admin/Paginas/register.html?code=101"); // Las contraseñas no coinciden
     }
   } else {
-    echo "Error al preparar la consulta SQL";
+    header("Location: ../Admin/SuperAdmin-panel.php?code=400"); // Error al preparar la consulta
   }
 
   // Cierra la conexión
   mysqli_close($conection);
 } else {
-  echo "Faltan parámetros en el formulario";
+  header("Location: ../Admin/Paginas/register.html?code=100"); // Faltan parámetros en el formulario
 }

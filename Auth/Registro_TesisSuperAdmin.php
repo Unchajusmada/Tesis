@@ -46,18 +46,18 @@ if ($stmt = mysqli_prepare($conection, $sql)) {
     if (move_uploaded_file($ruta_archivo_resumen, $ruta_destino_resumen) && move_uploaded_file($ruta_archivo, $ruta_destino)) {
       // Ejecuta la consulta
       if (mysqli_stmt_execute($stmt)) {
-        header("Location: ../Admin/Admin-panel.php?code=0");
+        header("Location: ../Admin/SuperAdmin-panel.php?code=0");
       } else {
-        header("Location: ../Admin/Admin-panel.php?code=500"); // Error al ejecutar la consulta
+        header("Location: ../Admin/SuperAdmin-panel.php?code=500"); // Error al ejecutar la consulta
       }
     } else {
-      header("Location: ../Admin/Admin-panel.php?code=501"); // Error al mover los archivos
+      header("Location: ../Admin/SuperAdmin-panel.php?code=501"); // Error al mover los archivos
     }
   } else {
-    header("Location: ../Admin/Admin-panel.php?code=502"); // No se seleccionó algún archivo
+    header("Location: ../Admin/SuperAdmin-panel.php?code=502"); // No se seleccionó algún archivo
   }
 } else {
-  header("Location: ../Admin/Admin-panel.php?code=400"); // Error al preparar la consulta
+  header("Location: ../Admin/SuperAdmin-panel.php?code=400"); // Error al preparar la consulta
 }
 
 // Cierra la conexión

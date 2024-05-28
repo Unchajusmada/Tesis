@@ -197,7 +197,7 @@ include '../Auth/funciones_leer_bbdd.php'
                     </h4>
                   </div>
                   <hr />
-                  <form class="user" method="POST" action="../Auth/Registro_Tesis.php" enctype="multipart/form-data">
+                  <form class="user" method="POST" action="../Auth/Registro_TesisSuperAdmin.php" enctype="multipart/form-data">
                     <div class="form-group">
                       <label>Titulo del TEG</label>
                       <input type="text" class="form-control form-control-user" id="titulo" name="titulo" placeholder="Titulo COMPLETO como en la portadada del TEG" required />
@@ -487,7 +487,7 @@ include '../Auth/funciones_leer_bbdd.php'
           <?php
           $datos_teg = modificar($conection, $ID_teg);
           foreach ($datos_teg as $row) : ?>
-            <form class="user" method="POST" action="../Auth/Modif_Datos_Tesis.php" enctype="multipart/form-data">
+            <form class="user" method="POST" action="../Auth/Modif_Datos_TesisSuperAdmin.php" enctype="multipart/form-data">
               <input type="text" id="ID_teg" name="ID_teg" value="<?php echo htmlspecialchars($row['ID_teg']); ?>" hidden />
               <div class="form-group">
                 <label>Titulo del TEG</label>
@@ -667,6 +667,47 @@ include '../Auth/funciones_leer_bbdd.php'
         "pageLength": 5
       });
     });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script>
+    // Obtén el código de la URL
+    const urlParams = new URLSearchParams(window.location.search)
+    const Code = urlParams.get("code")
+
+    // Función para mostrar una alerta de SweetAlert
+    function showAlert(title, text, icon) {
+      Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        confirmButtonText: "Continuar",
+      })
+    }
+
+    // Evalúa el código de error y muestra la alerta correspondiente
+    switch (Code) {
+      case "0":
+        showAlert("¡Exito!", "Registro de TEG realizado con exito", "success")
+        break
+      case "1":
+        showAlert("¡Exito!", "Registro de usuario realizado con exito", "success")
+        break
+      case "400":
+        showAlert("Error", "Error al preparar la consulta SQL", "error")
+        break
+      case "500":
+        showAlert("Error", "Error al ejecutar la consulta", "error")
+        break
+      case "501":
+        showAlert("Error", "Error al mover los archivos", "error")
+        break
+      case "502":
+        showAlert("Error", "No se seleccionó algún archivo", "error")
+        break
+      default:
+        break
+    }
   </script>
 </body>
 
