@@ -206,11 +206,11 @@ include '../Auth/funciones_leer_bbdd.php'
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <label>Nombres del Autor</label>
-                        <input type="text" class="form-control form-control-user" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" required />
+                        <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" required />
                       </div>
                       <div class="col-sm-6">
                         <label>Apellidos del Autor</label>
-                        <input type="text" class="form-control form-control-user" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" required />
+                        <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" required />
                       </div>
                     </div>
 
@@ -228,7 +228,7 @@ include '../Auth/funciones_leer_bbdd.php'
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <label>Nombre y Apellido del Tutor</label>
-                        <input type="text" class="form-control form-control-user" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" required />
+                        <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" required />
                       </div>
                       <div class="col-sm-6">
                         <label>¿Se implemento o se implementara?</label>
@@ -497,11 +497,11 @@ include '../Auth/funciones_leer_bbdd.php'
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <label>Nombres del Autor</label>
-                  <input type="text" class="form-control form-control-user" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" value="<?php echo htmlspecialchars($row['nombres_autor_teg']); ?>" />
+                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" value="<?php echo htmlspecialchars($row['nombres_autor_teg']); ?>" />
                 </div>
                 <div class="col-sm-6">
                   <label>Apellidos del Autor</label>
-                  <input type="text" class="form-control form-control-user" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" value="<?php echo htmlspecialchars($row['apellidos_autor_teg']); ?>" />
+                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" value="<?php echo htmlspecialchars($row['apellidos_autor_teg']); ?>" />
                 </div>
               </div>
 
@@ -522,7 +522,7 @@ include '../Auth/funciones_leer_bbdd.php'
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <label>Nombre y Apellido del Tutor</label>
-                  <input type="text" class="form-control form-control-user" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" value="<?php echo htmlspecialchars($row['nombres_tutor']); ?>" />
+                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" value="<?php echo htmlspecialchars($row['nombres_tutor']); ?>" />
                 </div>
                 <div class="col-sm-6">
                   <label>¿Se implemento o se implementara?</label>
@@ -602,11 +602,11 @@ include '../Auth/funciones_leer_bbdd.php'
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <label>Nombre</label>
-                  <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Primer Nombre" name="nombre" value="<?php echo htmlspecialchars($row['nombre_usuario']); ?>" />
+                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="exampleFirstName" placeholder="Primer Nombre" name="nombre" value="<?php echo htmlspecialchars($row['nombre_usuario']); ?>" />
                 </div>
                 <div class="col-sm-6">
                   <label>Apellido</label>
-                  <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Apellido" name="apellido" value="<?php echo htmlspecialchars($row['apellido_usuario']); ?>" />
+                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="exampleLastName" placeholder="Apellido" name="apellido" value="<?php echo htmlspecialchars($row['apellido_usuario']); ?>" />
                 </div>
               </div>
               <div class="form-group">
