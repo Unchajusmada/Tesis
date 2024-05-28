@@ -1,6 +1,6 @@
 <?php
 require '../BBDD/connect_user.php';
-include '../Auth/leer_bbdd.php';
+include '../Auth/funciones_leer_bbdd.php';
 
 // Obtener el ID_teg de la URL
 $carrera = $_GET['carrera'];

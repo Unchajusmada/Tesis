@@ -9940,12 +9940,12 @@ a:focus {
   }
 }
 .bg-login-image {
-  background: url(https://source.unsplash.com/K4mSJ7kc0As/600x800);
+  background: url(../../Main\ index/img/banner.jpg);
   background-position: center;
   background-size: cover;
 }
 .bg-register-image {
-  background: url(https://source.unsplash.com/Mv9hjnEUHR4/600x800);
+  background: url(../../Main\ index/img/fondo.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -9961,11 +9961,6 @@ form.user .form-control-user {
   font-size: 0.8rem;
   border-radius: 10rem;
   padding: 1.5rem 1rem;
-}
-form.user .form-control-user-special {
-  font-size: 0.8rem;
-  border-radius: 10rem;
-  padding: 1rem;
 }
 form.user .btn-user {
   font-size: 0.8rem;
@@ -10365,4 +10360,14 @@ body.sidebar-toggled footer.sticky-footer {
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(right, #4e73df, #f9f9f9);
   border-radius: 10rem;
+}
+
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spin {
+  -moz-appearance: textfield;
 }

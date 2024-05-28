@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SB Admin 2 - Login</title>
+    <title>Inicio de Sesion</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -46,7 +46,7 @@
                     </div>
                     <form
                       class="user"
-                      action="../Auth_admin/loginVerif.php"
+                      action="../Auth_admin/Inicio_Sesion.php"
                       method="POST"
                     >
                       <div class="form-group">
@@ -81,6 +81,11 @@
                     </form>
                     <hr />
                     <div class="text-center">
+                      <a class="medium" href="../../index.php"
+                        >Volver al Inicio</a
+                      >
+                    </div>
+                    <div class="text-center">
                       <a class="small" href="forgot-password.html"
                         >Olvide mi contraseña</a
                       >
@@ -103,5 +108,39 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+      // Obtén el código de error de la URL
+      const urlParams = new URLSearchParams(window.location.search)
+      const errorCode = urlParams.get("error")
+
+      // Función para mostrar una alerta de SweetAlert
+      function showAlert(title, text, icon) {
+        Swal.fire({
+          title: title,
+          text: text,
+          icon: icon,
+          confirmButtonText: "Continuar",
+        })
+      }
+
+      // Evalúa el código de error y muestra la alerta correspondiente
+      switch (errorCode) {
+        case "403":
+          showAlert("Error", "La contraseña no coincide", "error")
+          break
+        case "404":
+          showAlert("Error", "El usuario no existe", "error")
+          break
+        case "500":
+          showAlert("Error", "Error en la consulta de usuario", "error")
+          break
+        case "501":
+          showAlert("Error", "Error en la consulta de contraseña", "error")
+          break
+        default:
+          break
+      }
+    </script>
   </body>
 </html>

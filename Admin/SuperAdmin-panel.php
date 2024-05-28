@@ -1,6 +1,6 @@
 <?php
 require '../BBDD/connect_user.php';
-include '../Auth/leer_bbdd.php'
+include '../Auth/funciones_leer_bbdd.php'
 
 ?>
 
@@ -197,7 +197,7 @@ include '../Auth/leer_bbdd.php'
                     </h4>
                   </div>
                   <hr />
-                  <form class="user" method="POST" action="../Auth/ObtenerDatos.php" enctype="multipart/form-data">
+                  <form class="user" method="POST" action="../Auth/Registro_Tesis.php" enctype="multipart/form-data">
                     <div class="form-group">
                       <label>Titulo del TEG</label>
                       <input type="text" class="form-control form-control-user" id="titulo" name="titulo" placeholder="Titulo COMPLETO como en la portadada del TEG" required />
@@ -232,10 +232,8 @@ include '../Auth/leer_bbdd.php'
                       </div>
                       <div class="col-sm-6">
                         <label>¿Se implemento o se implementara?</label>
-                        <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example">
-                          <option disabled selected>
-                            Escoja una opcion de la siguiente lista
-                          </option>
+                        <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example" required>
+                          <option value="" selected>Selecciona una opcion de la siguiente lista</option>
                           <option value="si">
                             Si
                           </option>
@@ -249,7 +247,7 @@ include '../Auth/leer_bbdd.php'
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <label>Año en que se realizo</label>
-                        <input type="number" class="form-control form-control-user" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required />
+                        <input type="number" class="form-control form-control-user no-spin" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required />
                       </div>
                       <div class="col-sm-6">
                         <label>Archivo del TEG</label>
@@ -259,9 +257,9 @@ include '../Auth/leer_bbdd.php'
 
                     <div class="form-group">
                       <label>Carrera del graduando</label>
-                      <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example">
-                        <option disabled selected>
-                          Escoja una Carrera de la siguiente lista
+                      <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example" required>
+                        <option value="" selected>
+                          Selecciona una Carrera de la siguiente lista
                         </option>
                         <option value="Ingenieria Civil">
                           Ingenieria Civil
@@ -489,7 +487,7 @@ include '../Auth/leer_bbdd.php'
           <?php
           $datos_teg = modificar($conection, $ID_teg);
           foreach ($datos_teg as $row) : ?>
-            <form class="user" method="POST" action="../Auth/ModifDatos.php" enctype="multipart/form-data">
+            <form class="user" method="POST" action="../Auth/Modif_Datos_Tesis.php" enctype="multipart/form-data">
               <input type="text" id="ID_teg" name="ID_teg" value="<?php echo htmlspecialchars($row['ID_teg']); ?>" hidden />
               <div class="form-group">
                 <label>Titulo del TEG</label>
@@ -528,8 +526,8 @@ include '../Auth/leer_bbdd.php'
                 </div>
                 <div class="col-sm-6">
                   <label>¿Se implemento o se implementara?</label>
-                  <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example">
-                    <option disabled>Escoja una opcion de la siguiente lista</option>
+                  <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example" required>
+                    <option value="">Selecciona una opcion de la siguiente lista</option>
                     <option value="si" <?php echo ($row['factibilidad'] == 'si') ? 'selected' : ''; ?>>Si</option>
                     <option value="no" <?php echo ($row['factibilidad'] == 'no') ? 'selected' : ''; ?>>No</option>
                   </select>
@@ -539,7 +537,7 @@ include '../Auth/leer_bbdd.php'
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <label>Año en que se realizo</label>
-                  <input type="number" class="form-control form-control-user" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required value="<?php echo htmlspecialchars($row['year_teg']); ?>" />
+                  <input type="number" class="form-control form-control-user no-spin" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required value="<?php echo htmlspecialchars($row['year_teg']); ?>" />
                 </div>
                 <div class="col-sm-6">
                   <label>Archivo del TEG</label>
@@ -552,8 +550,10 @@ include '../Auth/leer_bbdd.php'
 
               <div class="form-group">
                 <label>Carrera del graduando</label>
-                <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example">
-                  <option disabled>Escoja una Carrera de la siguiente lista</option>
+                <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example" required>
+                  <option value="" selected>
+                    Selecciona una Carrera de la siguiente lista
+                  </option>
                   <option value="Ingenieria Civil" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Civil') ? 'selected' : ''; ?>>Ingenieria Civil</option>
                   <option value="Ingenieria de Telecom." <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria de Telecom.') ? 'selected' : ''; ?>>Ingenieria de Telecomunicaciones</option>
                   <option value="Ingenieria Aeronautica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Aeronautica') ? 'selected' : ''; ?>>Ingenieria Aeronautica</option>
@@ -587,7 +587,7 @@ include '../Auth/leer_bbdd.php'
           <?php
           $datos_user = modificarUser($conection, $ID_admin);
           foreach ($datos_user as $row) : ?>
-            <form class="user" method="POST" action="../Auth/ModifDatosUser.php">
+            <form class="user" method="POST" action="../Auth/Modif_Datos_User.php">
               <input type="text" id="ID_admin" name="ID_admin" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" hidden />
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -596,7 +596,7 @@ include '../Auth/leer_bbdd.php'
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <label>Número de Cedula</label>
-                  <input type="number" class="form-control form-control-user" id="cedula" placeholder="Ingrese su cedula (Ej: 28387623)" name="cedula" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
+                  <input type="number" class="form-control form-control-user no-spin" id="cedula" placeholder="Ingrese su cedula (Ej: 28387623)" name="cedula" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
                 </div>
               </div>
               <div class="form-group row">
@@ -625,10 +625,10 @@ include '../Auth/leer_bbdd.php'
               </div>
               <div class="form-group">
                 <label>Nivel de Acceso</label>
-                <select class="form-control-special form-control-user-special" name="nivel_acceso" aria-label="Default select example">
-                  <option disabled selected>Escoje el nivel</option>
-                  <option value="1" <?php echo ($row['nivel_acceso'] == '1') ? 'selected' : ''; ?>>1</option>
-                  <option value="2" <?php echo ($row['nivel_acceso'] == '2') ? 'selected' : ''; ?>>2</option>
+                <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example" required>
+                  <option value="" selected>Selecciona una opcion de la siguiente lista</option>
+                  <option value="1" <?php echo ($row['nivel_acceso'] == '1') ? 'selected' : ''; ?>>1 - Administrador</option>
+                  <option value="2" <?php echo ($row['nivel_acceso'] == '2') ? 'selected' : ''; ?>>2 - SuperAdmin</option>
                 </select>
               </div>
 

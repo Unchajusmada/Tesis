@@ -1,6 +1,6 @@
 <?php
 require '../BBDD/connect_user.php';
-include '../Auth/leer_bbdd.php';
+include '../Auth/funciones_leer_bbdd.php';
 
 // Función de comparación para ordenar por nombre de autor
 function compararPorNombreAutor($a, $b)

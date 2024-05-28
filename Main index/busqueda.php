@@ -1,6 +1,6 @@
 <?php
 require '../BBDD/connect_user.php';
-include '../Auth/leer_bbdd.php';
+include '../Auth/funciones_leer_bbdd.php';
 
 $busquedaTEG = isset($_GET['busquedaTEG']) ? $_GET['busquedaTEG'] : '';
 

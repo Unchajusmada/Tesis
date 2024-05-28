@@ -1,0 +1,16 @@
+.errorCustom {
+  display: block; /* Asegura que los elementos sean bloques */
+  text-align: center; /* Centra el texto dentro del elemento */
+  margin-top: 5px; /* Añade un margen superior para separar los mensajes de error */
+  color: red; /* Color de texto del mensaje de error */
+}
+
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spin {
+  -moz-appearance: textfield;
+}
