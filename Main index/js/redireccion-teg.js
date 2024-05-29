@@ -7,8 +7,11 @@ for (var i = 0; i < tegDivs.length; i++) {
     // Obtener el ID_teg del elemento actual
     var idTeg = this.getAttribute("data-id-teg")
 
-    // Redireccionar al usuario a paginaTeg.php con el ID_teg como parámetro
-    var url = "paginaTeg.php?id_teg=" + idTeg
-    window.location.href = url
+    // Verificar si idTeg es null antes de redireccionar
+    if (idTeg !== null) {
+      // Redireccionar al usuario a paginaTeg.php con el ID_teg como parámetro
+      var url = "paginaTeg.php?id_teg=" + idTeg
+      window.location.href = url
+    }
   })
 }

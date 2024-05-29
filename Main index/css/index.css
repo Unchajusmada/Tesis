@@ -251,6 +251,17 @@ main,
   font-size: 1em;
 }
 
+.texto-error {
+  width: 40%;
+  min-width: 310px;
+  border: 2px solid black;
+  border-radius: 1em;
+  font-size: 1em;
+  align-content: center;
+  background-color: #fffffff2;
+  padding: 20px;
+}
+
 @media (max-width: 1820px) {
   /* Ajusta el tamaño de fuente para pantallas más pequeñas */
   .texto-teg {
@@ -263,6 +274,7 @@ main,
   .indice,
   .texto-indice,
   .texto,
+  .texto-error,
   .contenedor-navbar {
     font-size: 1.2em; /* Ajusta aquí el tamaño de fuente deseado */
   }
@@ -271,6 +283,13 @@ main,
   .contenedor-navbar {
     padding: 0.1em 0 0.1em 0;
     font-size: 1.4em;
+  }
+}
+
+@media (min-width: 990px) {
+  /* Ajusta el tamaño de fuente para pantallas grandes */
+  .texto-error {
+    font-size: 1.8em; /* Ajusta aquí el tamaño de fuente deseado */
   }
 }
 
@@ -342,6 +361,7 @@ div:not(.bienvenida, .titulo, .categoria) > span {
     border-radius: 1em;
     font-size: 0.95em;
   }
+
   /* Ajusta el padding y el gap del contenedor-medio en pantallas pequeñas */
   .contenedor-medio {
     padding: 5px 5px;
@@ -433,4 +453,14 @@ div:not(.bienvenida, .titulo, .categoria) > span {
 .contenedor-boton {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 1385px) {
+  main {
+    gap: 30px;
+  }
+
+  .ordenar {
+    gap: 20px 10px;
+  }
 }

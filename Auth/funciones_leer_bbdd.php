@@ -20,6 +20,16 @@ function leer_usuarios($conection)
   }
   return $data;
 }
+function leer_titulo_carrera($conection, $carrera)
+{
+  $consulta = "SELECT * FROM carreras WHERE nombre_carrera LIKE '%$carrera%'";
+  $ejecutar = mysqli_query($conection, $consulta);
+  $data = [];
+  while ($fila = mysqli_fetch_assoc($ejecutar)) {
+    $data[] = $fila;
+  }
+  return $data;
+}
 
 function leer_carrera($conection, $carrera)
 {
