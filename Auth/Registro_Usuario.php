@@ -27,16 +27,16 @@ if (isset($nombre_user, $apellido_user, $correo_user, $pass1, $pass2)) {
         mysqli_stmt_close($stmt); // Cierra el prepared statement
 
         // Redirecciona
-        header("Location: ../Admin/SuperAdmin-panel.php?code=1");
+        header("Location: ../Admin/Admin-panel.php?code=1");
         exit; // Termina la ejecución del script
       } else {
-        header("Location: ../Admin/SuperAdmin-panel.php?code=500"); // Error al ejecutar la consulta
+        header("Location: ../Admin/Admin-panel.php?code=500"); // Error al ejecutar la consulta
       }
     } else {
       header("Location: ../Admin/Paginas/register.html?code=101"); // Las contraseñas no coinciden
     }
   } else {
-    header("Location: ../Admin/SuperAdmin-panel.php?code=400"); // Error al preparar la consulta
+    header("Location: ../Admin/Admin-panel.php?code=400"); // Error al preparar la consulta
   }
 
   // Cierra la conexión

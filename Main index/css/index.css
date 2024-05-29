@@ -457,10 +457,10 @@ div:not(.bienvenida, .titulo, .categoria) > span {
 
 @media (max-width: 1385px) {
   main {
-    gap: 30px;
+    gap: 20px;
   }
 
   .ordenar {
-    gap: 20px 10px;
+    gap: 20px 5px;
   }
 }

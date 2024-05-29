@@ -133,7 +133,7 @@ include '../Auth/funciones_leer_bbdd.php'
               <!-- QUITARLE EL SHOW -->
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                  <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
                     <thead>
                       <tr>
                         <th class="text-center" style="vertical-align: middle;">ID de Usuario</th>
@@ -335,7 +335,6 @@ include '../Auth/funciones_leer_bbdd.php'
                       $datos_teg = leer($conection);
                       foreach ($datos_teg as $row) : ?>
                         <tr>
-                          <?php $ID_teg = $row['ID_teg']; ?>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['titulo_teg']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombres_autor_teg']; ?>, <?php echo $row['apellidos_autor_teg']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['correo_autor']; ?></td>
@@ -352,7 +351,7 @@ include '../Auth/funciones_leer_bbdd.php'
                             <?php endif; ?>
                           </td>
                           <td class="text-center" style="vertical-align: middle;">
-                            <button href="#" data-toggle="modal" data-target="#ModificationModal" data-id-teg="<?php echo $ID_teg; ?>">Modificar</button>
+                            <button href="#" data-toggle="modal" data-target="#ModificationModal" data-idteg="<?php echo $row['titulo_teg']; ?>" data-nombresautor="<?php echo $row['nombres_autor_teg']; ?>" data-apellidosautor="<?php echo $row['apellidos_autor_teg']; ?>" data-correoautor="<?php echo $row['correo_autor']; ?>" data-year="<?php echo $row['year_teg']; ?>" data-nombretutor="<?php echo $row['nombres_tutor']; ?>" data-implementado="<?php echo $row['factibilidad']; ?>" data-nombrecarrera="<?php echo $row['nombre_carrera_autor']; ?>" data-archivopdf="<?php echo $row['archivo_pdf']; ?>" data-archivopdfresumen="<?php echo $row['archivo_pdf_resumen']; ?>" class="mostrarDato">Modificar</button>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -484,87 +483,80 @@ include '../Auth/funciones_leer_bbdd.php'
           </button>
         </div>
         <div class="modal-body">
-          <?php
-          $datos_teg = modificar($conection, $ID_teg);
-          foreach ($datos_teg as $row) : ?>
-            <form class="user" method="POST" action="../Auth/Modif_Datos_TesisSuperAdmin.php" enctype="multipart/form-data">
-              <input type="text" id="ID_teg" name="ID_teg" value="<?php echo htmlspecialchars($row['ID_teg']); ?>" hidden />
-              <div class="form-group">
-                <label>Titulo del TEG</label>
-                <input type="text" class="form-control form-control-user" id="titulo" name="titulo" placeholder="Titulo COMPLETO como en la portada del TEG" value="<?php echo htmlspecialchars($row['titulo_teg']); ?>" />
-              </div>
+          <form class="user" method="POST" action="../Auth/Modif_Datos_TesisSuperAdmin.php" enctype="multipart/form-data">
+            <input type="text" id="ID_teg" name="ID_teg" hidden />
+            <div class="form-group">
+              <label>Titulo del TEG</label>
+              <input type="text" class="form-control form-control-user" id="tituloTEG" name="titulo">
+            </div>
 
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Nombres del Autor</label>
-                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" value="<?php echo htmlspecialchars($row['nombres_autor_teg']); ?>" />
-                </div>
-                <div class="col-sm-6">
-                  <label>Apellidos del Autor</label>
-                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" value="<?php echo htmlspecialchars($row['apellidos_autor_teg']); ?>" />
-                </div>
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <label>Nombres del Autor</label>
+                <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombresAutor" name="nombres" />
               </div>
-
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Correo del Autor</label>
-                  <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Ejemplo: Correo@gmail.com" value="<?php echo htmlspecialchars($row['correo_autor']); ?>" />
-                </div>
-                <div class="col-sm-6">
-                  <label>Resumen del TEG (Pagina del resumen del TEG en formato pdf)</label>
-                  <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" />
-                  <?php if (!empty($row['archivo_pdf_resumen'])) : ?>
-                    <small>Archivo actual: <?php echo htmlspecialchars($row['archivo_pdf_resumen']); ?></small>
-                  <?php endif; ?>
-                </div>
+              <div class="col-sm-6">
+                <label>Apellidos del Autor</label>
+                <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="apellidosAutor" name="apellidos" />
               </div>
+            </div>
 
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Nombre y Apellido del Tutor</label>
-                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" value="<?php echo htmlspecialchars($row['nombres_tutor']); ?>" />
-                </div>
-                <div class="col-sm-6">
-                  <label>¿Se implemento o se implementara?</label>
-                  <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example" required>
-                    <option value="">Selecciona una opcion de la siguiente lista</option>
-                    <option value="si" <?php echo ($row['factibilidad'] == 'si') ? 'selected' : ''; ?>>Si</option>
-                    <option value="no" <?php echo ($row['factibilidad'] == 'no') ? 'selected' : ''; ?>>No</option>
-                  </select>
-                </div>
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <label>Correo del Autor</label>
+                <input type="email" class="form-control form-control-user" id="correoAutor" name="correo" />
               </div>
-
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Año en que se realizo</label>
-                  <input type="number" class="form-control form-control-user no-spin" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required value="<?php echo htmlspecialchars($row['year_teg']); ?>" />
-                </div>
-                <div class="col-sm-6">
-                  <label>Archivo del TEG</label>
-                  <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf" accept=".pdf" />
-                  <?php if (!empty($row['archivo_pdf'])) : ?>
-                    <small>Archivo actual: <?php echo htmlspecialchars($row['archivo_pdf']); ?></small>
-                  <?php endif; ?>
-                </div>
+              <div class="col-sm-6">
+                <label>Resumen del TEG</label>
+                <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" />
+                <small>Archivo actual: <span id="archivoPDFResumen"></span></small>
               </div>
+            </div>
 
-              <div class="form-group">
-                <label>Carrera del graduando</label>
-                <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example" required>
-                  <option value="" selected>
-                    Selecciona una Carrera de la siguiente lista
-                  </option>
-                  <option value="Ingenieria Civil" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Civil') ? 'selected' : ''; ?>>Ingenieria Civil</option>
-                  <option value="Ingenieria de Telecom." <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria de Telecom.') ? 'selected' : ''; ?>>Ingenieria de Telecomunicaciones</option>
-                  <option value="Ingenieria Aeronautica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Aeronautica') ? 'selected' : ''; ?>>Ingenieria Aeronautica</option>
-                  <option value="Ingenieria Electrica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Electrica') ? 'selected' : ''; ?>>Ingenieria Electrica</option>
-                  <option value="Ingenieria Electronica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Electronica') ? 'selected' : ''; ?>>Ingenieria Electronica</option>
-                  <option value="Ingenieria de Sistemas" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria de Sistemas') ? 'selected' : ''; ?>>Ingenieria de Sistemas</option>
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <label>Nombre y Apellido del Tutor</label>
+                <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombreTutor" name="nombres_tutor" />
+              </div>
+              <div class="col-sm-6">
+                <label>¿Se implemento o se implementara?</label>
+                <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example" id="implementado" required>
+                  <option value="">Selecciona una opcion de la siguiente lista</option>
+                  <option>Si</option>
+                  <option>No</option>
                 </select>
               </div>
-              <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" />
-            </form>
-          <?php endforeach; ?>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <label>Año en que se realizo</label>
+                <input type="number" class="form-control form-control-user no-spin" id="year" name="year" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required />
+              </div>
+              <div class="col-sm-6">
+                <label>Archivo del TEG</label>
+                <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf" accept=".pdf" />
+
+                <small>Archivo actual: <span id="archivoPDF"></span></small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Carrera del graduando</label>
+              <select class="form-control-special form-control-user" name="nombre_carrera_autor" id="nombreCarrera" aria-label="Default select example" required>
+                <option value="" selected>
+                  Selecciona una Carrera de la siguiente lista
+                </option>
+                <option value="Ingenieria Civil">Ingenieria Civil</option>
+                <option value="Ingenieria de Telecom.">Ingenieria de Telecomunicaciones</option>
+                <option value="Ingenieria Aeronautica">Ingenieria Aeronautica</option>
+                <option value="Ingenieria Electrica">Ingenieria Electrica</option>
+                <option value="Ingenieria Electronica">Ingenieria Electronica</option>
+                <option value="Ingenieria de Sistemas">Ingenieria de Sistemas</option>
+              </select>
+            </div>
+            <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" />
+          </form>
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
@@ -669,6 +661,15 @@ include '../Auth/funciones_leer_bbdd.php'
     });
   </script>
 
+  <script>
+    $(document).ready(function() {
+      $('#dataTable3').DataTable({
+        "lengthMenu": [5],
+        "pageLength": 5
+      });
+    });
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script>
     // Obtén el código de la URL
@@ -708,6 +709,37 @@ include '../Auth/funciones_leer_bbdd.php'
       default:
         break
     }
+  </script>
+
+  <script>
+    // JavaScript/jQuery para mostrar los datos en el modal de mis rifas cuando se abre
+    $(document).ready(function() {
+      $('.mostrarDato').click(function() {
+        // Obtiene los valores de los atributos data-
+        var idTeg = $(this).data('idteg');
+        var nombresAutor = $(this).data('nombresautor');
+        var apellidosAutor = $(this).data('apellidosautor');
+        var correoAutor = $(this).data('correoautor');
+        var year = $(this).data('year');
+        var nombreTutor = $(this).data('nombretutor');
+        var implementado = $(this).data('implementado');
+        var nombreCarrera = $(this).data('nombrecarrera');
+        var archivoPDF = $(this).data('archivopdf');
+        var archivoPDFResumen = $(this).data('archivopdfresumen');
+
+        // Asigna los valores a los elementos del modal
+        $('#tituloTEG').val(idTeg);
+        $('#nombresAutor').val(nombresAutor);
+        $('#apellidosAutor').val(apellidosAutor);
+        $('#correoAutor').val(correoAutor);
+        $('#year').val(year);
+        $('#nombreTutor').val(nombreTutor);
+        $('select[id="implementado"]').val(implementado);
+        $('select[id="nombreCarrera"]').val(nombreCarrera);
+        $('#archivoPDF').text(archivoPDF);
+        $('#archivoPDFResumen').text(archivoPDFResumen);
+      });
+    });
   </script>
 </body>
 

@@ -1,6 +1,7 @@
 <?php
 require '../BBDD/connect_user.php';
-include '../Auth/funciones_leer_bbdd.php'
+include '../Auth/funciones_leer_bbdd.php';
+$nivel_acceso = $_GET['nv']
 
 ?>
 
@@ -22,6 +23,7 @@ include '../Auth/funciones_leer_bbdd.php'
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+  <link href="css/extras.css" rel="stylesheet" />
   <link href="../Main index/img/unefa.png" rel="icon" />
 </head>
 
@@ -44,6 +46,15 @@ include '../Auth/funciones_leer_bbdd.php'
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Administración</span></a>
       </li>
+
+      <?php if ($nivel_acceso != 2) : ?>
+        <li class="nav-item">
+          <a class="nav-link" href="Paginas/register.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Crear usuarios</span>
+          </a>
+        </li>
+      <?php endif; ?>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block" />
@@ -114,6 +125,68 @@ include '../Auth/funciones_leer_bbdd.php'
           <h1 class="h2 mb-4 text-gray-800">
             COORDINACIÓN DE TRABAJOS ESPECIALES DE GRADO
           </h1>
+
+          <?php if ($nivel_acceso != 2) : ?>
+            <!-- Collapsable Card Example -->
+            <div class="card shadow mb-4">
+              <!-- Card Header - Accordion -->
+              <a href="#collapseCard0" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCard0">
+                <h4 class="m-0 font-weight-bold text-primary">
+                  Usuarios
+                </h4>
+              </a>
+              <!-- Card Content - Collapse -->
+              <div class="collapse" id="collapseCard0">
+                <!-- QUITARLE EL SHOW -->
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th class="text-center" style="vertical-align: middle;">ID de Usuario</th>
+                          <th class="text-center" style="vertical-align: middle;">Nombre de Usuario</th>
+                          <th class="text-center" style="vertical-align: middle;">Nombre y Apellido</th>
+                          <th class="text-center" style="vertical-align: middle;">Correo</th>
+                          <th class="text-center" style="vertical-align: middle;">Nivel de Acceso</th>
+                          <th class="text-center" style="vertical-align: middle;">Modificar</th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <th class="text-center" style="vertical-align: middle;">ID de Usuario</th>
+                          <th class="text-center" style="vertical-align: middle;">Nombre de Usuario</th>
+                          <th class="text-center" style="vertical-align: middle;">Nombre y Apellido</th>
+                          <th class="text-center" style="vertical-align: middle;">Correo</th>
+                          <th class="text-center" style="vertical-align: middle;">Nivel de Acceso</th>
+                          <th class="text-center" style="vertical-align: middle;">Modificar</th>
+                        </tr>
+                      </tfoot>
+                      <tbody>
+                        <?php
+                        $datos_usuarios = leer_usuarios($conection);
+                        foreach ($datos_usuarios as $row) : ?>
+                          <tr>
+                            <?php $ID_admin = $row['ID_admin']; ?>
+                            <td class="text-center" style="vertical-align: middle;"><?php echo $row['ID_admin']; ?></td>
+                            <td class="text-center" style="vertical-align: middle;"><?php echo $row['usuario']; ?></td>
+                            <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_usuario']; ?>&nbsp; <?php echo $row['apellido_usuario']; ?></td>
+                            <td class="text-center" style="vertical-align: middle;"><?php echo $row['correo']; ?></td>
+                            <td class="text-center" style="vertical-align: middle;"><?php echo $row['nivel_acceso']; ?></td>
+                            <td class="text-center" style="vertical-align: middle;">
+                              <a href="../Admin/Paginas/Modificar_User.php?ID_user=<?php echo $row['ID_admin']; ?>&nv=<?php echo $nivel_acceso; ?>">
+                                <button class="button-10">Modificar</button>
+                              </a>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+
 
           <!-- Collapsable Card Example -->
           <div class="card shadow mb-4">
@@ -290,7 +363,9 @@ include '../Auth/funciones_leer_bbdd.php'
                             <?php endif; ?>
                           </td>
                           <td class="text-center" style="vertical-align: middle;">
-                            <button href="#" data-toggle="modal" data-target="#ModificationModal" data-id-teg="<?php echo $ID_teg; ?>">Modificar</button>
+                            <a href="../Admin/Paginas/Modificar_Teg.php?ID_TEG=<?php echo $ID_teg; ?>&nv=<?php echo $nivel_acceso; ?>">
+                              <button class="button-10">Modificar</button>
+                            </a>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -511,6 +586,76 @@ include '../Auth/funciones_leer_bbdd.php'
     </div>
   </div>
 
+  <!-- Modificar Usuario Modal -->
+  <div class="modal fade" id="ModificationUserModal" tabindex="-1" role="dialog" aria-labelledby="modificationUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 900px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modificationUserModalLabel" style="display: inline;">Modificar</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <?php
+          $datos_user = modificarUser($conection, $ID_admin);
+          foreach ($datos_user as $row) : ?>
+            <form class="user" method="POST" action="../Auth/Modif_Datos_User.php">
+              <input type="text" id="ID_admin" name="ID_admin" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" hidden />
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Usuario</label>
+                  <input type="text" class="form-control form-control-user" id="user" placeholder="Ingrese su nombre de usuario" name="user" value="<?php echo htmlspecialchars($row['usuario']); ?>" />
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Número de Cedula</label>
+                  <input type="number" class="form-control form-control-user no-spin" id="cedula" placeholder="Ingrese su cedula (Ej: 28387623)" name="cedula" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="exampleFirstName" placeholder="Primer Nombre" name="nombre" value="<?php echo htmlspecialchars($row['nombre_usuario']); ?>" />
+                </div>
+                <div class="col-sm-6">
+                  <label>Apellido</label>
+                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="exampleLastName" placeholder="Apellido" name="apellido" value="<?php echo htmlspecialchars($row['apellido_usuario']); ?>" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Correo</label>
+                <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Correo" name="correo" value="<?php echo htmlspecialchars($row['correo']); ?>" />
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Ingrese una nueva contraseña si desea actualizarla</label>
+                  <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña" name="pass1" />
+                </div>
+                <div class="col-sm-6">
+                  <label>Repita su contraseña</label>
+                  <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repita Contraseña" name="pass2" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Nivel de Acceso</label>
+                <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example" required>
+                  <option value="" selected>Selecciona una opcion de la siguiente lista</option>
+                  <option value="1" <?php echo ($row['nivel_acceso'] == '1') ? 'selected' : ''; ?>>1 - Administrador</option>
+                  <option value="2" <?php echo ($row['nivel_acceso'] == '2') ? 'selected' : ''; ?>>2 - SuperAdmin</option>
+                </select>
+              </div>
+
+              <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" />
+            </form>
+          <?php endforeach; ?>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -538,6 +683,15 @@ include '../Auth/funciones_leer_bbdd.php'
     });
   </script>
 
+  <script>
+    $(document).ready(function() {
+      $('#dataTable3').DataTable({
+        "lengthMenu": [5],
+        "pageLength": 5
+      });
+    });
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script>
     // Obtén el código de la URL
@@ -557,7 +711,22 @@ include '../Auth/funciones_leer_bbdd.php'
     // Evalúa el código de error y muestra la alerta correspondiente
     switch (Code) {
       case "0":
-        showAlert("¡Exito!", "Registro realizado con exito", "success")
+        showAlert("¡Exito!", "Registro de TEG realizado con exito", "success")
+        break
+      case "1":
+        showAlert("¡Exito!", "Registro de usuario realizado con exito", "success")
+        break
+      case "3":
+        showAlert("¡Exito!", "Actualización de usuario realizada con exito", "success")
+        break
+      case "9":
+        showAlert("¡Exito!", "TEG eliminado con exito", "warning")
+        break
+      case "10":
+        showAlert("¡Exito!", "Usuario eliminado con exito", "warning")
+        break
+      case "101":
+        showAlert("Error", "Las contraseñas no coinciden", "error")
         break
       case "400":
         showAlert("Error", "Error al preparar la consulta SQL", "error")

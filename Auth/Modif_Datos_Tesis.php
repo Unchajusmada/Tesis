@@ -47,57 +47,33 @@ if (!empty($_POST['factibilidad'])) {
   $campos[] = "factibilidad = '$factibilidad'";
 }
 
-// Prepara la consulta SQL utilizando un prepared statement
-$sql = "UPDATE teg SET " . implode(", ", $campos) . " WHERE ID_teg = ?";
+// Eliminación de usuario
+if (!empty($_POST['eliminar'])) {
+  // Obtén el ID del teg a eliminar
+  $ID_teg = $_POST['ID_teg'];
 
-if ($stmt = mysqli_prepare($conection, $sql)) {
-  // Vincula el parámetro del ID_teg al marcador de posición de la consulta
-  mysqli_stmt_bind_param($stmt, "i", $ID_teg);
+  // Prepara la consulta SQL para eliminar el usuario
+  $sql = "DELETE FROM teg WHERE ID_teg = ?";
 
-  // Ejecuta la consulta
-  if (mysqli_stmt_execute($stmt)) {
-    // Verificar si se seleccionó un archivo para el resumen
-    if (!empty($_FILES['archivo_pdf_resumen'])) {
-      // Obtener información del archivo del resumen
-      $archivo_pdf_resumen = $_FILES['archivo_pdf_resumen'];
-      $nombre_archivo_resumen = $archivo_pdf_resumen['name'];
-      $ruta_archivo_resumen = $archivo_pdf_resumen['tmp_name'];
+  if ($stmt = mysqli_prepare($conection, $sql)) {
+    // Vincula el parámetro del ID_admin al marcador de posición de la consulta
+    mysqli_stmt_bind_param($stmt, "i", $ID_teg);
 
-      // Ruta donde se guardará el archivo del resumen en el servidor
-      $directorio_archivos_resumen = '../Admin/PDF_Resumen/'; // Ruta del directorio para los archivos de resumen
-      $ruta_destino_resumen = $directorio_archivos_resumen . $nombre_archivo_resumen;
-
-      // Mover el archivo del resumen al directorio de destino
-      if (move_uploaded_file($ruta_archivo_resumen, $ruta_destino_resumen)) {
-        echo "Archivo de resumen actualizado correctamente";
-      } else {
-        echo "Error al mover el archivo de resumen";
-      }
-    }
-
-    // Verificar si se seleccionó un archivo principal
-    if (!empty($_FILES['archivo_pdf'])) {
-      // Obtener información del archivo principal
-      $archivo_pdf = $_FILES['archivo_pdf'];
-      $nombre_archivo = $archivo_pdf['name'];
-      $ruta_archivo = $archivo_pdf['tmp_name'];
-
-      // Ruta donde se guardará el archivo principal en el servidor
-      $directorio_archivos = '../Admin/PDF_TEG/'; // Ruta del directorio para los archivos principales
-      $ruta_destino = $directorio_archivos . $nombre_archivo;
-
-      // Mover el archivo principal al directorio de destino
-      if (move_uploaded_file($ruta_archivo, $ruta_destino)) {
-        echo "Archivo principal actualizado correctamente";
-      } else {
-        echo "Error al mover el archivo principal";
-      }
+    // Ejecuta la consulta
+    if (mysqli_stmt_execute($stmt)) {
+      // Redirige a la página de administración con un código de éxito
+      header("Location: ../Admin/Admin-panel.php?code=9&nv=" . $nivel_acceso);
+      exit(); // Termina la ejecución del script después de la redirección
+    } else {
+      // Redirige a la página de administración con un código de error de servidor
+      header("Location: ../Admin/Admin-panel.php?code=500&nv=" . $nivel_acceso);
+      exit();
     }
   } else {
-    echo "Error al ejecutar la consulta";
+    // Redirige a la página de administración con un código de error de consulta
+    header("Location: ../Admin/Admin-panel.php?code=400&nv=" . $nivel_acceso);
+    exit();
   }
-} else {
-  echo "Error al preparar la consulta SQL";
 }
 
 // Cierra la conexión
