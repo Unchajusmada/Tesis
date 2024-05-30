@@ -1,6 +1,5 @@
 <?php
 require '../BBDD/connect_user.php';
-$nivel_acceso = $_GET['nv'];
 
 // Obtén los valores que deseas actualizar en la tabla teg
 $ID_admin = $_POST['ID_admin'];
@@ -30,7 +29,8 @@ if (!empty($_POST['apellido'])) {
 
 if (!empty($_POST['pass1'])) {
   $pass1 = $_POST['pass1'];
-  $campos[] = "password = '$pass1'";
+  $pass_hash = sha1($pass1);
+  $campos[] = "password = '$pass_hash'";
 }
 
 // Verificar contraseña
@@ -46,19 +46,19 @@ if (!empty($_POST['pass1'])) {
 
       // Ejecuta la consulta
       if (mysqli_stmt_execute($stmt)) {
-        header("Location: ../Admin/Admin-panel.php?code=3&nv=" . $nivel_acceso);
+        header("Location: ../Admin/Admin-panel.php?code=3");
         exit();
       } else {
-        header("Location: ../Admin/Admin-panel.php?code=500&nv=" . $nivel_acceso);
+        header("Location: ../Admin/Admin-panel.php?code=500");
         exit();
       }
     } else {
-      header("Location: ../Admin/Admin-panel.php?code=400&nv=" . $nivel_acceso);
+      header("Location: ../Admin/Admin-panel.php?code=400");
       exit();
     }
   } else {
     // Las contraseñas no coinciden
-    header("Location: ../Admin/Admin-panel.php?code=101&nv=" . $nivel_acceso);
+    header("Location: ../Admin/Admin-panel.php?code=101");
     exit();
   }
 } else {
@@ -72,43 +72,14 @@ if (!empty($_POST['pass1'])) {
 
     // Ejecuta la consulta
     if (mysqli_stmt_execute($stmt)) {
-      header("Location: ../Admin/Admin-panel.php?code=3&nv=" . $nivel_acceso);
+      header("Location: ../Admin/Admin-panel.php?code=3");
       exit();
     } else {
-      header("Location: ../Admin/Admin-panel.php?code=500&nv=" . $nivel_acceso);
+      header("Location: ../Admin/Admin-panel.php?code=500");
       exit();
     }
   } else {
-    header("Location: ../Admin/Admin-panel.php?code=400&nv=" . $nivel_acceso);
-    exit();
-  }
-}
-
-// Eliminación de usuario
-if (!empty($_POST['eliminar'])) {
-  // Obtén el ID del usuario a eliminar
-  $idUsuario = $_POST['ID_admin'];
-
-  // Prepara la consulta SQL para eliminar el usuario
-  $sql = "DELETE FROM admin WHERE ID_admin = ?";
-
-  if ($stmt = mysqli_prepare($conection, $sql)) {
-    // Vincula el parámetro del ID_admin al marcador de posición de la consulta
-    mysqli_stmt_bind_param($stmt, "i", $idUsuario);
-
-    // Ejecuta la consulta
-    if (mysqli_stmt_execute($stmt)) {
-      // Redirige a la página de administración con un código de éxito
-      header("Location: ../Admin/Admin-panel.php?code=10&nv=" . $nivel_acceso);
-      exit(); // Termina la ejecución del script después de la redirección
-    } else {
-      // Redirige a la página de administración con un código de error de servidor
-      header("Location: ../Admin/Admin-panel.php?code=500&nv=" . $nivel_acceso);
-      exit();
-    }
-  } else {
-    // Redirige a la página de administración con un código de error de consulta
-    header("Location: ../Admin/Admin-panel.php?code=400&nv=" . $nivel_acceso);
+    header("Location: ../Admin/Admin-panel.php?code=400");
     exit();
   }
 }

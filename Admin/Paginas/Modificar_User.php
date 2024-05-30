@@ -1,8 +1,14 @@
 <?php
+session_start();
+
 require '../../BBDD/connect_user.php';
 include '../../Auth/funciones_leer_bbdd.php';
+
+if ($_SESSION['nivel_acceso'] != 2) {
+  header('location: ../../index.php');
+}
+
 $ID_admin = $_GET['ID_user'];
-$nivel_acceso = $_GET['nv'];
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +21,7 @@ $nivel_acceso = $_GET['nv'];
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Modificar TEG</title>
+  <title>Modificar Usuario</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
@@ -27,7 +33,7 @@ $nivel_acceso = $_GET['nv'];
   <link href="../css/extras.css" rel="stylesheet" />
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-dark">
   <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
@@ -37,12 +43,12 @@ $nivel_acceso = $_GET['nv'];
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">¡Modificar TEG!</h1>
+                <h1 class="h4 text-gray-900 mb-4">¡Modificar Usuario!</h1>
               </div>
               <?php
               $datos_user = modificarUser($conection, $ID_admin);
               foreach ($datos_user as $row) : ?>
-                <form class="user" method="POST" action="../../Auth/Modif_Datos_User.php?nv=<?php echo $nivel_acceso; ?>" onsubmit="return validateForm();">
+                <form class="user" method="POST" action="../../Auth/Modif_Datos_User.php" onsubmit="return validateForm();">
                   <input type="text" id="ID_admin" name="ID_admin" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" hidden />
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -71,12 +77,12 @@ $nivel_acceso = $_GET['nv'];
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <label>Ingrese una nueva contraseña si desea actualizarla</label>
+                      <label>Ingrese una nueva contraseña</label>
                       <input type="password" class="form-control form-control-user pass" id="exampleInputPassword" placeholder="Contraseña" name="pass1" />
                       <span id="pass1Error" style="color: red;"></span>
                     </div>
                     <div class="col-sm-6">
-                      <label>Repita su contraseña</label>
+                      <label>Repita su nueva contraseña</label>
                       <input type="password" class="form-control form-control-user pass" id="exampleRepeatPassword" placeholder="Repita Contraseña" name="pass2" />
                     </div>
                   </div>
@@ -91,10 +97,13 @@ $nivel_acceso = $_GET['nv'];
 
                   <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" id="enviar" />
                   <div class="text-center">
-                    <a class="small" href="../Admin-panel.php?nv=<?php echo $nivel_acceso; ?>">Volver</a>
+                    <a class="small btn btn-user btn-block" href="../Admin-panel.php" style="border: 1px solid blue; margin-top: 10px;">Volver</a>
                   </div>
                   <hr />
+                </form>
+                <form id="eliminarForm" class="eliminar" action="../../Auth/eliminar_user.php" method="POST">
                   <!-- Campo oculto para la eliminación -->
+                  <input type="hidden" name="user-eliminar" id="user-eliminar" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
                   <input type="hidden" name="eliminar" id="eliminar" value="0" />
                   <input type="button" class="btn btn-danger btn-user btn-block" value="Eliminar usuario" onclick="showConfirmation();" />
                 </form>
@@ -157,41 +166,6 @@ $nivel_acceso = $_GET['nv'];
     });
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    var confirmDelete = false; // Variable de control
-
-    function showConfirmation() {
-      Swal.fire({
-        title: '¿Estás seguro de que deseas eliminar este usuario?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí',
-        cancelButtonText: 'Cancelar',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          confirmDelete = true; // Se confirma la eliminación
-          document.getElementById('eliminar').value = '1'; // Establecer el valor para eliminar
-          document.querySelector('.user').submit(); // Enviar el formulario
-        }
-      });
-    }
-
-    function validateForm() {
-      if (!confirmDelete && document.getElementById('eliminar').value === '1') {
-        // Si no se ha confirmado la eliminación, se cancela el envío del formulario
-        Swal.fire({
-          title: 'Debes confirmar la eliminación del usuario',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
-        return false;
-      }
-      // Si se ha confirmado la eliminación, se permite el envío del formulario
-      return true;
-    }
-  </script>
-
   <script>
     $(document).ready(function() {
       // Evento de cambio del campo de usuario
@@ -215,6 +189,28 @@ $nivel_acceso = $_GET['nv'];
 
     function enableSubmitButton() {
       $("#enviar").prop("disabled", false);
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function showConfirmation() {
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esta acción eliminará al usuario permanentemente.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Si el usuario confirma, establece el valor del campo oculto "eliminar" en 1 y envía el formulario
+          document.getElementById("eliminar").value = "1";
+          document.getElementById("eliminarForm").submit();
+        }
+      });
     }
   </script>
 

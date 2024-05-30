@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
           <div class="navbar-nav mr-auto py-0">
             <a href="../index.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Inicio</a>
-            <a href="todas.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Todas</a>
+            <a href="todas.php" class="nav-item nav-link pl-4 pl-md-4 pr-md-4">Todos los TEG</a>
             <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4">
               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categorias</a>
               <div class="dropdown-menu rounded-0 m-0">
@@ -46,7 +46,6 @@
                 <a href="carreras.php?carrera=Telecom" class="dropdown-item">Ing. de <br>Telecomunicaciones</a>
               </div>
             </div>
-            <a href="#" class="nav-item nav-link pl-4 pl-md-4">Contacto</a>
           </div>
           <div class="col-lg-6 col-6 text-left d-lg-block d-none">
             <form action="busqueda.php" method="GET">

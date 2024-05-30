@@ -101,6 +101,8 @@ function modificarUser($conection, $ID_admin)
 
 function login($connection, $usuario, $pass)
 {
+  $pass_hash = sha1($pass);
+
   // Utiliza una consulta preparada para evitar inyección SQL
   $consulta = "SELECT * FROM admin WHERE usuario = ?";
 
@@ -123,7 +125,7 @@ function login($connection, $usuario, $pass)
       // Prepara la consulta para verificar la contraseña
       if ($stmt = mysqli_prepare($connection, $consulta)) {
         // Vincula los parámetros
-        mysqli_stmt_bind_param($stmt, "ss", $usuario, $pass);
+        mysqli_stmt_bind_param($stmt, "ss", $usuario, $pass_hash);
 
         // Ejecuta la consulta
         mysqli_stmt_execute($stmt);

@@ -1,7 +1,8 @@
 <?php
+session_start();
+
 require '../../BBDD/connect_user.php';
 include '../../Auth/funciones_leer_bbdd.php';
-
 
 // Verificar nivel de Acceso
 $usuario = $_POST['usuario'];
@@ -13,9 +14,13 @@ $datos_usuarios = login($conection, $usuario, $pass);
 if (is_array($datos_usuarios)) {
   foreach ($datos_usuarios as $row) {
     if ($row['nivel_acceso'] == 1) {
-      header("Location: ../Admin-panel.php?nv=" . $row['nivel_acceso']);
+      $_SESSION['username'] = $usuario;
+      $_SESSION['nivel_acceso'] = $row['nivel_acceso'];
+      header("Location: ../Admin-panel.php");
     } else if ($row['nivel_acceso'] == 2) {
-      header("Location: ../Admin-panel.php?nv=" . $row['nivel_acceso']);
+      $_SESSION['username'] = $usuario;
+      $_SESSION['nivel_acceso'] = $row['nivel_acceso'];
+      header("Location: ../Admin-panel.php");
     } else {
       // Si no se encontraron coincidencias, redirige a la página de inicio de sesión con el código de error en la URL
       header("Location: ../Paginas/login.html?error=1"); // Código de error genérico

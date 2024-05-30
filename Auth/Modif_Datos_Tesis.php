@@ -47,31 +47,81 @@ if (!empty($_POST['factibilidad'])) {
   $campos[] = "factibilidad = '$factibilidad'";
 }
 
-// Eliminación de usuario
-if (!empty($_POST['eliminar'])) {
-  // Obtén el ID del teg a eliminar
-  $ID_teg = $_POST['ID_teg'];
+// Obtén los nombres de los archivos actuales desde la base de datos
+$sql = "SELECT archivo_pdf, archivo_pdf_resumen FROM teg WHERE ID_teg = ?";
+if ($stmt = mysqli_prepare($conection, $sql)) {
+  mysqli_stmt_bind_param($stmt, "i", $ID_teg);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_bind_result($stmt, $archivo_pdf_actual, $archivo_pdf_resumen_actual);
+  mysqli_stmt_fetch($stmt);
+  mysqli_stmt_close($stmt);
+}
 
-  // Prepara la consulta SQL para eliminar el usuario
-  $sql = "DELETE FROM teg WHERE ID_teg = ?";
+// Manejo de los archivos PDF
+$pdf_update = false;
+if (isset($_FILES['archivo_pdf']) && $_FILES['archivo_pdf']['error'] == UPLOAD_ERR_OK) {
+  $archivo_pdf = $_FILES['archivo_pdf'];
+  $nombre_archivo = $archivo_pdf['name'];
+  $ruta_archivo = $archivo_pdf['tmp_name'];
+  $directorio_archivos = '../Admin/PDF_TEG/';
+  $ruta_destino = $directorio_archivos . $nombre_archivo;
+
+  // Eliminar el archivo PDF actual del servidor
+  if (!empty($archivo_pdf_actual) && file_exists($directorio_archivos . $archivo_pdf_actual)) {
+    unlink($directorio_archivos . $archivo_pdf_actual);
+  }
+
+  if (move_uploaded_file($ruta_archivo, $ruta_destino)) {
+    $campos[] = "archivo_pdf = '$nombre_archivo'";
+    $pdf_update = true;
+  } else {
+    header("Location: ../Admin/Admin-panel.php?code=501"); // Error al mover el archivo
+    exit();
+  }
+}
+
+$pdf_update_resumen = false;
+if (isset($_FILES['archivo_pdf_resumen']) && $_FILES['archivo_pdf_resumen']['error'] == UPLOAD_ERR_OK) {
+  $archivo_pdf_resumen = $_FILES['archivo_pdf_resumen'];
+  $nombre_archivo_resumen = $archivo_pdf_resumen['name'];
+  $ruta_archivo_resumen = $archivo_pdf_resumen['tmp_name'];
+  $directorio_archivos_resumen = '../Admin/PDF_Resumen/';
+  $ruta_destino_resumen = $directorio_archivos_resumen . $nombre_archivo_resumen;
+
+  // Eliminar el archivo PDF de resumen actual del servidor
+  if (!empty($archivo_pdf_resumen_actual) && file_exists($directorio_archivos_resumen . $archivo_pdf_resumen_actual)) {
+    unlink($directorio_archivos_resumen . $archivo_pdf_resumen_actual);
+  }
+
+  if (move_uploaded_file($ruta_archivo_resumen, $ruta_destino_resumen)) {
+    $campos[] = "archivo_pdf_resumen = '$nombre_archivo_resumen'";
+    $pdf_update = true;
+  } else {
+    header("Location: ../Admin/Admin-panel.php?code=501"); // Error al mover el archivo
+    exit();
+  }
+}
+
+// Manejo de la actualización de TEG
+if (!empty($campos)) {
+  $sql = "UPDATE teg SET " . implode(", ", $campos) . " WHERE ID_teg = ?";
 
   if ($stmt = mysqli_prepare($conection, $sql)) {
-    // Vincula el parámetro del ID_admin al marcador de posición de la consulta
     mysqli_stmt_bind_param($stmt, "i", $ID_teg);
 
-    // Ejecuta la consulta
     if (mysqli_stmt_execute($stmt)) {
-      // Redirige a la página de administración con un código de éxito
-      header("Location: ../Admin/Admin-panel.php?code=9&nv=" . $nivel_acceso);
-      exit(); // Termina la ejecución del script después de la redirección
+      if ($pdf_update) {
+        header("Location: ../Admin/Admin-panel.php?code=4");
+      } else {
+        header("Location: ../Admin/Admin-panel.php?code=2");
+      }
+      exit();
     } else {
-      // Redirige a la página de administración con un código de error de servidor
-      header("Location: ../Admin/Admin-panel.php?code=500&nv=" . $nivel_acceso);
+      header("Location: ../Admin/Admin-panel.php?code=500");
       exit();
     }
   } else {
-    // Redirige a la página de administración con un código de error de consulta
-    header("Location: ../Admin/Admin-panel.php?code=400&nv=" . $nivel_acceso);
+    header("Location: ../Admin/Admin-panel.php?code=400");
     exit();
   }
 }

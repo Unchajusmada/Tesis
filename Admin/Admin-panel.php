@@ -1,8 +1,12 @@
 <?php
+session_start();
+
 require '../BBDD/connect_user.php';
 include '../Auth/funciones_leer_bbdd.php';
-$nivel_acceso = $_GET['nv']
 
+if (!isset($_SESSION['username'])) {
+  header('location: ../index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +35,7 @@ $nivel_acceso = $_GET['nv']
   <!-- Page Wrapper -->
   <div id="wrapper">
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-text mx-3">Administración</div>
@@ -47,9 +51,9 @@ $nivel_acceso = $_GET['nv']
           <span>Administración</span></a>
       </li>
 
-      <?php if ($nivel_acceso != 2) : ?>
+      <?php if ($_SESSION['nivel_acceso'] == 2) : ?>
         <li class="nav-item">
-          <a class="nav-link" href="Paginas/register.html">
+          <a class="nav-link" href="Paginas/register.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Crear usuarios</span>
           </a>
@@ -79,28 +83,6 @@ $nivel_acceso = $_GET['nv']
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
-            <div class="topbar-divider d-none d-sm-block"></div>
-
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -126,13 +108,13 @@ $nivel_acceso = $_GET['nv']
             COORDINACIÓN DE TRABAJOS ESPECIALES DE GRADO
           </h1>
 
-          <?php if ($nivel_acceso != 2) : ?>
+          <?php if ($_SESSION['nivel_acceso'] == 2) : ?>
             <!-- Collapsable Card Example -->
             <div class="card shadow mb-4">
               <!-- Card Header - Accordion -->
               <a href="#collapseCard0" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCard0">
                 <h4 class="m-0 font-weight-bold text-primary">
-                  Usuarios
+                  Consultar y Modificar Usuarios
                 </h4>
               </a>
               <!-- Card Content - Collapse -->
@@ -173,7 +155,7 @@ $nivel_acceso = $_GET['nv']
                             <td class="text-center" style="vertical-align: middle;"><?php echo $row['correo']; ?></td>
                             <td class="text-center" style="vertical-align: middle;"><?php echo $row['nivel_acceso']; ?></td>
                             <td class="text-center" style="vertical-align: middle;">
-                              <a href="../Admin/Paginas/Modificar_User.php?ID_user=<?php echo $row['ID_admin']; ?>&nv=<?php echo $nivel_acceso; ?>">
+                              <a href="../Admin/Paginas/Modificar_User.php?ID_user=<?php echo $row['ID_admin']; ?>">
                                 <button class="button-10">Modificar</button>
                               </a>
                             </td>
@@ -217,11 +199,11 @@ $nivel_acceso = $_GET['nv']
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <label>Nombres del Autor</label>
-                        <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" required />
+                        <input type="text" class="form-control form-control-user" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" required />
                       </div>
                       <div class="col-sm-6">
                         <label>Apellidos del Autor</label>
-                        <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" required />
+                        <input type="text" class="form-control form-control-user" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" required />
                       </div>
                     </div>
 
@@ -239,7 +221,7 @@ $nivel_acceso = $_GET['nv']
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <label>Nombre y Apellido del Tutor</label>
-                        <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" required />
+                        <input type="text" class="form-control form-control-user" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" required />
                       </div>
                       <div class="col-sm-6">
                         <label>¿Se implemento o se implementara?</label>
@@ -304,7 +286,7 @@ $nivel_acceso = $_GET['nv']
             <!-- Card Header - Accordion -->
             <a href="#collapseCard2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCard2">
               <h4 class="m-0 font-weight-bold text-primary">
-                Modificar Trabajo Especial de Grado Existentes
+                Modificar Trabajo Especial de Grado Existente
               </h4>
             </a>
             <!-- Card Content - Collapse -->
@@ -354,16 +336,14 @@ $nivel_acceso = $_GET['nv']
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombres_tutor']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo strtoupper($row['factibilidad']); ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_carrera_autor']; ?></td>
-                          <td class="text-center" style="vertical-align: middle;"><?php echo $row['archivo_pdf']; ?></td>
                           <td class="text-center" style="vertical-align: middle;">
-                            <?php if (!empty($row['archivo_pdf_resumen'])) : ?>
-                              <?php echo $row['archivo_pdf_resumen']; ?>
-                            <?php else : ?>
-                              <p>No</p>
-                            <?php endif; ?>
+                            <?php echo isset($row['archivo_pdf']) ? 'Cargado' : 'No'; ?>
                           </td>
                           <td class="text-center" style="vertical-align: middle;">
-                            <a href="../Admin/Paginas/Modificar_Teg.php?ID_TEG=<?php echo $ID_teg; ?>&nv=<?php echo $nivel_acceso; ?>">
+                            <?php echo isset($row['archivo_pdf_resumen']) ? 'Cargado' : 'No'; ?>
+                          </td>
+                          <td class="text-center" style="vertical-align: middle;">
+                            <a href="../Admin/Paginas/Modificar_Teg.php?ID_TEG=<?php echo $ID_teg; ?>">
                               <button class="button-10">Modificar</button>
                             </a>
                           </td>
@@ -380,7 +360,7 @@ $nivel_acceso = $_GET['nv']
             <!-- Card Header - Accordion -->
             <a href="#collapseCard3" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCard3">
               <h4 class="m-0 font-weight-bold text-primary">
-                Trabajos Especiales de Grado existentes
+                Trabajos Especiales de Grado Existente
               </h4>
             </a>
             <!-- Card Content - Collapse -->
@@ -427,13 +407,11 @@ $nivel_acceso = $_GET['nv']
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombres_tutor']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo strtoupper($row['factibilidad']); ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_carrera_autor']; ?></td>
-                          <td class="text-center" style="vertical-align: middle;"><?php echo $row['archivo_pdf']; ?></td>
                           <td class="text-center" style="vertical-align: middle;">
-                            <?php if (!empty($row['archivo_pdf_resumen'])) : ?>
-                              <?php echo $row['archivo_pdf_resumen']; ?>
-                            <?php else : ?>
-                              <p>No</p>
-                            <?php endif; ?>
+                            <?php echo isset($row['archivo_pdf']) ? 'Cargado' : 'No'; ?>
+                          </td>
+                          <td class="text-center" style="vertical-align: middle;">
+                            <?php echo isset($row['archivo_pdf_resumen']) ? 'Cargado' : 'No'; ?>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -449,10 +427,10 @@ $nivel_acceso = $_GET['nv']
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-gradient-primary">
         <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+          <div class="copyright text-center my-auto" style="color: white;">
+            <span>Copyright &copy; TEG - Sistema de Gestión Administrativa de los Trabajos Especiales de Grado</span>
           </div>
         </div>
       </footer>
@@ -480,182 +458,12 @@ $nivel_acceso = $_GET['nv']
         <div class="modal-body">¿Desea salir del modo administrador?</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
-          <a class="btn btn-primary" href="../index.php">Salir</a>
+          <a class="btn btn-primary" href="../Admin/Auth_admin/Cerrar_Sesion.php">Salir</a>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Modificar TEG Modal -->
-  <div class="modal fade" id="ModificationModal" tabindex="-1" role="dialog" aria-labelledby="modificationModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 900px;">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modificationModalLabel" style="display: inline;">Modificar</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <?php
-          $datos_teg = modificar($conection, $ID_teg);
-          foreach ($datos_teg as $row) : ?>
-            <form class="user" method="POST" action="../Auth/Modif_Datos_Tesis.php" enctype="multipart/form-data">
-              <input type="text" id="ID_teg" name="ID_teg" value="<?php echo htmlspecialchars($row['ID_teg']); ?>" hidden />
-              <div class="form-group">
-                <label>Titulo del TEG</label>
-                <input type="text" class="form-control form-control-user" id="titulo" name="titulo" placeholder="Titulo COMPLETO como en la portada del TEG" value="<?php echo htmlspecialchars($row['titulo_teg']); ?>" />
-              </div>
-
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Nombres del Autor</label>
-                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" value="<?php echo htmlspecialchars($row['nombres_autor_teg']); ?>" />
-                </div>
-                <div class="col-sm-6">
-                  <label>Apellidos del Autor</label>
-                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" value="<?php echo htmlspecialchars($row['apellidos_autor_teg']); ?>" />
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Correo del Autor</label>
-                  <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Ejemplo: Correo@gmail.com" value="<?php echo htmlspecialchars($row['correo_autor']); ?>" />
-                </div>
-                <div class="col-sm-6">
-                  <label>Resumen del TEG (Pagina del resumen del TEG en formato pdf)</label>
-                  <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" />
-                  <?php if (!empty($row['archivo_pdf_resumen'])) : ?>
-                    <small>Archivo actual: <?php echo htmlspecialchars($row['archivo_pdf_resumen']); ?></small>
-                  <?php endif; ?>
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Nombre y Apellido del Tutor</label>
-                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" value="<?php echo htmlspecialchars($row['nombres_tutor']); ?>" />
-                </div>
-                <div class="col-sm-6">
-                  <label>¿Se implemento o se implementara?</label>
-                  <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example" required>
-                    <option value="">Selecciona una opcion de la siguiente lista</option>
-                    <option value="si" <?php echo ($row['factibilidad'] == 'si') ? 'selected' : ''; ?>>Si</option>
-                    <option value="no" <?php echo ($row['factibilidad'] == 'no') ? 'selected' : ''; ?>>No</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Año en que se realizo</label>
-                  <input type="number" class="form-control form-control-user no-spin" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required value="<?php echo htmlspecialchars($row['year_teg']); ?>" />
-                </div>
-                <div class="col-sm-6">
-                  <label>Archivo del TEG</label>
-                  <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf" accept=".pdf" />
-                  <?php if (!empty($row['archivo_pdf'])) : ?>
-                    <small>Archivo actual: <?php echo htmlspecialchars($row['archivo_pdf']); ?></small>
-                  <?php endif; ?>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Carrera del graduando</label>
-                <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example" required>
-                  <option value="" selected>
-                    Selecciona una Carrera de la siguiente lista
-                  </option>
-                  <option value="Ingenieria Civil" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Civil') ? 'selected' : ''; ?>>Ingenieria Civil</option>
-                  <option value="Ingenieria de Telecom." <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria de Telecom.') ? 'selected' : ''; ?>>Ingenieria de Telecomunicaciones</option>
-                  <option value="Ingenieria Aeronautica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Aeronautica') ? 'selected' : ''; ?>>Ingenieria Aeronautica</option>
-                  <option value="Ingenieria Electrica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Electrica') ? 'selected' : ''; ?>>Ingenieria Electrica</option>
-                  <option value="Ingenieria Electronica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Electronica') ? 'selected' : ''; ?>>Ingenieria Electronica</option>
-                  <option value="Ingenieria de Sistemas" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria de Sistemas') ? 'selected' : ''; ?>>Ingenieria de Sistemas</option>
-                </select>
-              </div>
-              <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" />
-            </form>
-          <?php endforeach; ?>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modificar Usuario Modal -->
-  <div class="modal fade" id="ModificationUserModal" tabindex="-1" role="dialog" aria-labelledby="modificationUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 900px;">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modificationUserModalLabel" style="display: inline;">Modificar</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <?php
-          $datos_user = modificarUser($conection, $ID_admin);
-          foreach ($datos_user as $row) : ?>
-            <form class="user" method="POST" action="../Auth/Modif_Datos_User.php">
-              <input type="text" id="ID_admin" name="ID_admin" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" hidden />
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Usuario</label>
-                  <input type="text" class="form-control form-control-user" id="user" placeholder="Ingrese su nombre de usuario" name="user" value="<?php echo htmlspecialchars($row['usuario']); ?>" />
-                </div>
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Número de Cedula</label>
-                  <input type="number" class="form-control form-control-user no-spin" id="cedula" placeholder="Ingrese su cedula (Ej: 28387623)" name="cedula" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Nombre</label>
-                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="exampleFirstName" placeholder="Primer Nombre" name="nombre" value="<?php echo htmlspecialchars($row['nombre_usuario']); ?>" />
-                </div>
-                <div class="col-sm-6">
-                  <label>Apellido</label>
-                  <input type="text" class="form-control form-control-user" pattern="[A-Za-z\s]+" id="exampleLastName" placeholder="Apellido" name="apellido" value="<?php echo htmlspecialchars($row['apellido_usuario']); ?>" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Correo</label>
-                <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Correo" name="correo" value="<?php echo htmlspecialchars($row['correo']); ?>" />
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <label>Ingrese una nueva contraseña si desea actualizarla</label>
-                  <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña" name="pass1" />
-                </div>
-                <div class="col-sm-6">
-                  <label>Repita su contraseña</label>
-                  <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repita Contraseña" name="pass2" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Nivel de Acceso</label>
-                <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example" required>
-                  <option value="" selected>Selecciona una opcion de la siguiente lista</option>
-                  <option value="1" <?php echo ($row['nivel_acceso'] == '1') ? 'selected' : ''; ?>>1 - Administrador</option>
-                  <option value="2" <?php echo ($row['nivel_acceso'] == '2') ? 'selected' : ''; ?>>2 - SuperAdmin</option>
-                </select>
-              </div>
-
-              <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" />
-            </form>
-          <?php endforeach; ?>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Volver</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <!-- Logout Modal -->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -716,8 +524,14 @@ $nivel_acceso = $_GET['nv']
       case "1":
         showAlert("¡Exito!", "Registro de usuario realizado con exito", "success")
         break
+      case "2":
+        showAlert("¡Exito!", "Actualización de TEG realizada con exito", "success")
+        break
       case "3":
         showAlert("¡Exito!", "Actualización de usuario realizada con exito", "success")
+        break
+      case "4":
+        showAlert("¡Exito!", "Actualización de TEG y archivos PDF realizada con exito", "success")
         break
       case "9":
         showAlert("¡Exito!", "TEG eliminado con exito", "warning")
@@ -744,6 +558,7 @@ $nivel_acceso = $_GET['nv']
         break
     }
   </script>
+
 </body>
 
 </html>

@@ -11,6 +11,8 @@ $correo_user = $_POST['correo'];
 $pass1 = $_POST['pass1'];
 $pass2 = $_POST['pass2'];
 
+$pass_hash = sha1($pass1);
+
 // Verifica si todas las variables están definidas
 if (isset($nombre_user, $apellido_user, $correo_user, $pass1, $pass2)) {
   // Prepara la consulta SQL utilizando un prepared statement
@@ -18,7 +20,7 @@ if (isset($nombre_user, $apellido_user, $correo_user, $pass1, $pass2)) {
 
   if ($stmt = mysqli_prepare($conection, $sql)) {
     // Vincula los parámetros a los marcadores de posición de la consulta
-    mysqli_stmt_bind_param($stmt, "sssssss", $ID_admin, $usuario, $pass1, $nombre_user, $apellido_user, $correo_user, $nivel_acceso);
+    mysqli_stmt_bind_param($stmt, "sssssss", $ID_admin, $usuario, $pass_hash, $nombre_user, $apellido_user, $correo_user, $nivel_acceso);
 
     // Verificar contraseña
     if ($pass1 == $pass2) {
