@@ -48,7 +48,7 @@ $ID_admin = $_GET['ID_user'];
               <?php
               $datos_user = modificarUser($conection, $ID_admin);
               foreach ($datos_user as $row) : ?>
-                <form class="user" method="POST" action="../../Auth/Modif_Datos_User.php" onsubmit="return validateForm();">
+                <form class="user" method="POST" action="../../Auth/Modif_Datos_User.php" onsubmit="return validateForm();" autocomplete="nope">
                   <input type="text" id="ID_admin" name="ID_admin" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" hidden />
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -58,7 +58,7 @@ $ID_admin = $_GET['ID_user'];
                     </div>
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <label>Número de Cedula</label>
-                      <input type="number" class="form-control form-control-user no-spin" id="cedula" name="cedula" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" readonly />
+                      <input type="number" class="form-control form-control-user no-spin" id="cedula" name="cedula" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
                     </div>
                   </div>
                   <div class="form-group row">
@@ -88,7 +88,7 @@ $ID_admin = $_GET['ID_user'];
                   </div>
                   <div class="form-group">
                     <label>Nivel de Acceso</label>
-                    <select class="form-control-special form-control-user-special" name="factibilidad" aria-label="Default select example" disabled>
+                    <select class="form-control-special form-control-user-special" name="nivel_acceso" aria-label="Default select example">
                       <option value="" selected>Selecciona una opción de la siguiente lista</option>
                       <option value="1" <?php echo ($row['nivel_acceso'] == '1') ? 'selected' : ''; ?>>1 - Administrador</option>
                       <option value="2" <?php echo ($row['nivel_acceso'] == '2') ? 'selected' : ''; ?>>2 - SuperAdmin</option>

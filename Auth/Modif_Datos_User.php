@@ -7,6 +7,11 @@ $ID_admin = $_POST['ID_admin'];
 // Crea un array para almacenar los campos que se van a actualizar
 $campos = array();
 
+if (!empty($_POST['cedula'])) {
+  $cedula = $_POST['cedula'];
+  $campos[] = "ID_admin = '$cedula'";
+}
+
 if (!empty($_POST['user'])) {
   $user = trim($_POST['user']);
   $campos[] = "usuario = '$user'";
@@ -31,6 +36,11 @@ if (!empty($_POST['pass1'])) {
   $pass1 = $_POST['pass1'];
   $pass_hash = sha1($pass1);
   $campos[] = "password = '$pass_hash'";
+}
+
+if (!empty($_POST['nivel_acceso'])) {
+  $nivel_acceso = $_POST['nivel_acceso'];
+  $campos[] = "nivel_acceso = '$nivel_acceso'";
 }
 
 // Verificar contraseña
