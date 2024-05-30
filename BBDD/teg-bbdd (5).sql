@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2024 a las 02:26:40
+-- Tiempo de generación: 31-05-2024 a las 00:28:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `ID_admin` int(8) NOT NULL,
   `usuario` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `nombre_usuario` text NOT NULL,
   `apellido_usuario` text NOT NULL,
   `correo` varchar(50) NOT NULL,
@@ -42,11 +42,10 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ID_admin`, `usuario`, `password`, `nombre_usuario`, `apellido_usuario`, `correo`, `nivel_acceso`) VALUES
-(12, 'Unchajusmada3', '546', '12', '12', '12@gmail.com', 1),
-(27713, 'e@gmail.com', '123', 'Carmen', 'Del Carmen', 'aaaa@gmail.com', 1),
-(27712072, 'Daye2802', 'Febrero-28', 'Nayelis', 'Ceballos', 'nayelis@gmail.com', 2),
-(28387623, 'Unchajusmada', 'Amazonas27', 'Carlos', 'Bruzual', 'carlos@gmail.com', 1),
-(29598696, 'Denky13', '1234', 'Brandon', 'Marquez', 'brandon@gmail.com', 2);
+(5961928, 'Carlos', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Carlos Luis', 'Bruzual Roa', 'oficial@gmail.com', 1),
+(27712072, 'Daye2802', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Nayelis', 'Ceballos', 'naye@gmail.com', 1),
+(28387623, 'Unchajusmada', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Carlos', 'Bruzual', 'carlos@gmail.com', 2),
+(29598696, 'Denky12', 'e68d6931999bdaf715bea26d5815b63c8b014d8c', 'Brandon', 'Marquez', 'brandonthememelord@gmail.com', 2);
 
 -- --------------------------------------------------------
 
@@ -96,15 +95,10 @@ CREATE TABLE `teg` (
 --
 
 INSERT INTO `teg` (`ID_teg`, `titulo_teg`, `nombres_autor_teg`, `apellidos_autor_teg`, `year_teg`, `correo_autor`, `nombre_carrera_autor`, `nombres_tutor`, `factibilidad`, `archivo_pdf`, `archivo_pdf_resumen`) VALUES
-(2, 'Carga desde teléfono', 'Luis Carlos', 'Roa Bruzual', '2099', 'clbr@gmail.com', 'Ingenieria Electrica', 'Brandon Márquez', 'no', 'COMPROBANTE BANCARIO REGISTRO FUNDICION DEL CENTRO 1.pdf', NULL),
-(3, 'Constitucion de la Republica Bolivariana de Venezuela', 'Simón José Antonio de la Santísima Trinidad', 'Bolívar Ponte y Palacios Blanco', '1999', 'simonellibertador@patria.com', 'Ingenieria Civil', 'Andres Bello', 'si', 'constitucion-nacional-20191205135853.pdf', NULL),
-(4, 'Prueba tesis titulo largo normal promedio largo', 'Fulanito', 'Detal', '2000', 'luis@gmail.com', 'Ingenieria Aeronautica', 'Luis Luna', 'no', 'RifCarlosBruzual.pdf', NULL),
-(5, 'El impacto de Genshin Impact en los jovenes Venezolanos del Siglo XXI', 'Carlos Javier Alfonso', 'Moya Lopez', '2077', 'murderbro@gmail.com', 'Ingenieria de Telecom.', 'Emmanuel Salas y Adrian Ortega', 'no', 'genshin-impact-guide-list-en_compress.pdf', NULL),
+(3, 'Constitución de la Republica Bolivariana de Venezuela', 'Simón José Antonio de la Santísima Trinidad', 'Bolívar Ponte y Palacios Blanco', '1999', 'simonellibertador@patria.com', 'Ingenieria Electronica', 'Andrés Bello', 'si', 'constitucion-nacional-20191205135853.pdf', 'Carta culminación SC.pdf'),
+(5, 'El impacto de Genshin Impact en los jovenes Venezolanos del Siglo XXI', 'Carlos Javier Alfonso', 'Moya Lopez', '2050', 'murderbro@gmail.com', 'Ingenieria de Telecom.', 'Emmanuel Salas y Adrian Ortega', 'si', 'genshin-impact-guide-list-en_compress.pdf', 'R (3).pdf'),
 (6, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA Núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria de Sistemas', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay.pdf', 'Resumen TEG Carlos Bruzual.pdf'),
-(7, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA Núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria de Telecom.', 'Alexander Arroyo', 'si', 'Informe - Nayelis Ceballos PI Santuario.pdf', 'Cap02 (1).pdf'),
-(8, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA Núcleo Maracay', 'Fulanito', 'Detal', '1999', 'daniel@gmail.com', 'Ingenieria Aeronautica', 'Andres Bello', 'si', 'Cap02 (1).pdf', 'PreKTeachingUnit_BIRDS_spanish.pdf'),
-(9, 'Avion hipersonico para viajar a la Velocidad de la Luz', 'Pruebas', 'Bruzual', '2026', 'brandonthememelord@gmail.com', 'Ingenieria Electrica', 'Alexander Arroy', 'no', 'NAYE 5.pdf', 'IMPLA 1.pdf'),
-(10, 'sssssss', 'ssssss', 'ssssssss', '2002', 'brandonthememelord@gmail.com', 'Ingenieria Civil', 'Si', 'no', 'PreKTeachingUnit_BIRDS_spanish (1).pdf', 'Orange and Beige Vintage Project Presentation.pdf');
+(8, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA Núcleo Maracay', 'Fulanito', 'Detal', '1999', 'daniel@gmail.com', 'Ingenieria Electronica', 'Andres Bello', 'si', 'Cap02 (1).pdf', 'PreKTeachingUnit_BIRDS_spanish.pdf');
 
 --
 -- Índices para tablas volcadas
@@ -136,7 +130,7 @@ ALTER TABLE `teg`
 -- AUTO_INCREMENT de la tabla `teg`
 --
 ALTER TABLE `teg`
-  MODIFY `ID_teg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID_teg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
