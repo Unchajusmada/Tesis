@@ -66,6 +66,12 @@ function codigosAlerta(Code) {
     case "400":
       showAlert("Error", "Error al preparar la consulta SQL", "error")
       break
+    case "403":
+      showAlert("Error", "Contraseña incorrecta", "error")
+      break
+    case "404":
+      showAlert("Error", "Usuario no encontrado", "error")
+      break
     case "500":
       showAlert("Error", "Error al ejecutar la consulta", "error")
       break
