@@ -111,100 +111,19 @@ if (!isset($_SESSION['username'])) {
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="../js/Alertas.js"></script>
+  <script src="../js/validador.js"></script>
 
   <!-- Custom Script verificar cedula unica y usuario unico -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Evento de cambio del campo de usuario
-      $("#user").on("change", function() {
-        var user = $(this).val()
-        if (user !== "") {
-          // Realizar solicitud AJAX para verificar el usuario
-          $.ajax({
-            url: "../Auth_admin/verificar_usuario.php", // Ruta al archivo PHP que realizará la verificación
-            method: "POST",
-            data: {
-              user: user
-            },
-            success: function(response) {
-              if (response === "existe") {
-                $("#userError").text("Este usuario ya está en uso")
-                disableSubmitButton()
-              } else {
-                $("#userError").text("")
-                enableSubmitButton()
-              }
-            },
-          })
-        }
-      })
 
-      // Evento de cambio del campo de cédula
-      $("#cedula").on("change", function() {
-        var cedula = $(this).val()
-        if (cedula !== "") {
-          // Realizar solicitud AJAX para verificar la cédula
-          $.ajax({
-            url: "../Auth_admin/verificar_usuario.php", // Ruta al archivo PHP que realizará la verificación
-            method: "POST",
-            data: {
-              cedula: cedula
-            },
-            success: function(response) {
-              if (response === "existe") {
-                $("#cedulaError").text("Esta cédula ya está en uso")
-                disableSubmitButton()
-              } else {
-                $("#cedulaError").text("")
-                enableSubmitButton()
-              }
-            },
-          })
-        }
-      })
-
-      function disableSubmitButton() {
-        $('button[type="submit"]').prop("disabled", true)
-      }
-
-      function enableSubmitButton() {
-        $('button[type="submit"]').prop("disabled", false)
-      }
-    })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script>
     // Obtén el código de la URL
     const urlParams = new URLSearchParams(window.location.search)
     const Code = urlParams.get("code")
 
-    // Función para mostrar una alerta de SweetAlert
-    function showAlert(title, text, icon) {
-      Swal.fire({
-        title: title,
-        text: text,
-        icon: icon,
-        confirmButtonText: "Continuar",
-      })
-    }
-
-    // Evalúa el código de error y muestra la alerta correspondiente
-    switch (Code) {
-      case "100":
-        showAlert(
-          "Error",
-          "Faltaron campos por llenar al registrar al usuario",
-          "error"
-        )
-        break
-      case "101":
-        showAlert("Error", "Las contraseñas no coinciden", "error")
-        break
-      default:
-        break
-    }
+    codigosAlerta(Code)
   </script>
 </body>
 

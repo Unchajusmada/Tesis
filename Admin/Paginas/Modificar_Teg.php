@@ -127,9 +127,12 @@ $ID_teg = $_GET['ID_TEG']
                     <a class="small btn btn-user btn-block" href="../Admin-panel.php" style="border: 1px solid blue; margin-top: 10px;">Volver</a>
                   </div>
                   <hr />
+                </form>
+                <form id="eliminarTEGForm" class="eliminarTEG" action="../../Auth/eliminar_teg.php" method="POST">
                   <!-- Campo oculto para la eliminación -->
-                  <input type="hidden" name="eliminar" id="eliminar" value="0" />
-                  <input type="button" class="btn btn-danger btn-user btn-block" value="Eliminar TEG" onclick="showConfirmation();" />
+                  <input type="hidden" name="teg-eliminar" id="teg-eliminar" value="<?php echo htmlspecialchars($row['ID_teg']); ?>" />
+                  <input type="hidden" name="eliminarTEG" id="eliminarTEG" value="0" />
+                  <input type="button" class="btn btn-danger btn-user btn-block" value="Eliminar TEG" onclick="showConfirmationTEG();" />
                 </form>
               <?php endforeach; ?>
             </div>
@@ -148,44 +151,12 @@ $ID_teg = $_GET['ID_TEG']
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
+  <script src="../js/Eliminar_user_o_teg.js"></script>
 
   <!-- Custom Script verificar cedula unica y usuario unico -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    var confirmDelete = false; // Variable de control
-
-    function showConfirmation() {
-      Swal.fire({
-        title: '¿Estás seguro de que deseas eliminar este TEG?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí',
-        cancelButtonText: 'Cancelar',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          confirmDelete = true; // Se confirma la eliminación
-          document.getElementById('eliminar').value = '1'; // Establecer el valor para eliminar
-          document.querySelector('.user').submit(); // Enviar el formulario
-        }
-      });
-    }
-
-    function validateForm() {
-      if (!confirmDelete && document.getElementById('eliminar').value === '1') {
-        // Si no se ha confirmado la eliminación, se cancela el envío del formulario
-        Swal.fire({
-          title: 'Debes confirmar la eliminación del usuario',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
-        return false;
-      }
-      // Si se ha confirmado la eliminación, se permite el envío del formulario
-      return true;
-    }
-  </script>
 </body>
 
 </html>

@@ -1,9 +1,6 @@
 <?php
 require '../BBDD/connect_user.php';
 
-// Obtén los valores que deseas actualizar en la tabla teg
-$ID_admin = $_POST['user-eliminar'];
-
 // Eliminación de usuario
 if (!empty($_POST['eliminar'])) {
   // Obtén el ID del usuario a eliminar

@@ -48,7 +48,7 @@ $ID_admin = $_GET['ID_user'];
               <?php
               $datos_user = modificarUser($conection, $ID_admin);
               foreach ($datos_user as $row) : ?>
-                <form class="user" method="POST" action="../../Auth/Modif_Datos_User.php" onsubmit="return validateForm();" autocomplete="nope">
+                <form class="user" method="POST" action="../../Auth/Modif_Datos_User.php" autocomplete="nope">
                   <input type="text" id="ID_admin" name="ID_admin" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" hidden />
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -105,7 +105,7 @@ $ID_admin = $_GET['ID_user'];
                   <!-- Campo oculto para la eliminación -->
                   <input type="hidden" name="user-eliminar" id="user-eliminar" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
                   <input type="hidden" name="eliminar" id="eliminar" value="0" />
-                  <input type="button" class="btn btn-danger btn-user btn-block" value="Eliminar usuario" onclick="showConfirmation();" />
+                  <input type="button" class="btn btn-danger btn-user btn-block" value="Eliminar usuario" onclick="showConfirmationUSER();" />
                 </form>
               <?php endforeach; ?>
             </div>
@@ -124,6 +124,7 @@ $ID_admin = $_GET['ID_user'];
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
+  <script src="../js/Eliminar_user_o_teg.js"></script>
 
   <!-- Custom Script verificar cedula unica y usuario unico -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -193,26 +194,6 @@ $ID_admin = $_GET['ID_user'];
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    function showConfirmation() {
-      Swal.fire({
-        title: '¿Estás seguro?',
-        text: 'Esta acción eliminará al usuario permanentemente.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // Si el usuario confirma, establece el valor del campo oculto "eliminar" en 1 y envía el formulario
-          document.getElementById("eliminar").value = "1";
-          document.getElementById("eliminarForm").submit();
-        }
-      });
-    }
-  </script>
 
 </body>
 

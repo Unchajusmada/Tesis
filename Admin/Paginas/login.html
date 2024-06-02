@@ -93,12 +93,13 @@
                     <div class="text-center">
                       <a
                         class="small btn btn-danger btn-block"
-                        href="forgot-password.html"
+                        href="#"
                         style="
                           border: 1px solid rgb(255, 255, 255);
                           margin-top: 10px;
                         "
-                        >Olvide mi contraseña</a
+                        onclick="mostrarAlertaPass()"
+                        >Olvidé mi contraseña</a
                       >
                     </div>
                   </div>
@@ -120,38 +121,13 @@
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin-2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="../js/Alertas.js"></script>
     <script>
       // Obtén el código de error de la URL
       const urlParams = new URLSearchParams(window.location.search)
-      const errorCode = urlParams.get("error")
+      const Code = urlParams.get("error")
 
-      // Función para mostrar una alerta de SweetAlert
-      function showAlert(title, text, icon) {
-        Swal.fire({
-          title: title,
-          text: text,
-          icon: icon,
-          confirmButtonText: "Continuar",
-        })
-      }
-
-      // Evalúa el código de error y muestra la alerta correspondiente
-      switch (errorCode) {
-        case "403":
-          showAlert("Error", "La contraseña no coincide", "error")
-          break
-        case "404":
-          showAlert("Error", "El usuario no existe", "error")
-          break
-        case "500":
-          showAlert("Error", "Error en la consulta de usuario", "error")
-          break
-        case "501":
-          showAlert("Error", "Error en la consulta de contraseña", "error")
-          break
-        default:
-          break
-      }
+      codigosAlerta(Code)
     </script>
   </body>
 </html>

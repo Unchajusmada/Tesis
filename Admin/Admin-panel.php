@@ -214,7 +214,7 @@ if (!isset($_SESSION['username'])) {
                       </div>
                       <div class="col-sm-6">
                         <label>Resumen del TEG (Pagina del resumen del TEG en formato pdf)</label>
-                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf_resumen" accept=".pdf" />
+                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" />
                       </div>
                     </div>
 
@@ -299,13 +299,9 @@ if (!isset($_SESSION['username'])) {
                       <tr>
                         <th class="text-center" style="vertical-align: middle;">Titulo del TEG</th>
                         <th class="text-center" style="vertical-align: middle;">Autor del TEG</th>
-                        <th class="text-center" style="vertical-align: middle;">Correo del Autor</th>
                         <th class="text-center" style="vertical-align: middle;">Año del TEG</th>
                         <th class="text-center" style="vertical-align: middle;">Nombre del Tutor</th>
-                        <th class="text-center" style="vertical-align: middle;">¿Implementado?</th>
                         <th class="text-center" style="vertical-align: middle;">Carrera del Autor</th>
-                        <th class="text-center" style="vertical-align: middle;">TEG PDF</th>
-                        <th class="text-center" style="vertical-align: middle;">RESUMEN PDF</th>
                         <th class="text-center" style="vertical-align: middle;">Modificar</th>
                       </tr>
                     </thead>
@@ -313,13 +309,9 @@ if (!isset($_SESSION['username'])) {
                       <tr>
                         <th class="text-center" style="vertical-align: middle;">Titulo del TEG</th>
                         <th class="text-center" style="vertical-align: middle;">Autor del TEG</th>
-                        <th class="text-center" style="vertical-align: middle;">Correo del Autor</th>
                         <th class="text-center" style="vertical-align: middle;">Año del TEG</th>
                         <th class="text-center" style="vertical-align: middle;">Nombre del Tutor</th>
-                        <th class="text-center" style="vertical-align: middle;">¿Implementado?</th>
                         <th class="text-center" style="vertical-align: middle;">Carrera del Autor</th>
-                        <th class="text-center" style="vertical-align: middle;">TEG PDF</th>
-                        <th class="text-center" style="vertical-align: middle;">RESUMEN PDF</th>
                         <th class="text-center" style="vertical-align: middle;">Modificar</th>
                       </tr>
                     </tfoot>
@@ -331,17 +323,9 @@ if (!isset($_SESSION['username'])) {
                           <?php $ID_teg = $row['ID_teg']; ?>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['titulo_teg']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombres_autor_teg']; ?>, <?php echo $row['apellidos_autor_teg']; ?></td>
-                          <td class="text-center" style="vertical-align: middle;"><?php echo $row['correo_autor']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['year_teg']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombres_tutor']; ?></td>
-                          <td class="text-center" style="vertical-align: middle;"><?php echo strtoupper($row['factibilidad']); ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_carrera_autor']; ?></td>
-                          <td class="text-center" style="vertical-align: middle;">
-                            <?php echo isset($row['archivo_pdf']) ? 'Cargado' : 'No'; ?>
-                          </td>
-                          <td class="text-center" style="vertical-align: middle;">
-                            <?php echo isset($row['archivo_pdf_resumen']) ? 'Cargado' : 'No'; ?>
-                          </td>
                           <td class="text-center" style="vertical-align: middle;">
                             <a href="../Admin/Paginas/Modificar_Teg.php?ID_TEG=<?php echo $ID_teg; ?>">
                               <button class="button-10">Modificar</button>
@@ -360,7 +344,7 @@ if (!isset($_SESSION['username'])) {
             <!-- Card Header - Accordion -->
             <a href="#collapseCard3" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCard3">
               <h4 class="m-0 font-weight-bold text-primary">
-                Trabajos Especiales de Grado Existente
+                Información de los Trabajos Especiales de Grado Existentes
               </h4>
             </a>
             <!-- Card Content - Collapse -->
@@ -407,12 +391,8 @@ if (!isset($_SESSION['username'])) {
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombres_tutor']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo strtoupper($row['factibilidad']); ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_carrera_autor']; ?></td>
-                          <td class="text-center" style="vertical-align: middle;">
-                            <?php echo isset($row['archivo_pdf']) ? 'Cargado' : 'No'; ?>
-                          </td>
-                          <td class="text-center" style="vertical-align: middle;">
-                            <?php echo isset($row['archivo_pdf_resumen']) ? 'Cargado' : 'No'; ?>
-                          </td>
+                          <td class="text-center" style="vertical-align: middle;"><?php echo $row['archivo_pdf']; ?></td>
+                          <td class="text-center" style="vertical-align: middle;"><?php echo $row['archivo_pdf_resumen']; ?></td>
                         </tr>
                       <?php endforeach; ?>
                     </tbody>
@@ -474,89 +454,22 @@ if (!isset($_SESSION['username'])) {
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.js"></script>
+  <script src="js/Alertas.js"></script>
 
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
-
-  <script>
-    $(document).ready(function() {
-      $('#dataTable2').DataTable({
-        "lengthMenu": [5],
-        "pageLength": 5
-      });
-    });
-  </script>
-
-  <script>
-    $(document).ready(function() {
-      $('#dataTable3').DataTable({
-        "lengthMenu": [5],
-        "pageLength": 5
-      });
-    });
-  </script>
-
+  <script src="js/inicializar-datatables.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
   <script>
     // Obtén el código de la URL
     const urlParams = new URLSearchParams(window.location.search)
     const Code = urlParams.get("code")
 
-    // Función para mostrar una alerta de SweetAlert
-    function showAlert(title, text, icon) {
-      Swal.fire({
-        title: title,
-        text: text,
-        icon: icon,
-        confirmButtonText: "Continuar",
-      })
-    }
-
-    // Evalúa el código de error y muestra la alerta correspondiente
-    switch (Code) {
-      case "0":
-        showAlert("¡Exito!", "Registro de TEG realizado con exito", "success")
-        break
-      case "1":
-        showAlert("¡Exito!", "Registro de usuario realizado con exito", "success")
-        break
-      case "2":
-        showAlert("¡Exito!", "Actualización de TEG realizada con exito", "success")
-        break
-      case "3":
-        showAlert("¡Exito!", "Actualización de usuario realizada con exito", "success")
-        break
-      case "4":
-        showAlert("¡Exito!", "Actualización de TEG y archivos PDF realizada con exito", "success")
-        break
-      case "9":
-        showAlert("¡Exito!", "TEG eliminado con exito", "warning")
-        break
-      case "10":
-        showAlert("¡Exito!", "Usuario eliminado con exito", "warning")
-        break
-      case "101":
-        showAlert("Error", "Las contraseñas no coinciden", "error")
-        break
-      case "400":
-        showAlert("Error", "Error al preparar la consulta SQL", "error")
-        break
-      case "500":
-        showAlert("Error", "Error al ejecutar la consulta", "error")
-        break
-      case "501":
-        showAlert("Error", "Error al mover los archivos", "error")
-        break
-      case "502":
-        showAlert("Error", "No se seleccionó algún archivo", "error")
-        break
-      default:
-        break
-    }
+    codigosAlerta(Code)
   </script>
 
 </body>
