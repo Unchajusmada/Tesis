@@ -35,7 +35,7 @@ if (isset($nombre_user, $apellido_user, $correo_user, $pass1, $pass2)) {
         header("Location: ../Admin/Admin-panel.php?code=500"); // Error al ejecutar la consulta
       }
     } else {
-      header("Location: ../Admin/Paginas/register.html?code=101"); // Las contraseñas no coinciden
+      header("Location: ../Admin/Paginas/register.php?code=101"); // Las contraseñas no coinciden
     }
   } else {
     header("Location: ../Admin/Admin-panel.php?code=400"); // Error al preparar la consulta
@@ -44,5 +44,5 @@ if (isset($nombre_user, $apellido_user, $correo_user, $pass1, $pass2)) {
   // Cierra la conexión
   mysqli_close($conection);
 } else {
-  header("Location: ../Admin/Paginas/register.html?code=100"); // Faltan parámetros en el formulario
+  header("Location: ../Admin/Paginas/register.php?code=100"); // Faltan parámetros en el formulario
 }

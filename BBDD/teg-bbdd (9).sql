@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-06-2024 a las 00:56:24
+-- Tiempo de generación: 04-06-2024 a las 02:04:43
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -94,7 +94,14 @@ CREATE TABLE `teg` (
 --
 
 INSERT INTO `teg` (`ID_teg`, `titulo_teg`, `nombres_autor_teg`, `apellidos_autor_teg`, `year_teg`, `correo_autor`, `nombre_carrera_autor`, `nombres_tutor`, `factibilidad`, `archivo_pdf`, `archivo_pdf_resumen`) VALUES
-(15, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria de Sistemas', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay.pdf', 'Resumen TEG Carlos Bruzual.pdf');
+(15, 'SEMIFINAL - Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria de Sistemas', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay.pdf', 'Resumen TEG Carlos Bruzual.pdf'),
+(21, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria Civil', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay.pdf', 'Resumen TEG Carlos Bruzual.pdf'),
+(22, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria Electrica', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay.pdf', 'Resumen TEG Carlos Bruzual.pdf'),
+(23, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria Electronica', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay.pdf', 'Resumen TEG Carlos Bruzual.pdf'),
+(24, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria de Telecom.', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay.pdf', 'Resumen TEG Carlos Bruzual.pdf'),
+(25, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria Aeronautica', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay.pdf', 'Resumen TEG Carlos Bruzual.pdf'),
+(26, 'Sistema para Mejorar la Gestión Administrativa de Trabajo Especial de Grado en la UNEFA núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria de Sistemas', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay.pdf', 'Resumen TEG Carlos Bruzual.pdf'),
+(27, 'FINAL - Sistema para Mejorar la Gestión Administrativa de los Trabajos Especiales de Grado en la UNEFA Núcleo Maracay', 'Carlos Luis', 'Bruzual Roa', '2024', 'carlosluisbruzualroa@gmail.com', 'Ingenieria de Sistemas', 'Alexander Arroyo', 'si', 'Sistema para Mejorar la Gestion Administrativa de TEG en la UNEFA núcleo Maracay - FINAL.pdf', 'Resumen TEG Carlos Bruzual.pdf');
 
 --
 -- Índices para tablas volcadas
@@ -126,7 +133,7 @@ ALTER TABLE `teg`
 -- AUTO_INCREMENT de la tabla `teg`
 --
 ALTER TABLE `teg`
-  MODIFY `ID_teg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_teg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
