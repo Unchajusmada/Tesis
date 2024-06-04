@@ -50,6 +50,9 @@ $elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_po
       <div class="align-self-start ml-10">
         <img class="logos" src="img/defensa logo.png" />
       </div>
+      <div class="align-self-center ml-10 d-lg-block d-none">
+        <img class="logos2" src="img/bandera.png" />
+      </div>
       <div class="align-self-end">
         <img class="logos" src="img/unefa.png" alt="" />
       </div>
