@@ -109,7 +109,7 @@ main,
   width: 350px;
   border: 2px solid black;
   border-radius: 0.5em;
-  background-color: #fefefe6e;
+  background-color: #fefefe87;
   padding: 5px 10px;
   min-height: 250px;
   transition: 0.3s;
@@ -156,7 +156,7 @@ main,
 .texto-categoria {
   height: auto;
   border-radius: 6em;
-  background-color: #fefefe6e;
+  background-color: #fefefe9c;
   padding: 25px;
   margin: 10px;
   width: auto;
@@ -330,7 +330,7 @@ div:not(.bienvenida, .titulo, .categoria) > span {
 /* Estilos para los títulos */
 .titulo {
   text-align: center;
-  font-size: 1em;
+  font-size: 1.1em;
   margin-bottom: 0.25rem;
   margin-top: 0.25rem;
   line-height: 1.2;

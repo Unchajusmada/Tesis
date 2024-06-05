@@ -94,10 +94,6 @@ $elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_po
 						<span style="font-size: 2em; color: white; text-shadow: black 3px 3px 3px; font-weight: bold;"><?php echo $primeraLetra; ?></span>
 						<div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
 							<div class="row">
-								<div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">
-									<p>Titulo:</p>
-								</div>
-								<br />
 								<div class="titulo col-md-12 d-flex justify-content-md-center">
 									<span><?php echo $row['titulo_teg']; ?></span>
 								</div>

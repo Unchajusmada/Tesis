@@ -104,10 +104,6 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
         ?>
           <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
             <div class="row">
-              <div class="cabezera col-md-12 d-none d-md-flex justify-content-md-center">
-                <p>Titulo:</p>
-              </div>
-              <br />
               <div class="titulo col-md-12 d-flex justify-content-center">
                 <span><?php echo $row['titulo_teg']; ?></span>
               </div>
