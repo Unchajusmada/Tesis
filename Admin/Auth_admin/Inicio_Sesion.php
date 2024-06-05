@@ -15,10 +15,12 @@ if (is_array($datos_usuarios)) {
   foreach ($datos_usuarios as $row) {
     if ($row['nivel_acceso'] == 1) {
       $_SESSION['username'] = $usuario;
+      $_SESSION['ID_admin'] = $row['ID_admin'];
       $_SESSION['nivel_acceso'] = $row['nivel_acceso'];
       header("Location: ../Admin-panel.php");
     } else if ($row['nivel_acceso'] == 2) {
       $_SESSION['username'] = $usuario;
+      $_SESSION['ID_admin'] = $row['ID_admin'];
       $_SESSION['nivel_acceso'] = $row['nivel_acceso'];
       header("Location: ../Admin-panel.php");
     } else {

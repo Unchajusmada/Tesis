@@ -88,7 +88,7 @@ if (!isset($_SESSION['username'])) {
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Opciones</span>
-                <img class="img-profile rounded-circle" src="img/engranaje-vector-8.png" />
+                <!-- <img class="img-profile rounded-circle" src="img/engranaje-vector-8.png" /> -->
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -172,14 +172,17 @@ if (!isset($_SESSION['username'])) {
                                   <i class="bi bi-pencil-square"></i>
                                 </button>
                               </a>
-                              <form id="eliminarForm-<?php echo $ID_admin; ?>" class="eliminar" action="../Auth/eliminar_user.php" method="POST">
-                                <!-- Campo oculto para la eliminación -->
-                                <input type="hidden" name="user-eliminar" id="user-eliminar" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
-                                <input type="hidden" name="eliminar" id="eliminar" value="0" />
-                                <button type="button" class="btn btn-danger" onclick="showConfirmationUSER('eliminarForm-<?php echo $ID_admin; ?>');">
-                                  <i class="bi bi-trash"></i>
-                                </button>
-                              </form>
+                              <?php
+                              if ($row['ID_admin'] != $_SESSION['ID_admin']) { ?>
+                                <form id="eliminarForm-<?php echo $ID_admin; ?>" class="eliminar" action="../Auth/eliminar_user.php" method="POST">
+                                  <!-- Campo oculto para la eliminación -->
+                                  <input type="hidden" name="user-eliminar" id="user-eliminar" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
+                                  <input type="hidden" name="eliminar" id="eliminar" value="0" />
+                                  <button type="button" class="btn btn-danger" onclick="showConfirmationUSER('eliminarForm-<?php echo $ID_admin; ?>');">
+                                    <i class="bi bi-trash"></i>
+                                  </button>
+                                </form>
+                              <?php } ?>
                             </td>
                           </tr>
                         <?php endforeach; ?>

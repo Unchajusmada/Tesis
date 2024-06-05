@@ -42,16 +42,7 @@ $elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_po
 
 <body>
   <!-- Topbar Start -->
-  <div class="bg-primary text-white container pt-2 pb-2 pl-4 pr-4">
-    <div class="d-flex justify-content-between">
-      <div class="align-self-start ml-10">
-        <img class="logos" src="img/defensa logo.png" />
-      </div>
-      <div class="align-self-end">
-        <img class="logos" src="img/unefa.png" alt="" />
-      </div>
-    </div>
-  </div>
+  <?php include 'template/topbar.php'; ?>
   <!-- Topbar End -->
 
   <!-- Navbar Start -->
@@ -86,7 +77,7 @@ $elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_po
             <div class="row">
               <div class="autor col-md-6">
                 <div class="row-md-6 d-flex justify-content-md-start pl-md-2">Autor: </div>
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-2">
+                <div class="row-md-6 d-flex justify-content-md-start pl-md-2 contenido">
                   <span><?php echo $row['nombres_autor_teg']; ?>,
                     <br class="d-none d-md-block">
                     <?php echo $row['apellidos_autor_teg']; ?></span>
@@ -94,18 +85,19 @@ $elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_po
               </div>
               <div class="carrera col-md-6">
                 <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
-                <div class="row-md-6 d-flex justify-content-md-start"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
+                <div class="row-md-6 d-flex justify-content-md-start contenido"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
+
               </div>
               <div class="autor col-md-12">
-                <div class="row-md-6 d-flex justify-content-md-center"><strong>Tutor:</strong></div>
-                <div class="row-md-6 d-flex justify-content-md-center">
+                <div class="row-md-6 d-flex justify-content-md-center">Tutor:</div>
+                <div class="row-md-6 d-flex justify-content-md-center contenido">
                   <span><?php echo $row['nombres_tutor']; ?></span>
                 </div>
               </div>
             </div>
             <div class="row d-flex justify-content-md-end">
               <div class="year col-md-6 d-flex justify-content-md-end">
-                <p>Año: <span><?php echo $row['year_teg']; ?></span></p>
+                <p>Año: <span class="contenido"><?php echo $row['year_teg']; ?></span></p>
               </div>
             </div>
           </div>

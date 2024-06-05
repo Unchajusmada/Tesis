@@ -32,11 +32,17 @@ if (!isset($_SESSION['username'])) {
     <div class="my-auto">
       <div class="copyright text-center my-auto" style="color: white">
         <div class="d-flex justify-content-between">
-          <div class="align-self-right logos">
-            <img class="logos" src="../../Main index/img/defensa logo.png" alt="Unefa Logo" />
+          <div class="align-self-start ml-10">
+            <img class="logos" src="../../Main index/img/defensa logo.png" />
           </div>
-          <div class="align-self-left logos">
-            <img class="logos" src="../../Main index/img/unefa.png" alt="Unefa Logo" />
+          <div class="align-self-center d-lg-block d-none">
+            <img class="logos" src="../../Main index/img/sistemas.png" alt="" />
+          </div>
+          <div class="align-self-center d-lg-none d-block">
+            <img class="logos" src="../../Main index/img/logoSistemas.png" alt="" />
+          </div>
+          <div class="align-self-end">
+            <img class="logos" src="../../Main index/img/unefa.png" alt="" />
           </div>
         </div>
       </div>

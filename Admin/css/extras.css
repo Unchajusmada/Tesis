@@ -48,7 +48,7 @@ header {
 
 /* Estilos para el logotipo */
 .logos {
-  height: 11em;
+  height: 10em;
   align-self: center;
 }
 @media (max-width: 990px) {

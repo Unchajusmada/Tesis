@@ -63,7 +63,7 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
         <img class="logos" src="Main index/img/defensa logo.png" alt="Unefa Logo" />
       </div>
       <div class="banner d-lg-block d-none" style="margin: auto;">
-        <h2 class="h2 text-center" style="color: white; text-shadow: black 3px 3px 3px; font-weight: bold; margin: 0;">
+        <h2 class="h2 text-center" style="color: white; text-shadow: black 1px 5px 10px; font-weight: bold; margin: 0;">
           UNIVERSIDAD NACIONAL EXPERIMENTAL DE LAS FUERZAS ARMADAS<br>
           MARACAY - NÚCLEO ARAGUA<br>
           EXCELENCIA EDUCATIVA ABIERTA AL PUEBLO
@@ -111,7 +111,7 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
             <div class="row">
               <div class="autor col-md-6">
                 <div class="row-md-6 d-flex justify-content-md-start pl-md-2">Autor: </div>
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-2">
+                <div class="row-md-6 d-flex justify-content-md-start pl-md-2 contenido">
                   <span><?php echo $row['nombres_autor_teg']; ?>,
                     <br class="d-none d-md-block">
                     <?php echo $row['apellidos_autor_teg']; ?></span>
@@ -119,12 +119,12 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
               </div>
               <div class="carrera col-md-6">
                 <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
-                <div class="row-md-6 d-flex justify-content-md-start"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
+                <div class="row-md-6 d-flex justify-content-md-start contenido"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
               </div>
             </div>
             <div class="row d-flex justify-content-md-end">
               <div class="year col-md-6 d-flex justify-content-md-end">
-                <p>Año: <span><?php echo $row['year_teg']; ?></span></p>
+                <p>Año: <span class="contenido"><?php echo $row['year_teg']; ?></span></p>
               </div>
             </div>
           </div>

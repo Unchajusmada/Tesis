@@ -330,6 +330,11 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   margin-bottom: 0.25rem;
   margin-top: 0.25rem;
   line-height: 1.2;
+  font-weight: 600;
+}
+.contenido {
+  font-weight: 600;
+  font-size: 1.1em;
 }
 
 @media (max-width: 990px) {
@@ -376,9 +381,10 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   /* Ajusta el tamaño del texto de bienvenida y categoría en pantallas pequeñas */
   .texto-bienvenida,
   .texto-categoria {
-    border-radius: 2.5em 0 2.5em 0;
+    border-radius: 2.5em;
     font-size: 0.95em;
     width: auto;
+    padding: 15px;
   }
   /* Ajusta el tamaño del logotipo en pantallas pequeñas */
   .logos {

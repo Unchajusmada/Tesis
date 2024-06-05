@@ -21,107 +21,115 @@
     <link href="../fonts/Nunito-VariableFont_wght.ttf" rel="stylesheet" />
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="../css/sb-admin-3.min.css" rel="stylesheet" />
     <link href="../css/extras.css" rel="stylesheet" />
     <link href="../../Main index/img/unefa.png" rel="icon" />
   </head>
 
-  <body class="bg-gradient-ligth">
-    <!-- Footer -->
+  <body>
+    <!-- Header -->
     <header class="bg-gradient-primary">
       <div class="my-auto">
         <div class="copyright text-center my-auto" style="color: white">
           <div class="d-flex justify-content-between">
-            <div class="align-self-right logos">
+            <div class="align-self-start ml-10">
+              <img class="logos" src="../../Main index/img/defensa logo.png" />
+            </div>
+            <div class="align-self-center d-lg-block d-none">
               <img
                 class="logos"
-                src="../../Main index/img/defensa logo.png"
-                alt="Unefa Logo"
+                src="../../Main index/img/sistemas.png"
+                alt=""
               />
             </div>
-            <div class="align-self-left logos">
+            <div class="align-self-center d-lg-none d-block">
               <img
                 class="logos"
-                src="../../Main index/img/unefa.png"
-                alt="Unefa Logo"
+                src="../../Main index/img/logoSistemas.png"
+                alt=""
               />
+            </div>
+            <div class="align-self-end">
+              <img class="logos" src="../../Main index/img/unefa.png" alt="" />
             </div>
           </div>
         </div>
       </div>
     </header>
-    <div class="container">
+    <main>
       <!-- Outer Row -->
-      <div class="row justify-content-center">
-        <div class="col-xl-10 col-lg-12 col-md-9">
-          <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-              <!-- Nested Row within Card Body -->
-              <div class="row">
-                <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                <div class="col-lg-6">
-                  <div class="p-5">
-                    <div class="text-center">
-                      <h1 class="h3 text-gray-900 mb-4">
-                        ¡Bienvienido/a de vuelta!
-                      </h1>
-                    </div>
-                    <form
-                      class="user"
-                      action="../Auth_admin/Inicio_Sesion.php"
-                      method="POST"
-                    >
-                      <div class="form-group">
-                        <label>Usuario</label>
-                        <input
-                          type="text"
-                          class="form-control form-control-user"
-                          id="exampleInputEmail"
-                          aria-describedby="emailHelp"
-                          placeholder="Introduce tu correo"
-                          name="usuario"
-                          autocomplete="off"
-                          required
-                        />
+      <div class="ajustar">
+        <div class="row justify-content-center">
+          <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+              <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                  <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                  <div class="col-lg-6">
+                    <div class="p-5">
+                      <div class="text-center">
+                        <h1 class="h3 text-gray-900 mb-4">
+                          ¡Bienvienido/a de vuelta!
+                        </h1>
                       </div>
-                      <div class="form-group">
-                        <label>Contraseña</label>
-                        <input
-                          type="password"
-                          class="form-control form-control-user"
-                          id="exampleInputPassword"
-                          placeholder="Contraseña"
-                          name="password"
-                          required
-                        />
+                      <form
+                        class="user"
+                        action="../Auth_admin/Inicio_Sesion.php"
+                        method="POST"
+                      >
+                        <div class="form-group">
+                          <label>Usuario</label>
+                          <input
+                            type="text"
+                            class="form-control form-control-user"
+                            id="exampleInputEmail"
+                            aria-describedby="emailHelp"
+                            placeholder="Introduce tu usuario"
+                            name="usuario"
+                            autocomplete="off"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label>Contraseña</label>
+                          <input
+                            type="password"
+                            class="form-control form-control-user"
+                            id="exampleInputPassword"
+                            placeholder="Contraseña"
+                            name="password"
+                            required
+                          />
+                        </div>
+                        <button
+                          class="btn btn-primary btn-user btn-block"
+                          type="submit"
+                        >
+                          Entrar
+                        </button>
+                      </form>
+                      <hr />
+                      <div class="text-center">
+                        <a
+                          class="medium btn btn-user btn-block"
+                          href="../../index.php"
+                          style="border: 1px solid blue; margin-top: 10px"
+                          >Volver al Inicio</a
+                        >
                       </div>
-                      <button
-                        class="btn btn-primary btn-user btn-block"
-                        type="submit"
-                      >
-                        Entrar
-                      </button>
-                    </form>
-                    <hr />
-                    <div class="text-center">
-                      <a
-                        class="medium btn btn-user btn-block"
-                        href="../../index.php"
-                        style="border: 1px solid blue; margin-top: 10px"
-                        >Volver al Inicio</a
-                      >
-                    </div>
-                    <div class="text-center">
-                      <a
-                        class="small btn btn-danger btn-block"
-                        href="#"
-                        style="
-                          border: 1px solid rgb(255, 255, 255);
-                          margin-top: 10px;
-                        "
-                        onclick="mostrarAlertaPass()"
-                        >Olvidé mi contraseña</a
-                      >
+                      <div class="text-center">
+                        <a
+                          class="small btn btn-danger btn-block"
+                          href="#"
+                          style="
+                            border: 1px solid rgb(255, 255, 255);
+                            margin-top: 10px;
+                          "
+                          onclick="mostrarAlertaPass()"
+                          >Olvidé mi contraseña</a
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -130,7 +138,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="sticky-footer bg-gradient-primary">

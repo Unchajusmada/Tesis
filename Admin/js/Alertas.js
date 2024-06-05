@@ -14,6 +14,7 @@ function mostrarAlertaPass() {
     title: "¡Atención!",
     text: "Ponte en contacto con el administrador de la página para obtener ayuda",
     confirmButtonText: "Aceptar",
+    heightAuto: false,
   })
 }
 
