@@ -33,7 +33,21 @@ $ID_admin = $_GET['ID_user'];
   <link href="../css/extras.css" rel="stylesheet" />
 </head>
 
-<body class="bg-gradient-dark">
+<body class="bg-gradient-light">
+  <header class="bg-gradient-primary">
+    <div class="my-auto">
+      <div class="copyright text-center my-auto" style="color: white">
+        <div class="d-flex justify-content-between">
+          <div class="align-self-right logos">
+            <img class="logos" src="../../Main index/img/defensa logo.png" alt="Unefa Logo" />
+          </div>
+          <div class="align-self-left logos">
+            <img class="logos" src="../../Main index/img/unefa.png" alt="Unefa Logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
@@ -90,8 +104,9 @@ $ID_admin = $_GET['ID_user'];
                     <label>Nivel de Acceso</label>
                     <select class="form-control-special form-control-user-special" name="nivel_acceso" aria-label="Default select example">
                       <option value="" selected>Selecciona una opción de la siguiente lista</option>
-                      <option value="1" <?php echo ($row['nivel_acceso'] == '1') ? 'selected' : ''; ?>>1 - Administrador</option>
-                      <option value="2" <?php echo ($row['nivel_acceso'] == '2') ? 'selected' : ''; ?>>2 - SuperAdmin</option>
+                      <!-- <option value="1" <?php // echo ($row['nivel_acceso'] == '1') ? 'selected' : ''; 
+                                              ?>> 1 - Estudiante</option>  -->
+                      <option value="2" <?php echo ($row['nivel_acceso'] == '2') ? 'selected' : ''; ?>><!-- 2 -  -->Administrador</option>
                     </select>
                   </div>
 
@@ -101,12 +116,6 @@ $ID_admin = $_GET['ID_user'];
                   </div>
                   <hr />
                 </form>
-                <form id="eliminarForm" class="eliminar" action="../../Auth/eliminar_user.php" method="POST">
-                  <!-- Campo oculto para la eliminación -->
-                  <input type="hidden" name="user-eliminar" id="user-eliminar" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
-                  <input type="hidden" name="eliminar" id="eliminar" value="0" />
-                  <input type="button" class="btn btn-danger btn-user btn-block" value="Eliminar usuario" onclick="showConfirmationUSER();" />
-                </form>
               <?php endforeach; ?>
             </div>
           </div>
@@ -114,6 +123,14 @@ $ID_admin = $_GET['ID_user'];
       </div>
     </div>
   </div>
+
+  <footer class="sticky-footer bg-gradient-primary">
+    <div class="my-auto">
+      <div class="copyright text-center my-auto" style="color: white;">
+        <span>Copyright &copy; TEG - Sistema de Gestión Administrativa de los Trabajos Especiales de Grado</span>
+      </div>
+    </div>
+  </footer>
 
   <!-- Bootstrap core JavaScript-->
   <script src="../vendor/jquery/jquery.min.js"></script>
@@ -123,8 +140,8 @@ $ID_admin = $_GET['ID_user'];
   <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
+  <script src="../js/sweetalert2.all.js"></script>
   <script src="../js/sb-admin-2.min.js"></script>
-  <script src="../js/Eliminar_user_o_teg.js"></script>
 
   <!-- Custom Script verificar cedula unica y usuario unico -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -192,9 +209,6 @@ $ID_admin = $_GET['ID_user'];
       $("#enviar").prop("disabled", false);
     }
   </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </body>
 
 </html>

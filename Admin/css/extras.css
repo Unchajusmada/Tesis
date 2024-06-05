@@ -41,3 +41,22 @@
     0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
   outline: 0;
 }
+
+header {
+  padding: 0.2em 10em;
+}
+
+/* Estilos para el logotipo */
+.logos {
+  height: 11em;
+  align-self: center;
+}
+@media (max-width: 990px) {
+  /* Ajusta el tamaño del logotipo en pantallas medianas */
+  .logos {
+    height: 8em;
+  }
+  header {
+    padding: 0.2em 2em;
+  }
+}

@@ -27,7 +27,21 @@ $ID_teg = $_GET['ID_TEG']
   <link href="../css/extras.css" rel="stylesheet" />
 </head>
 
-<body class="bg-gradient-dark">
+<body class="bg-gradient-light">
+  <header class="bg-gradient-primary">
+    <div class="my-auto">
+      <div class="copyright text-center my-auto" style="color: white">
+        <div class="d-flex justify-content-between">
+          <div class="align-self-right logos">
+            <img class="logos" src="../../Main index/img/defensa logo.png" alt="Unefa Logo" />
+          </div>
+          <div class="align-self-left logos">
+            <img class="logos" src="../../Main index/img/unefa.png" alt="Unefa Logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
@@ -66,15 +80,15 @@ $ID_teg = $_GET['ID_TEG']
                       <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Ejemplo: Correo@gmail.com" value="<?php echo htmlspecialchars($row['correo_autor']); ?>" />
                     </div>
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <label>Nombre y Apellido del <strong>Tutor</strong></label>
-                      <input type="text" class="form-control form-control-user" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" value="<?php echo htmlspecialchars($row['nombres_tutor']); ?>" />
+                      <label>Año en que se realizo</label>
+                      <input type="number" class="form-control form-control-user no-spin" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required value="<?php echo htmlspecialchars($row['year_teg']); ?>" />
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <label>Año en que se realizo</label>
-                      <input type="number" class="form-control form-control-user no-spin" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required value="<?php echo htmlspecialchars($row['year_teg']); ?>" />
+                      <label>Nombre y Apellido del <strong>Tutor</strong></label>
+                      <input type="text" class="form-control form-control-user" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" id="nombres_tutor" name="nombres_tutor" placeholder="Ejemplo: Alexander Arroyo" value="<?php echo htmlspecialchars($row['nombres_tutor']); ?>" />
                     </div>
 
                     <div class="col-sm-6">
@@ -128,12 +142,6 @@ $ID_teg = $_GET['ID_TEG']
                   </div>
                   <hr />
                 </form>
-                <form id="eliminarTEGForm" class="eliminarTEG" action="../../Auth/eliminar_teg.php" method="POST">
-                  <!-- Campo oculto para la eliminación -->
-                  <input type="hidden" name="teg-eliminar" id="teg-eliminar" value="<?php echo htmlspecialchars($row['ID_teg']); ?>" />
-                  <input type="hidden" name="eliminarTEG" id="eliminarTEG" value="0" />
-                  <input type="button" class="btn btn-danger btn-user btn-block" value="Eliminar TEG" onclick="showConfirmationTEG();" />
-                </form>
               <?php endforeach; ?>
             </div>
           </div>
@@ -141,6 +149,14 @@ $ID_teg = $_GET['ID_TEG']
       </div>
     </div>
   </div>
+
+  <footer class="sticky-footer bg-gradient-primary">
+    <div class="my-auto">
+      <div class="copyright text-center my-auto" style="color: white;">
+        <span>Copyright &copy; TEG - Sistema de Gestión Administrativa de los Trabajos Especiales de Grado</span>
+      </div>
+    </div>
+  </footer>
 
   <!-- Bootstrap core JavaScript-->
   <script src="../vendor/jquery/jquery.min.js"></script>
@@ -151,12 +167,11 @@ $ID_teg = $_GET['ID_TEG']
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
+  <script src="../js/sweetalert2.all.js"></script>
   <script src="../js/Eliminar_user_o_teg.js"></script>
 
   <!-- Custom Script verificar cedula unica y usuario unico -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

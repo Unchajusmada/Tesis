@@ -29,6 +29,7 @@ if (!isset($_SESSION['username'])) {
   <link href="css/sb-admin-2.min.css" rel="stylesheet" />
   <link href="css/extras.css" rel="stylesheet" />
   <link href="../Main index/img/unefa.png" rel="icon" />
+  <link href="css/bootstrap-icons-1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -146,18 +147,39 @@ if (!isset($_SESSION['username'])) {
                       <tbody>
                         <?php
                         $datos_usuarios = leer_usuarios($conection);
-                        foreach ($datos_usuarios as $row) : ?>
+                        foreach ($datos_usuarios as $row) :
+                          $ID_admin = $row['ID_admin'];
+                        ?>
                           <tr>
-                            <?php $ID_admin = $row['ID_admin']; ?>
                             <td class="text-center" style="vertical-align: middle;"><?php echo $row['ID_admin']; ?></td>
                             <td class="text-center" style="vertical-align: middle;"><?php echo $row['usuario']; ?></td>
                             <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_usuario']; ?>&nbsp; <?php echo $row['apellido_usuario']; ?></td>
                             <td class="text-center" style="vertical-align: middle;"><?php echo $row['correo']; ?></td>
-                            <td class="text-center" style="vertical-align: middle;"><?php echo $row['nivel_acceso']; ?></td>
                             <td class="text-center" style="vertical-align: middle;">
+                              <?php
+                              $nivelAcceso = $row['nivel_acceso']; // Obtener el nivel de acceso del registro actual
+
+                              if ($nivelAcceso == 2) {
+                                echo "Administrador";
+                              } else {
+                                echo "Estudiante";
+                              }
+                              ?>
+                            </td>
+                            <td class="text-center d-flex justify-content-center" style="vertical-align: middle;">
                               <a href="../Admin/Paginas/Modificar_User.php?ID_user=<?php echo $row['ID_admin']; ?>">
-                                <button class="button-10">Modificar</button>
+                                <button type="button" class="btn btn-primary mr-2">
+                                  <i class="bi bi-pencil-square"></i>
+                                </button>
                               </a>
+                              <form id="eliminarForm-<?php echo $ID_admin; ?>" class="eliminar" action="../Auth/eliminar_user.php" method="POST">
+                                <!-- Campo oculto para la eliminación -->
+                                <input type="hidden" name="user-eliminar" id="user-eliminar" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
+                                <input type="hidden" name="eliminar" id="eliminar" value="0" />
+                                <button type="button" class="btn btn-danger" onclick="showConfirmationUSER('eliminarForm-<?php echo $ID_admin; ?>');">
+                                  <i class="bi bi-trash"></i>
+                                </button>
+                              </form>
                             </td>
                           </tr>
                         <?php endforeach; ?>
@@ -212,9 +234,9 @@ if (!isset($_SESSION['username'])) {
                         <label>Correo del Autor</label>
                         <input type="email" class="form-control form-control-user" id="correo" name="correo" placeholder="Ejemplo: Correo@gmail.com" required />
                       </div>
-                      <div class="col-sm-6">
-                        <label>Resumen del TEG (Pagina del resumen del TEG en formato pdf)</label>
-                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" />
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label>Año en que se realizo</label>
+                        <input type="number" class="form-control form-control-user no-spin" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required />
                       </div>
                     </div>
 
@@ -238,12 +260,12 @@ if (!isset($_SESSION['username'])) {
                     </div>
 
                     <div class="form-group row">
-                      <div class="col-sm-6 mb-3 mb-sm-0">
-                        <label>Año en que se realizo</label>
-                        <input type="number" class="form-control form-control-user no-spin" id="fecha-publicacion" name="year" placeholder="Ejemplo: 2024" min="1999" max="2999" pattern="[0-9]{4}" title="Por favor, ingrese un número de 4 dígitos" required />
+                      <div class="col-sm-6">
+                        <label>Resumen del TEG (Pagina del <strong>resumen</strong> del TEG en formato pdf)</label>
+                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" />
                       </div>
                       <div class="col-sm-6">
-                        <label>Archivo del TEG</label>
+                        <label>Archivo del TEG completo</label>
                         <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf" accept=".pdf" />
                       </div>
                     </div>
@@ -253,25 +275,24 @@ if (!isset($_SESSION['username'])) {
                       <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example">
                         <option disabled selected>
                           Escoja una Carrera de la siguiente lista
+                          <?php
+                          $datos_teg_carrera = obtener_carreras($conection);
+
+                          // Función de comparación para ordenar alfabéticamente
+                          function compararCarreras($a, $b)
+                          {
+                            return strcmp($a['nombre_carrera'], $b['nombre_carrera']);
+                          }
+
+                          // Ordenar el arreglo de carreras
+                          usort($datos_teg_carrera, 'compararCarreras');
+
+                          // Imprimir las opciones ordenadas
+                          foreach ($datos_teg_carrera as $row) : ?>
+                        <option value="<?php echo $row['nombre_carrera']; ?>">
+                          <?php echo $row['nombre_carrera']; ?>
                         </option>
-                        <option value="Ingenieria Civil">
-                          Ingenieria Civil
-                        </option>
-                        <option value="Ingenieria de Telecom.">
-                          Ingenieria de Telecomunicaciones
-                        </option>
-                        <option value="Ingenieria Aeronautica">
-                          Ingenieria Aeronautica
-                        </option>
-                        <option value="Ingenieria Electrica">
-                          Ingenieria Electrica
-                        </option>
-                        <option value="Ingenieria Electronica">
-                          Ingenieria Electronica
-                        </option>
-                        <option value="Ingenieria de Sistemas">
-                          Ingenieria de Sistemas
-                        </option>
+                      <?php endforeach; ?>
                       </select>
                     </div>
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" />
@@ -326,10 +347,23 @@ if (!isset($_SESSION['username'])) {
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['year_teg']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombres_tutor']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_carrera_autor']; ?></td>
-                          <td class="text-center" style="vertical-align: middle;">
-                            <a href="../Admin/Paginas/Modificar_Teg.php?ID_TEG=<?php echo $ID_teg; ?>">
-                              <button class="button-10">Modificar</button>
-                            </a>
+                          <td style="vertical-align: middle;">
+                            <div class="d-flex justify-content-center align-items-center">
+                              <a href="../Admin/Paginas/Modificar_Teg.php?ID_TEG=<?php echo $ID_teg; ?>">
+                                <button type="button" class="btn btn-primary mr-2">
+                                  <i class="bi bi-pencil-square"></i>
+                                </button>
+                              </a>
+                              <form id="eliminarTEGForm-<?php echo $ID_teg; ?>" class="eliminarTEG" action="../Auth/eliminar_teg.php" method="POST">
+                                <!-- Campo oculto para la eliminación -->
+                                <input type="hidden" name="teg-eliminar" id="teg-eliminar" value="<?php echo htmlspecialchars($row['ID_teg']); ?>" />
+                                <input type="hidden" name="eliminarTEG" id="eliminarTEG" value="0" />
+                                <button type="button" class="btn btn-danger" onclick="showConfirmationTEG('eliminarTEGForm-<?php echo $ID_teg; ?>');">
+                                  <i class="bi bi-trash"></i>
+                                </button>
+                              </form>
+                            </div>
+                          </td>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -392,7 +426,7 @@ if (!isset($_SESSION['username'])) {
                           <td class="text-center" style="vertical-align: middle;"><?php echo strtoupper($row['factibilidad']); ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['nombre_carrera_autor']; ?></td>
                           <td class="text-center" style="vertical-align: middle;"><?php echo $row['archivo_pdf']; ?></td>
-                          <td class="text-center" style="vertical-align: middle;"><?php echo $row['archivo_pdf_resumen']; ?></td>
+                          <td class="text-center" style="vertical-align: middle;"><a href="PDF_RESUMEN/<?php echo $row['archivo_pdf_resumen']; ?>" target="_blank"><?php echo $row['archivo_pdf_resumen']; ?></a></td>
                         </tr>
                       <?php endforeach; ?>
                     </tbody>
@@ -408,7 +442,7 @@ if (!isset($_SESSION['username'])) {
 
       <!-- Footer -->
       <footer class="sticky-footer bg-gradient-primary">
-        <div class="container my-auto">
+        <div class="my-auto">
           <div class="copyright text-center my-auto" style="color: white;">
             <span>Copyright &copy; TEG - Sistema de Gestión Administrativa de los Trabajos Especiales de Grado</span>
           </div>
@@ -453,8 +487,10 @@ if (!isset($_SESSION['username'])) {
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
+  <script src="js/sweetalert2.all.js"></script>
   <script src="js/sb-admin-2.js"></script>
   <script src="js/Alertas.js"></script>
+  <script src="js/Eliminar_user_o_teg.js"></script>
 
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
@@ -462,7 +498,6 @@ if (!isset($_SESSION['username'])) {
 
   <!-- Page level custom scripts -->
   <script src="js/inicializar-datatables.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
   <script>
     // Obtén el código de la URL

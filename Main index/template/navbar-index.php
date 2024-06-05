@@ -1,3 +1,13 @@
+<?php
+// Función para generar el enlace de la carrera
+function generarEnlaceCarrera($carrera)
+{
+  $enlace = 'Main index/carreras.php?carrera=' . urlencode($carrera);
+  return $enlace;
+}
+
+?>
+
 <div class="contenedor-navbar">
   <div class="row px-xl-5">
     <div class="col-lg-12">
@@ -38,12 +48,14 @@
             <div class="nav-item dropdown d-block d-lg-none pl-4 pl-md-4">
               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Carreras</a>
               <div class="dropdown-menu rounded-0 m-0">
-                <a href="Main index/carreras.php?carrera=Aeronautica" class="dropdown-item">Ing. Aeronautica</a>
-                <a href="Main index/carreras.php?carrera=Civil" class="dropdown-item">Ing. Civil</a>
-                <a href="Main index/carreras.php?carrera=Electrica" class="dropdown-item">Ing. Electrica</a>
-                <a href="Main index/carreras.php?carrera=Electronica" class="dropdown-item">Ing. Electronica</a>
-                <a href="Main index/carreras.php?carrera=Sistemas" class="dropdown-item">Ing. de <br>Sistemas</a>
-                <a href="Main index/carreras.php?carrera=Telecom" class="dropdown-item">Ing. de <br>Telecomunicaciones</a>
+                <?php
+                $datos_teg_carrera = obtener_carreras($conection);
+
+                foreach ($datos_teg_carrera as $row) : ?>
+                  <a href="<?php echo generarEnlaceCarrera($row['nombre_carrera']); ?>" class="dropdown-item">
+                    <?php echo $row['nombre_carrera']; ?>
+                  </a>
+                <?php endforeach; ?>
               </div>
             </div>
           </div>

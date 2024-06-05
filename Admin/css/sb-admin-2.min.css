@@ -161,7 +161,7 @@ a {
 }
 a:hover {
   color: #224abe;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:not([href]):not([class]) {
   color: inherit;
@@ -498,6 +498,9 @@ pre code {
   padding-left: 0.75rem;
   margin-right: auto;
   margin-left: auto;
+}
+.container {
+  height: 100%;
 }
 @media (min-width: 576px) {
   .container,

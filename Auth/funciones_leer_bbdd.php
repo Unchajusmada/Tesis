@@ -42,6 +42,17 @@ function leer_carrera($conection, $carrera)
   return $data;
 }
 
+function obtener_carreras($conection)
+{
+  $consulta = "SELECT * FROM carreras";
+  $ejecutar = mysqli_query($conection, $consulta);
+  $data = [];
+  while ($fila = mysqli_fetch_assoc($ejecutar)) {
+    $data[] = $fila;
+  }
+  return $data;
+}
+
 function leer_teg($conection, $idTeg)
 {
   $consulta = "SELECT * FROM teg WHERE ID_teg = $idTeg";

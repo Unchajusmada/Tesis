@@ -10,12 +10,14 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" id="carrera-link" data-toggle="dropdown">Carrera</a>
         <div class="dropdown-menu rounded-0 m-0">
-          <a href="carreras.php?carrera=Aeronautica" class="dropdown-item">Ing. Aeronautica</a>
-          <a href="carreras.php?carrera=Civil" class="dropdown-item">Ing. Civil</a>
-          <a href="carreras.php?carrera=Electrica" class="dropdown-item">Ing. Electrica</a>
-          <a href="carreras.php?carrera=Electronica" class="dropdown-item">Ing. Electronica</a>
-          <a href="carreras.php?carrera=Sistemas" class="dropdown-item">Ing. de <br>Sistemas</a>
-          <a href="carreras.php?carrera=Telecom" class="dropdown-item">Ing. de <br>Telecomunicaciones</a>
+          <?php
+          $datos_teg_carrera = obtener_carreras($conection);
+
+          foreach ($datos_teg_carrera as $row) : ?>
+            <a href="<?php echo generarEnlaceCarrera($row['nombre_carrera']); ?>" class="dropdown-item">
+              <?php echo $row['nombre_carrera']; ?>
+            </a>
+          <?php endforeach; ?>
         </div>
       </li>
       <li><a href="titulo.php" class="a-indice">Título</a></li>

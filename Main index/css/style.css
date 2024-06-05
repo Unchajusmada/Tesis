@@ -3248,7 +3248,7 @@ input[type="button"].btn-block {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 10rem;
+  max-width: 10rem;
   padding: 0 0.25rem;
   margin: 0.125rem 0 0;
   font-size: 1rem;
@@ -3422,16 +3422,16 @@ input[type="button"].btn-block {
   font-weight: 400;
   color: #212529;
   text-align: inherit;
-  white-space: nowrap;
   background-color: transparent;
   border: 0;
+  font-size: 0.8em;
 }
 
 .dropdown-item:hover,
 .dropdown-item:focus {
   color: #16181b;
   text-decoration: none;
-  background-color: #f8f9fa;
+  background-color: rgb(206, 206, 206);
 }
 
 .dropdown-item.active,

@@ -104,10 +104,12 @@ main,
 
 /* Estilos para el texto de los cuadros dentro del contenedor-medio */
 .texto {
+  color: black;
+  font-weight: 700;
   width: 350px;
   border: 2px solid black;
   border-radius: 0.5em;
-  background-color: #fffffff2;
+  background-color: #fefefe6e;
   padding: 5px 10px;
   min-height: 250px;
   transition: 0.3s;
@@ -115,7 +117,7 @@ main,
 
 .texto:hover {
   cursor: pointer;
-  background-color: rgb(206, 206, 206);
+  background-color: rgb(255, 255, 255);
   transform: scale(1.05);
 }
 .texto:not(:hover) {
@@ -327,7 +329,7 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   margin-top: 0.25rem;
   font-size: 0.9em;
   line-height: 1.2;
-  color: #6f6f6f;
+  color: #574d4d;
 }
 
 /* Estilos para los títulos */
@@ -337,7 +339,6 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   margin-bottom: 0.25rem;
   margin-top: 0.25rem;
   line-height: 1.2;
-  font-weight: 500;
 }
 
 @media (max-width: 990px) {

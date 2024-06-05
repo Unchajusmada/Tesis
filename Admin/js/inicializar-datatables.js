@@ -1,6 +1,9 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function () {
-  $("#dataTable").DataTable()
+  $("#dataTable").DataTable({
+    lengthMenu: [8],
+    pageLength: 8,
+  })
 })
 
 $(document).ready(function () {

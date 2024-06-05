@@ -16,6 +16,13 @@ $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 // Obtener los elementos correspondientes a la página actual
 $elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_por_pagina, $elementos_por_pagina);
 
+// Función para generar el enlace de la carrera
+function generarEnlaceCarrera($carrera)
+{
+  $enlace = 'Main index/carreras.php?carrera=' . urlencode($carrera);
+  return $enlace;
+}
+
 ?>
 
 <!DOCTYPE html>

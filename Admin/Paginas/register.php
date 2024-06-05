@@ -28,7 +28,21 @@ if (!isset($_SESSION['username'])) {
   <link href="../css/extras.css" rel="stylesheet" />
 </head>
 
-<body class="bg-gradient-dark">
+<body class="bg-gradient-ligth">
+  <header class="bg-gradient-primary">
+    <div class="my-auto">
+      <div class="copyright text-center my-auto" style="color: white">
+        <div class="d-flex justify-content-between">
+          <div class="align-self-right logos">
+            <img class="logos" src="../../Main index/img/defensa logo.png" alt="Unefa Logo" />
+          </div>
+          <div class="align-self-left logos">
+            <img class="logos" src="../../Main index/img/unefa.png" alt="Unefa Logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
@@ -83,8 +97,8 @@ if (!isset($_SESSION['username'])) {
                     <option value="" selected>
                       Selecciona el nivel de Acceso
                     </option>
-                    <option value="1">1 - Administrador</option>
-                    <option value="2">2 - SuperAdmin</option>
+                    <!-- <option value="1">1 - Estudiante</option> -->
+                    <option value="2"><!-- 2 -  -->Administrador</option>
                   </select>
                 </div>
                 <button type="submit" href="../Admin-panel.php" class="btn btn-primary btn-user btn-block">
@@ -102,6 +116,16 @@ if (!isset($_SESSION['username'])) {
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer class="sticky-footer bg-gradient-primary">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto" style="color: white;">
+        <span>Copyright &copy; TEG - Sistema de Gestión Administrativa de los Trabajos Especiales de Grado</span>
+      </div>
+    </div>
+  </footer>
+  <!-- End of Footer -->
+
   <!-- Bootstrap core JavaScript-->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -111,7 +135,7 @@ if (!isset($_SESSION['username'])) {
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="../js/sweetalert2.all.js"></script>
   <script src="../js/Alertas.js"></script>
   <script src="../js/validador.js"></script>
 

@@ -1,7 +1,7 @@
-function showConfirmationTEG() {
+function showConfirmationTEG(formTEGId) {
   Swal.fire({
     title: "¿Estás seguro?",
-    text: "Esta acción eliminará al usuario permanentemente.",
+    text: "Esta acción eliminará al TEG permanentemente.",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#d33",
@@ -11,13 +11,14 @@ function showConfirmationTEG() {
   }).then((result) => {
     if (result.isConfirmed) {
       // Si el usuario confirma, establece el valor del campo oculto "eliminar" en 1 y envía el formulario
-      document.getElementById("eliminarTEG").value = "1"
-      document.getElementById("eliminarTEGForm").submit()
+      document.getElementById(formTEGId).querySelector("#eliminarTEG").value =
+        "1"
+      document.getElementById(formTEGId).submit()
     }
   })
 }
 
-function showConfirmationUSER() {
+function showConfirmationUSER(formId) {
   Swal.fire({
     title: "¿Estás seguro?",
     text: "Esta acción eliminará al usuario permanentemente.",
@@ -30,8 +31,8 @@ function showConfirmationUSER() {
   }).then((result) => {
     if (result.isConfirmed) {
       // Si el usuario confirma, establece el valor del campo oculto "eliminar" en 1 y envía el formulario
-      document.getElementById("eliminar").value = "1"
-      document.getElementById("eliminarForm").submit()
+      document.getElementById(formId).querySelector("#eliminar").value = "1"
+      document.getElementById(formId).submit()
     }
   })
 }
