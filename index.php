@@ -31,18 +31,15 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
   <link href="Main index/img/unefa.png" rel="icon" />
 
   <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+  <link href="Admin/fonts/Poppins-Black.ttf" rel="stylesheet" />
 
   <!-- Customized Bootstrap Stylesheet -->
   <link href="Main index/css/style.css" rel="stylesheet" />
   <link href="Main index/css/index.css" rel="stylesheet" />
   <link href="Main index/css/carrusel.css" rel="stylesheet" />
   <link href="Main index/css/extras.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="Main index/css/all.css" rel="stylesheet" />
+  <link rel="stylesheet" href="Admin/css/bootstrap-icons-1.11.3/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -173,8 +170,8 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
   <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="Main index/js/jquery-3.7.1.min.js"></script>
+  <script src="Main index/js/bootstrap.bundle.min.js"></script>
   <script src="Main index/lib/easing/easing.min.js"></script>
 
   <!-- Javascript personalizados -->

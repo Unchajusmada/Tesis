@@ -20,8 +20,7 @@ if (!isset($_SESSION['username'])) {
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-
+  <link href="../fonts/Nunito-VariableFont_wght.ttf" rel="stylesheet" />
   <!-- Custom styles for this template-->
   <link href="../../Main index/img/unefa.png" rel="icon" />
   <link href="../css/sb-admin-2.min.css" rel="stylesheet" />
@@ -140,7 +139,7 @@ if (!isset($_SESSION['username'])) {
   <script src="../js/validador.js"></script>
 
   <!-- Custom Script verificar cedula unica y usuario unico -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/jquery-3.7.1.min.js"></script>
 
   <script>
     // Obtén el código de la URL

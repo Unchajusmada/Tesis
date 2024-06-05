@@ -300,11 +300,6 @@ main,
   height: 11em;
   align-self: center;
 }
-/* Estilos para el logotipo */
-.logos2 {
-  height: 8em;
-  align-self: center;
-}
 
 /* Estilos para el contenedor del navbar */
 .contenedor-navbar {
