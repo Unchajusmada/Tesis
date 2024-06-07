@@ -89,13 +89,14 @@ if (!isset($_SESSION['username'])) {
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Ingrese su contraseña</label>
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña" name="pass1" autocomplete="off" required />
+                    <input type="password" class="form-control form-control-user pass" id="exampleInputPassword" placeholder="Contraseña" name="pass1" autocomplete="off" required />
                   </div>
                   <div class="col-sm-6">
                     <label>Repita su contraseña</label>
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repita Contraseña" name="pass2" autocomplete="off" required />
+                    <input type="password" class="form-control form-control-user pass" id="exampleRepeatPassword" placeholder="Repita Contraseña" name="pass2" autocomplete="off" required />
                   </div>
                 </div>
+                <span id="pass1Error" class="form-control-special form-control-user-special" style="display: none; color: red; text-align: center;"></span>
                 <div class="form-group">
                   <label>Nivel de Acceso</label>
                   <select class="form-control-special form-control-user-special" name="nivel_acceso" aria-label="Default select example" required>
@@ -106,7 +107,7 @@ if (!isset($_SESSION['username'])) {
                     <option value="2"><!-- 2 -  -->Administrador</option>
                   </select>
                 </div>
-                <button type="submit" href="../Admin-panel.php" class="btn btn-primary btn-user btn-block">
+                <button type="submit" href="../Admin-panel.php" class="btn btn-primary btn-user btn-block" id="enviar">
                   Registrarte
                 </button>
               </form>
@@ -153,6 +154,34 @@ if (!isset($_SESSION['username'])) {
     const Code = urlParams.get("code")
 
     codigosAlerta(Code)
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      // Evento de cambio del campo de usuario
+      $(".pass").on("change", function() {
+        var pass1 = $("#exampleInputPassword").val();
+        var pass2 = $("#exampleRepeatPassword").val();
+
+        if (pass1 !== "" && pass1 !== pass2) {
+          $("#pass1Error").text("Las contraseñas no coinciden");
+          $("#pass1Error").show(); // Mostrar el span de error
+          disableSubmitButton();
+        } else {
+          $("#pass1Error").text("");
+          $("#pass1Error").hide(); // Ocultar el span de error
+          enableSubmitButton();
+        }
+      });
+    });
+
+    function disableSubmitButton() {
+      $("#enviar").prop("disabled", true);
+    }
+
+    function enableSubmitButton() {
+      $("#enviar").prop("disabled", false);
+    }
   </script>
 </body>
 

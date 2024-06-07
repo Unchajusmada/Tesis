@@ -98,13 +98,13 @@ $ID_admin = $_GET['ID_user'];
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <label>Ingrese una nueva contraseña</label>
                       <input type="password" class="form-control form-control-user pass" id="exampleInputPassword" placeholder="Contraseña" name="pass1" />
-                      <span id="pass1Error" style="color: red;"></span>
                     </div>
                     <div class="col-sm-6">
                       <label>Repita su nueva contraseña</label>
                       <input type="password" class="form-control form-control-user pass" id="exampleRepeatPassword" placeholder="Repita Contraseña" name="pass2" />
                     </div>
                   </div>
+                  <span id="pass1Error" class="form-control-special form-control-user-special" style="display: none; color: red; text-align: center;"></span>
                   <div class="form-group">
                     <label>Nivel de Acceso</label>
                     <select class="form-control-special form-control-user-special" name="nivel_acceso" aria-label="Default select example">
@@ -198,9 +198,11 @@ $ID_admin = $_GET['ID_user'];
 
         if (pass1 !== "" && pass1 !== pass2) {
           $("#pass1Error").text("Las contraseñas no coinciden");
+          $("#pass1Error").show(); // Mostrar el span de error
           disableSubmitButton();
         } else {
           $("#pass1Error").text("");
+          $("#pass1Error").hide(); // Ocultar el span de error
           enableSubmitButton();
         }
       });

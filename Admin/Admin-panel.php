@@ -266,19 +266,19 @@ if (!isset($_SESSION['username'])) {
 
                     <div class="form-group row">
                       <div class="col-sm-6">
-                        <label>Resumen del TEG (Pagina del <strong>resumen</strong> del TEG en formato pdf)</label>
-                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" />
+                        <label>Resumen del TEG (Página del <strong>resumen</strong> del TEG en formato PDF)</label>
+                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" required />
                       </div>
                       <div class="col-sm-6">
                         <label>Archivo del TEG completo</label>
-                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf" accept=".pdf" />
+                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf" accept=".pdf" required />
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label>Carrera del graduando</label>
-                      <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example">
-                        <option disabled selected>
+                      <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example" required>
+                        <option value="" selected>
                           Escoja una Carrera de la siguiente lista
                           <?php
                           $datos_teg_carrera = obtener_carreras($conection);
