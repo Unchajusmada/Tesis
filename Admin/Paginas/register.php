@@ -187,6 +187,21 @@ if (!isset($_SESSION['username'])) {
       $("#enviar").prop("disabled", false);
     }
   </script>
+
+  <script>
+    var userField = document.getElementById('user');
+
+    userField.addEventListener('input', function() {
+      var userInput = this.value;
+      var regex = /^[a-zA-Z0-9\-*]+$/;
+
+      if (!regex.test(userInput)) {
+        this.setCustomValidity('El campo solo puede contener letras, números, guiones y asteriscos.');
+      } else {
+        this.setCustomValidity('');
+      }
+    });
+  </script>
 </body>
 
 </html>
