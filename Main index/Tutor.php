@@ -98,7 +98,17 @@ $elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_po
                 </div>
                 <div class="carrera col-md-6">
                   <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
-                  <div class="row-md-6 d-flex justify-content-md-start contenido"><span><?php echo $row['nombre_carrera_autor']; ?></span></div>
+                  <div class="row-md-6 d-flex justify-content-md-start contenido"><span>
+                      <?php
+                      $nombre_carrera = $row['nombre_carrera_autor'];
+
+                      if ($nombre_carrera === 'Ingenieria de Telecomunicaciones') {
+                        $nombre_carrera = 'Ingenieria de Telecom.';
+                      }
+
+                      echo $nombre_carrera;
+                      ?>
+                    </span></div>
                 </div>
               </div>
               <div class="row d-flex justify-content-md-end">
@@ -153,7 +163,7 @@ $elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_po
   <!-- Javascript personalizados -->
   <script src="js/main.js"></script>
   <script src="js/redireccion-teg.js"></script>
-  <script src="js/filtro-carreras.js"></script>
+
   <script src="js/indice.js"></script>
   <script src="js/flecha-indice.js"></script>
 </body>

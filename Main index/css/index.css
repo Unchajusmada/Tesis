@@ -370,7 +370,7 @@ div:not(.bienvenida, .titulo, .categoria) > span {
     gap: 10px;
   }
   /* Ajusta el alineado del texto en pantallas pequeñas */
-  div:not(.bienvenida) > span {
+  div:not(.bienvenida) .titulo span {
     text-align: center;
   }
   /* Ajusta el tamaño del texto de bienvenida y categoría en pantallas pequeñas */

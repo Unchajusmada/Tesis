@@ -129,15 +129,28 @@ $ID_teg = $_GET['ID_TEG']
                   <div class="form-group">
                     <label>Carrera del graduando</label>
                     <select class="form-control-special form-control-user" name="nombre_carrera_autor" aria-label="Default select example" required>
-                      <option value="" selected>
-                        Selecciona una Carrera de la siguiente lista
-                      </option>
-                      <option value="Ingenieria Civil" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Civil') ? 'selected' : ''; ?>>Ingenieria Civil</option>
-                      <option value="Ingenieria de Telecom." <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria de Telecom.') ? 'selected' : ''; ?>>Ingenieria de Telecomunicaciones</option>
-                      <option value="Ingenieria Aeronautica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Aeronautica') ? 'selected' : ''; ?>>Ingenieria Aeronautica</option>
-                      <option value="Ingenieria Electrica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Electrica') ? 'selected' : ''; ?>>Ingenieria Electrica</option>
-                      <option value="Ingenieria Electronica" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria Electronica') ? 'selected' : ''; ?>>Ingenieria Electronica</option>
-                      <option value="Ingenieria de Sistemas" <?php echo ($row['nombre_carrera_autor'] == 'Ingenieria de Sistemas') ? 'selected' : ''; ?>>Ingenieria de Sistemas</option>
+                      <option value="">Selecciona una Carrera de la siguiente lista</option>
+                      <?php
+                      $datos_teg_carrera = obtener_carreras($conection);
+
+                      // Función de comparación para ordenar alfabéticamente
+                      function compararCarreras($a, $b)
+                      {
+                        return strcmp($a['nombre_carrera'], $b['nombre_carrera']);
+                      }
+
+                      // Ordenar el arreglo de carreras
+                      usort($datos_teg_carrera, 'compararCarreras');
+
+                      // Obtener el valor de nombre_carrera_autor del TEG actual
+                      $nombre_carrera_autor_teg = $row['nombre_carrera_autor'];
+
+                      // Imprimir las opciones ordenadas
+                      foreach ($datos_teg_carrera as $carrera) {
+                        $selected = ($carrera['nombre_carrera'] == $nombre_carrera_autor_teg) ? 'selected' : '';
+                        echo '<option value="' . $carrera['nombre_carrera'] . '" ' . $selected . '>' . $carrera['nombre_carrera'] . '</option>';
+                      }
+                      ?>
                     </select>
                   </div>
                   <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" />

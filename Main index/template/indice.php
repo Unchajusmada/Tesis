@@ -14,7 +14,7 @@
           $datos_teg_carrera = obtener_carreras($conection);
 
           foreach ($datos_teg_carrera as $row) : ?>
-            <a href="<?php echo generarEnlaceCarrera($row['nombre_carrera']); ?>" class="dropdown-item">
+            <a href="<?php echo generarEnlaceCarrera($row['nombre_carrera']); ?>" class="dropdown-item" id="carrera">
               <?php echo $row['nombre_carrera']; ?>
             </a>
           <?php endforeach; ?>

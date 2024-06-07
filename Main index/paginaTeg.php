@@ -143,7 +143,7 @@ include '../Auth/funciones_leer_bbdd.php'
 
   <!-- Javascript personalizados -->
   <script src="js/main.js"></script>
-  <script src="js/filtro-carreras.js"></script>
+
   <script src="js/indice.js"></script>
   <script src="js/flecha-indice.js"></script>
 
