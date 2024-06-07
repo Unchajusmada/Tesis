@@ -86,7 +86,7 @@ $elementos_pagina = array_slice($datos_teg_busqueda, ($pagina_actual - 1) * $ele
                   echo '
                           <div class="autor col-md-6">
                             <div class="row-md-6 d-flex justify-content-md-start pl-md-2">' . ((strpos(strtolower($row['nombres_autor_teg']), strtolower($busquedaTEG)) !== false || strpos(strtolower($row['apellidos_autor_teg']), strtolower($busquedaTEG)) !== false) ? 'Autor' : 'Tutor') . ': </div>
-                            <div class="row-md-6 d-flex justify-content-md-start pl-md-2">
+                            <div class="row-md-6 d-flex justify-content-md-start pl-md-2 contenido">
                               <span>' . ((strpos(strtolower($row['nombres_autor_teg']), strtolower($busquedaTEG)) !== false || strpos(strtolower($row['apellidos_autor_teg']), strtolower($busquedaTEG)) !== false) ? $row['nombres_autor_teg'] . ',<br class="d-none d-md-block">' . $row['apellidos_autor_teg'] : $row['nombres_tutor']) . '</span>
                             </div>
                           </div>
@@ -96,7 +96,7 @@ $elementos_pagina = array_slice($datos_teg_busqueda, ($pagina_actual - 1) * $ele
                   echo '
                           <div class="autor col-md-6">
                             <div class="row-md-6 d-flex justify-content-md-start pl-md-2">Autor: </div>
-                            <div class="row-md-6 d-flex justify-content-md-start pl-md-2">
+                            <div class="row-md-6 d-flex justify-content-md-start pl-md-2 contenido">
                               <span>' . $row['nombres_autor_teg'] . ',<br class="d-none d-md-block">' . $row['apellidos_autor_teg'] . '</span>
                             </div>
                           </div>
