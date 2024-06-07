@@ -4,6 +4,9 @@ include '../Auth/funciones_leer_bbdd.php';
 
 $busquedaTEG = isset($_GET['busquedaTEG']) ? $_GET['busquedaTEG'] : '';
 
+// Validación del lado del servidor
+$busquedaTEG = htmlspecialchars($busquedaTEG, ENT_QUOTES, 'UTF-8');
+
 // Obtener las coincidencias de la busqueda TEG
 $datos_teg_busqueda = buscar($conection, $busquedaTEG);
 

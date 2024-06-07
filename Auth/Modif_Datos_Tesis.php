@@ -19,7 +19,7 @@ $ID_teg = $_POST['ID_teg'];
 $campos = array();
 
 if (!empty($_POST['titulo'])) {
-  $titulo_teg = $_POST['titulo'];
+  $titulo_teg = htmlspecialchars($_POST['titulo']);
   $campos[] = "titulo_teg = '$titulo_teg'";
 }
 
@@ -34,7 +34,7 @@ if (!empty($_POST['apellidos'])) {
 }
 
 if (!empty($_POST['correo'])) {
-  $correo_autor = $_POST['correo'];
+  $correo_autor = htmlspecialchars($_POST['correo']);
   $campos[] = "correo_autor = '$correo_autor'";
 }
 
@@ -44,7 +44,7 @@ if (!empty($_POST['year'])) {
 }
 
 if (!empty($_POST['nombre_carrera_autor'])) {
-  $nombre_carrera_autor = $_POST['nombre_carrera_autor'];
+  $nombre_carrera_autor = htmlspecialchars($_POST['nombre_carrera_autor']);
   $campos[] = "nombre_carrera_autor = '$nombre_carrera_autor'";
 }
 

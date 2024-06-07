@@ -2,12 +2,12 @@
 require '../BBDD/connect_user.php';
 
 // Obtén los valores que deseas insertar en la tabla teg
-$titulo_teg = $_POST['titulo'];
+$titulo_teg = htmlspecialchars($_POST['titulo']);
 $nombres_autor_teg = trim($_POST['nombres']);
 $apellidos_autor_teg = trim($_POST['apellidos']);
-$correo_autor = $_POST['correo'];
+$correo_autor = htmlspecialchars($_POST['correo']);
 $year_teg = $_POST['year'];
-$nombre_carrera_autor = $_POST['nombre_carrera_autor'];
+$nombre_carrera_autor = htmlspecialchars($_POST['nombre_carrera_autor']);
 $nombres_tutor = $_POST['nombres_tutor'];
 $factibilidad = $_POST['factibilidad'];
 $archivo_pdf = $_FILES['archivo_pdf'];

@@ -13,7 +13,7 @@ if (!empty($_POST['cedula'])) {
 }
 
 if (!empty($_POST['user'])) {
-  $user = trim($_POST['user']);
+  $user = trim(htmlspecialchars($_POST['user']));
   $campos[] = "usuario = '$user'";
 }
 

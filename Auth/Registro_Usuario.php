@@ -3,7 +3,7 @@ require '../BBDD/connect_user.php';
 
 // Obtén los valores que deseas insertar en la tabla admin
 $ID_admin = $_POST['cedula'];
-$usuario = $_POST['user'];
+$usuario = htmlspecialchars($_POST['user']);
 $nivel_acceso = $_POST['nivel_acceso'];
 $nombre_user = $_POST['nombre'];
 $apellido_user = $_POST['apellido'];
