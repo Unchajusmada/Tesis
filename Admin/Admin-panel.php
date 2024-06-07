@@ -166,23 +166,25 @@ if (!isset($_SESSION['username'])) {
                               }
                               ?>
                             </td>
-                            <td class="text-center d-flex justify-content-center" style="vertical-align: middle;">
-                              <a href="../Admin/Paginas/Modificar_User.php?ID_user=<?php echo $row['ID_admin']; ?>">
-                                <button type="button" class="btn btn-primary mr-2">
-                                  <i class="bi bi-pencil-square"></i>
-                                </button>
-                              </a>
-                              <?php
-                              if ($row['ID_admin'] != $_SESSION['ID_admin']) { ?>
-                                <form id="eliminarForm-<?php echo $ID_admin; ?>" class="eliminar" action="../Auth/eliminar_user.php" method="POST">
-                                  <!-- Campo oculto para la eliminación -->
-                                  <input type="hidden" name="user-eliminar" id="user-eliminar" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
-                                  <input type="hidden" name="eliminar" id="eliminar" value="0" />
-                                  <button type="button" class="btn btn-danger" onclick="showConfirmationUSER('eliminarForm-<?php echo $ID_admin; ?>');">
-                                    <i class="bi bi-trash"></i>
+                            <td style="vertical-align: middle;">
+                              <div class="text-center d-flex justify-content-center">
+                                <a href="../Admin/Paginas/Modificar_User.php?ID_user=<?php echo $row['ID_admin']; ?>">
+                                  <button type="button" class="btn btn-primary mr-2">
+                                    <i class="bi bi-pencil-square"></i>
                                   </button>
-                                </form>
-                              <?php } ?>
+                                </a>
+                                <?php
+                                if ($row['ID_admin'] != $_SESSION['ID_admin']) { ?>
+                                  <form id="eliminarForm-<?php echo $ID_admin; ?>" class="eliminar" action="../Auth/eliminar_user.php" method="POST">
+                                    <!-- Campo oculto para la eliminación -->
+                                    <input type="hidden" name="user-eliminar" id="user-eliminar" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
+                                    <input type="hidden" name="eliminar" id="eliminar" value="0" />
+                                    <button type="button" class="btn btn-danger" onclick="showConfirmationUSER('eliminarForm-<?php echo $ID_admin; ?>');">
+                                      <i class="bi bi-trash"></i>
+                                    </button>
+                                  </form>
+                                <?php } ?>
+                              </div>
                             </td>
                           </tr>
                         <?php endforeach; ?>
@@ -366,7 +368,6 @@ if (!isset($_SESSION['username'])) {
                                 </button>
                               </form>
                             </div>
-                          </td>
                           </td>
                         </tr>
                       <?php endforeach; ?>
