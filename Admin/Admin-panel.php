@@ -266,12 +266,12 @@ if (!isset($_SESSION['username'])) {
 
                     <div class="form-group row">
                       <div class="col-sm-6">
-                        <label>Resumen del TEG (Página del <strong>resumen</strong> del TEG en formato PDF)</label>
-                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" required />
-                      </div>
-                      <div class="col-sm-6">
                         <label>Archivo del TEG completo</label>
                         <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf" accept=".pdf" required />
+                      </div>
+                      <div class="col-sm-6">
+                        <label>Resumen del TEG (Página del <strong>resumen</strong> del TEG en formato PDF)</label>
+                        <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" required />
                       </div>
                     </div>
 
@@ -300,7 +300,7 @@ if (!isset($_SESSION['username'])) {
                       <?php endforeach; ?>
                       </select>
                     </div>
-                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" />
+                    <input type="submit" id="enviarFormulario" class="btn btn-primary btn-user btn-block" value="Enviar" />
                   </form>
                 </div>
               </div>
@@ -495,6 +495,7 @@ if (!isset($_SESSION['username'])) {
   <script src="js/sb-admin-2.js"></script>
   <script src="js/Alertas.js"></script>
   <script src="js/Eliminar_user_o_teg.js"></script>
+  <script src="js/validarArchivosform.js"></script>
 
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>

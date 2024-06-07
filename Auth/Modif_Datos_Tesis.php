@@ -1,4 +1,15 @@
 <?php
+// Verifica el tamaño del contenido POST
+$contentLength = $_SERVER['CONTENT_LENGTH'];
+$maxContentLength = 41943040; // 40MB
+
+if ($contentLength > $maxContentLength) {
+  header("Location: ../Admin/Admin-panel.php?code=600");
+  // Puedes redirigir al usuario a una página de error o mostrar un mensaje adecuado.
+  exit;
+}
+
+// Resto del código
 require '../BBDD/connect_user.php';
 
 // Obtén los valores que deseas actualizar en la tabla teg

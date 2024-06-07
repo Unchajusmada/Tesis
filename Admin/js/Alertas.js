@@ -82,6 +82,13 @@ function codigosAlerta(Code) {
     case "502":
       showAlert("Error", "No se seleccionó algún archivo", "error")
       break
+    case "600":
+      showAlert(
+        "Error",
+        "El archivo del TEG completo o el de resumen exceden el limite de 35Mb",
+        "error"
+      )
+      break
     default:
       break
   }
