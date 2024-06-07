@@ -78,6 +78,7 @@ $ID_admin = $_GET['ID_user'];
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <label>Número de Cedula</label>
                       <input type="number" class="form-control form-control-user no-spin" id="cedula" name="cedula" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
+                      <span id="cedulaError" class="errorCustom"></span>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -147,6 +148,7 @@ $ID_admin = $_GET['ID_user'];
   <!-- Custom scripts for all pages-->
   <script src="../js/sweetalert2.all.js"></script>
   <script src="../js/sb-admin-2.min.js"></script>
+  <script src="../js/validador.js"></script>
 
   <!-- Custom Script verificar cedula unica y usuario unico -->
   <script src="../js/jquery-3.7.1.min.js"></script>
