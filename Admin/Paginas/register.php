@@ -158,12 +158,16 @@ if (!isset($_SESSION['username'])) {
 
   <script>
     $(document).ready(function() {
-      // Evento de cambio del campo de usuario
-      $(".pass").on("change", function() {
+      // Evento de cambio del campo de contraseña
+      $(".pass").on("keyup", function() {
         var pass1 = $("#exampleInputPassword").val();
         var pass2 = $("#exampleRepeatPassword").val();
 
-        if (pass1 !== "" && pass1 !== pass2) {
+        if (pass1 !== "" && pass2 === "") {
+          $("#pass1Error").text("Por favor, ingresa la contraseña nuevamente");
+          $("#pass1Error").show(); // Mostrar el span de error
+          disableSubmitButton();
+        } else if (pass1 !== "" && pass1 !== pass2) {
           $("#pass1Error").text("Las contraseñas no coinciden");
           $("#pass1Error").show(); // Mostrar el span de error
           disableSubmitButton();
