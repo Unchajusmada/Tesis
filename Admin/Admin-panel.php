@@ -512,6 +512,20 @@ if (!isset($_SESSION['username'])) {
     codigosAlerta(Code)
   </script>
 
+  <script>
+    var userField = document.getElementById('titulo');
+
+    userField.addEventListener('input', function() {
+      var userInput = this.value;
+      var regex = /^[a-zA-Z0-9-()*]+$/;
+
+      if (!regex.test(userInput)) {
+        this.setCustomValidity('El campo solo puede contener letras, números, guiones, asteriscos y paréntesis.');
+      } else {
+        this.setCustomValidity('');
+      }
+    });
+  </script>
 </body>
 
 </html>

@@ -190,6 +190,21 @@ $ID_teg = $_GET['ID_TEG']
 
   <!-- Custom Script verificar cedula unica y usuario unico -->
   <script src="../js/jquery-3.7.1.min.js"></script>
+
+  <script>
+    var userField = document.getElementById('titulo');
+
+    userField.addEventListener('input', function() {
+      var userInput = this.value;
+      var regex = /^[a-zA-Z0-9-()* ]+$/;
+
+      if (!regex.test(userInput)) {
+        this.setCustomValidity('El campo solo puede contener letras, números, guiones, asteriscos y paréntesis.');
+      } else {
+        this.setCustomValidity('');
+      }
+    });
+  </script>
 </body>
 
 </html>
