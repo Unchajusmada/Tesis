@@ -77,7 +77,7 @@ $ID_admin = $_GET['ID_user'];
                     </div>
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <label>Número de Cedula</label>
-                      <input type="number" class="form-control form-control-user no-spin" id="cedula" name="cedula" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" />
+                      <input type="number" class="form-control form-control-user no-spin" id="cedula" name="cedula" value="<?php echo htmlspecialchars($row['ID_admin']); ?>" min="1" max="60000000" pattern="[0-9]{4}" />
                       <span id="cedulaError" class="errorCustom"></span>
                     </div>
                   </div>

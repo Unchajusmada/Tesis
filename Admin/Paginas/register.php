@@ -68,7 +68,7 @@ if (!isset($_SESSION['username'])) {
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label>Número de Cédula</label>
-                    <input type="number" class="form-control form-control-user no-spin" id="cedula" placeholder="Ingrese su cédula (Ej: 28387623)" name="cedula" autocomplete="off" required />
+                    <input type="number" class="form-control form-control-user no-spin" id="cedula" placeholder="Ingrese su cédula (Ej: 28387623)" name="cedula" autocomplete="off" min="1" max="60000000" pattern="[0-9]{4}" required />
                     <span id="cedulaError" class="errorCustom"></span>
                   </div>
                 </div>

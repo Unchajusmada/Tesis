@@ -517,7 +517,7 @@ if (!isset($_SESSION['username'])) {
 
     userField.addEventListener('input', function() {
       var userInput = this.value;
-      var regex = /^[a-zA-Z0-9-()*]+$/;
+      var regex = /^[a-zA-Z0-9-()* ]+$/;
 
       if (!regex.test(userInput)) {
         this.setCustomValidity('El campo solo puede contener letras, números, guiones, asteriscos y paréntesis.');
