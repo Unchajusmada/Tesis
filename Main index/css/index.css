@@ -297,6 +297,7 @@ main,
 .logos {
   height: 11em;
   align-self: center;
+  max-width: 650px;
 }
 
 /* Estilos para el contenedor del navbar */
@@ -340,7 +341,7 @@ div:not(.bienvenida, .titulo, .categoria) > span {
 @media (max-width: 990px) {
   /* Ajusta el tamaño del logotipo en pantallas medianas */
   .logos {
-    height: 8em !important;
+    height: 8em;
   }
 }
 

@@ -41,10 +41,10 @@ $ID_admin = $_GET['ID_user'];
             <img class="logos" src="../../Main index/img/defensa logo.png" />
           </div>
           <div class="align-self-center d-lg-block d-none">
-            <img class="logos" src="../../Main index/img/sistemas.png" alt="" />
+            <img class="logos" src="../../Main index/img/banner.svg" alt="" />
           </div>
           <div class="align-self-center d-lg-none d-block">
-            <img class="logos" src="../../Main index/img/logoSistemas.png" alt="" />
+            <img class="logos" src="../../Main index/img/logoBanner.png" alt="" />
           </div>
           <div class="align-self-end">
             <img class="logos" src="../../Main index/img/unefa.png" alt="" />

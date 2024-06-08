@@ -5,10 +5,10 @@
       <img class="logos" src="img/defensa logo.png" />
     </div>
     <div class="align-self-center d-lg-block d-none">
-      <img class="logos" src="img/sistemas.png" alt="" />
+      <img class="logos" src="img/banner.svg" alt="" />
     </div>
     <div class="align-self-center d-lg-none d-block">
-      <img class="logos" src="img/logoSistemas.png" alt="" />
+      <img class="logos" src="img/logoBanner.png" alt="" />
     </div>
     <div class="align-self-end">
       <img class="logos" src="img/unefa.png" alt="" />

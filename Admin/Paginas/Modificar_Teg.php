@@ -35,10 +35,10 @@ $ID_teg = $_GET['ID_TEG']
             <img class="logos" src="../../Main index/img/defensa logo.png" />
           </div>
           <div class="align-self-center d-lg-block d-none">
-            <img class="logos" src="../../Main index/img/sistemas.png" alt="" />
+            <img class="logos" src="../../Main index/img/banner.svg" alt="" />
           </div>
           <div class="align-self-center d-lg-none d-block">
-            <img class="logos" src="../../Main index/img/logoSistemas.png" alt="" />
+            <img class="logos" src="../../Main index/img/logoBanner.png" alt="" />
           </div>
           <div class="align-self-end">
             <img class="logos" src="../../Main index/img/unefa.png" alt="" />
@@ -196,7 +196,7 @@ $ID_teg = $_GET['ID_TEG']
 
     userField.addEventListener('input', function() {
       var userInput = this.value;
-      var regex = /^[a-zA-Z0-9-()* ]+$/;
+      var regex = /^[a-zA-Z0-9-()*. ]+$/;
 
       if (!regex.test(userInput)) {
         this.setCustomValidity('El campo solo puede contener letras, números, guiones, asteriscos y paréntesis.');
