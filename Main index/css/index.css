@@ -345,7 +345,7 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   /* Ajusta el padding del contenido principal en pantallas pequeñas */
   main {
     padding: 0;
