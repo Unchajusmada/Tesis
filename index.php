@@ -24,7 +24,7 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
 
 <head>
   <meta charset="utf-8" />
-  <title>Sistema Administrativo para la Gestión de TEG</title>
+  <title>SIATEG - UNEFA ARAGUA</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <!-- Favicon -->
@@ -90,8 +90,7 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
       <div class="container texto-bienvenida">
         <div class="row">
           <div class="bienvenida col-md-12 d-flex justify-content-md-center">
-            <span>BIENVENIDO AL SISTEMA DE GESTIÓN DE TRABAJOS ESPECIALES DE
-              GRADO EN LA UNEFA NÚCLEO MARACAY</span>
+            <span>BIENVENIDO AL SISTEMA INTEGRADO ADMINISTRATIVO DE TRABAJO ESPECIAL DE GRADO UNEFA NÚCLEO MARACAY (SIATEG)</span>
           </div>
         </div>
       </div>
@@ -164,7 +163,7 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
       <div class="col-md-12 px-xl-0">
         <p class="mb-md-0 text-center text-md-center text-light">
           &copy;
-          <a class="text-light font-weight-semi-bold" href="#">TEG - Sistema de Gestión Administrativa de los Trabajos Especiales de Grado</a>. All Rights Reserved. Designed by
+          <a class="text-light font-weight-semi-bold" href="#">SIATEG</a>. All Rights Reserved. Designed by
           <a class="text-light font-weight-semi-bold" href="#">Carlos Bruzual</a>
         </p>
       </div>

@@ -441,7 +441,7 @@ if (!isset($_SESSION['username'])) {
       <footer class="sticky-footer bg-gradient-primary">
         <div class="my-auto">
           <div class="copyright text-center my-auto" style="color: white;">
-            <span>Copyright &copy; TEG - Sistema de Gestión Administrativa de los Trabajos Especiales de Grado</span>
+            <span>Copyright &copy; SIATEG</span>. All Rights Reserved. Designed by Carlos Bruzual
           </div>
         </div>
       </footer>

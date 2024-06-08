@@ -143,7 +143,7 @@ $elementos_pagina = array_slice($datos_teg, ($pagina_actual - 1) * $elementos_po
       <div class="col-md-12 px-xl-0">
         <p class="mb-md-0 text-center text-md-center text-light">
           &copy;
-          <a class="text-light font-weight-semi-bold" href="#">TEG - Sistema de Gestión Administrativa de los Trabajos Especiales de Grado</a>. All Rights Reserved. Designed by
+          <a class="text-light font-weight-semi-bold" href="#">SIATEG</a>. All Rights Reserved. Designed by
           <a class="text-light font-weight-semi-bold" href="#">Carlos Bruzual</a>
         </p>
       </div>

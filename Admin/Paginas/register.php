@@ -36,7 +36,7 @@ if (!isset($_SESSION['username'])) {
             <img class="logos" src="../../Main index/img/defensa logo.png" />
           </div>
           <div class="align-self-center d-lg-block d-none">
-            <img class="logos" src="../../Main index/img/banner.svg" alt="" />
+            <img class="logos" src="../../Main index/img/banner.png" alt="" />
           </div>
           <div class="align-self-center d-lg-none d-block">
             <img class="logos" src="../../Main index/img/logoBanner.png" alt="" />
@@ -126,7 +126,7 @@ if (!isset($_SESSION['username'])) {
   <footer class="sticky-footer bg-gradient-primary">
     <div class="container my-auto">
       <div class="copyright text-center my-auto" style="color: white;">
-        <span>Copyright &copy; TEG - Sistema de Gestión Administrativa de los Trabajos Especiales de Grado</span>
+        <span>Copyright &copy; SIATEG</span>. All Rights Reserved. Designed by Carlos Bruzual
       </div>
     </div>
   </footer>
