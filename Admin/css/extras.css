@@ -60,3 +60,21 @@ header {
     padding: 0.2em 2em;
   }
 }
+
+#instruccionesModalLabel {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.pasos {
+  font-size: 1em;
+  text-align: center;
+}
+
+.pasos img {
+  padding-top: 20px;
+}
+
+.pasos h4 {
+  font-weight: 500;
+}

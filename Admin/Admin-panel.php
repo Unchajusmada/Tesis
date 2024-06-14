@@ -456,6 +456,52 @@ if (!isset($_SESSION['username'])) {
     <i class="fas fa-angle-up"></i>
   </a>
 
+  <!-- Instrucciones Modal -->
+  <div class="modal fade" id="instruccionesModal" tabindex="-1" role="dialog" aria-labelledby="instruccionesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="instruccionesModalLabel">Primeros pasos...</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenido del primer paso -->
+          <div id="paso1" class="pasos">
+            <h4>Registro de Trabajos Especiales de Grado</h4>
+            <p>Accede a "Registrar Trabajo Especial de Grado" donde podras cargar la información más relevante del TEG y sus documentos.<br> <img src="img/registrar.png" alt="" style="width: 100%;"></p>
+          </div>
+
+          <!-- Contenido del segundo paso -->
+          <div id="paso2" style="display: none;" class="pasos">
+            <h4>Modificación de Trabajos Especiales de Grado</h4>
+            <p>Accede a "Modificar Trabajo Especial de Grado Existente" donde podras modificar toda la información y documentos necesarios al momento.<br> <img src="img/modificar-teg.png" alt="" style="width: 80%;"></p>
+          </div>
+
+          <!-- Contenido del tercer paso -->
+          <div id="paso3" style="display: none;" class="pasos">
+            <h4>Consultas de Trabajos Especiales de Grado</h4>
+            <p>Accede a "Información de los Trabajos Especiales de Grado Existentes" donde podras consultar toda la información y el resumen de los TEG.<br> <img src="img/consultar.png" alt="" style="width: 95%;"></p>
+          </div>
+
+          <!-- Contenido del cuarto paso -->
+          <div id="paso4" style="display: none;" class="pasos">
+            <h4>Creación, consulta y modificación de Usuarios</h4>
+            <p>Accede a "Consultar y Modificar Usuarios" o "Crear Usuarios" donde podras ver la información de los usuarios o crearlos respectivamente.<br> <img src="img/usuarios.png" alt="" style="width: 100%;"></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary mr-auto" id="omitirBtn" type="button">Omitir</button>
+          <button class="btn btn-secondary mr-auto" id="anteriorBtn" type="button" style="display: none;">Anterior</button>
+          <button class="btn btn-primary" id="siguienteBtn" type="button">Siguiente</button>
+          <button class="btn btn-danger" id="finalizarBtn" type="button" style="display: none;">Finalizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Instrucciones Modal -->
+
   <!-- Logout Modal -->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -496,6 +542,80 @@ if (!isset($_SESSION['username'])) {
 
   <!-- Page level custom scripts -->
   <script src="js/inicializar-datatables.js"></script>
+
+  <script>
+    // Esperar a que el documento esté listo
+    $(document).ready(function() {
+      // Mostrar el modal al cargar la página
+      $('#instruccionesModal').modal('show');
+
+      // Variables para controlar el estado del modal
+      var pasoActual = 1;
+      var totalPasos = 4;
+
+      // Función para mostrar el paso actual
+      function mostrarPaso(paso) {
+        // Ocultar todos los pasos
+        for (var i = 1; i <= totalPasos; i++) {
+          $('#paso' + i).hide();
+        }
+
+        // Mostrar el paso actual
+        $('#paso' + paso).show();
+
+        // Mostrar u ocultar los botones según el paso actual
+        if (paso === 1) {
+          $('#siguienteBtn').show();
+          $('#anteriorBtn').hide();
+          $('#finalizarBtn').hide();
+          $('#omitirBtn').show();
+        } else if (paso === totalPasos) {
+          $('#siguienteBtn').hide();
+          $('#anteriorBtn').show();
+          $('#finalizarBtn').show();
+          $('#omitirBtn').hide();
+        } else {
+          $('#siguienteBtn').show();
+          $('#anteriorBtn').show();
+          $('#finalizarBtn').hide();
+          $('#omitirBtn').hide();
+        }
+      }
+
+      // Mostrar el primer paso al cargar el modal
+      mostrarPaso(pasoActual);
+
+      // Acción al hacer clic en el botón "Siguiente"
+      $('#siguienteBtn').click(function() {
+        if (pasoActual < totalPasos) {
+          pasoActual++;
+          mostrarPaso(pasoActual);
+        }
+      });
+
+      // Acción al hacer clic en el botón "Anterior"
+      $('#anteriorBtn').click(function() {
+        if (pasoActual > 1) {
+          pasoActual--;
+          mostrarPaso(pasoActual);
+        }
+      });
+
+      // Acción al hacer clic en el botón "Omitir"
+      $('#omitirBtn').click(function() {
+        // Cerrar el modal
+        $('#instruccionesModal').modal('hide');
+
+        // Aquí puedes agregar la lógica para realizar cualquier acciónadicional después de omitir las instrucciones
+      });
+
+      // Acción al hacer clic en el botón "Finalizar"
+      $('#finalizarBtn').click(function() {
+        // Cerrar el modal
+        $('#instruccionesModal').modal('hide');
+      });
+    });
+  </script>
 
   <script>
     // Obtén el código de la URL
