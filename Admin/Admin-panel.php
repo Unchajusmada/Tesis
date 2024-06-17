@@ -261,10 +261,12 @@ if (!isset($_SESSION['username'])) {
                       <div class="col-sm-6">
                         <label>Archivo del TEG completo</label>
                         <input class="form-control-special custom-file-input" type="file" id="archivo_pdf" name="archivo_pdf" accept=".pdf" required />
+                        <label style="font-size: 12px; padding-left:10px">Los archivos seran renombrados automaticamente luego de su carga (ejemplo: AUTOR_AUTOR_TEG.PDF)</label>
                       </div>
                       <div class="col-sm-6">
                         <label>Resumen del TEG (Página del <strong>resumen</strong> del TEG en formato PDF)</label>
                         <input class="form-control-special custom-file-input" type="file" id="archivo_pdf_resumen" name="archivo_pdf_resumen" accept=".pdf" required />
+                        <label style="font-size: 12px; padding-left:10px">Los archivos seran renombrados automaticamente luego de su carga (ejemplo: AUTOR_AUTOR_RESUMEN.PDF)</label>
                       </div>
                     </div>
 

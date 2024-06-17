@@ -66,9 +66,23 @@ if ($stmt = mysqli_prepare($conection, $sql)) {
   mysqli_stmt_bind_result($stmt, $nombres_autor_teg, $apellidos_autor_teg, $archivo_pdf_actual, $archivo_pdf_resumen_actual);
   mysqli_stmt_fetch($stmt);
 
-  // Obtén el primer nombre y apellido del autor
-  $primer_nombre = strtok($nombres_autor_teg, " ");
-  $primer_apellido = strtok($apellidos_autor_teg, " ");
+  // Verifica si el nombre o apellido ha sido modificado
+  if (!empty($_POST['nombres'])) {
+    $nombres_autor_teg = trim($_POST['nombres']);
+    $primer_nombre = strtok($nombres_autor_teg, " ");
+  } else {
+    // Obtén el primer nombre del autor
+    $primer_nombre = strtok($nombres_autor_teg, " ");
+  }
+
+  if (!empty($_POST['apellidos'])) {
+    $apellidos_autor_teg = trim($_POST['apellidos']);
+    $primer_apellido = strtok($apellidos_autor_teg, " ");
+  } else {
+    // Obtén el primer apellido del autor
+    $primer_apellido = strtok($apellidos_autor_teg, " ");
+  }
+
 
   mysqli_stmt_close($stmt);
 }
