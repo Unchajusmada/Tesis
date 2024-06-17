@@ -295,7 +295,7 @@ main,
 
 /* Estilos para el logotipo */
 .logos {
-  height: 11em;
+  height: 10em;
   align-self: center;
   max-width: 650px;
 }
@@ -338,10 +338,16 @@ div:not(.bienvenida, .titulo, .categoria) > span {
   font-size: 1.1em;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 768px) {
   /* Ajusta el tamaño del logotipo en pantallas medianas */
   .logos {
     height: 8em;
+  }
+}
+@media (max-width: 500px) {
+  /* Ajusta el tamaño del logotipo en pantallas medianas */
+  .logos {
+    height: 5em;
   }
 }
 
@@ -386,10 +392,6 @@ div:not(.bienvenida, .titulo, .categoria) > span {
     font-size: 0.95em;
     width: auto;
     padding: 15px;
-  }
-  /* Ajusta el tamaño del logotipo en pantallas pequeñas */
-  .logos {
-    height: 5em;
   }
   /* Ajusta el tamaño de fuente para pantallas más pequeñas */
   .texto-teg {

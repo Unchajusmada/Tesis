@@ -58,13 +58,18 @@ if (!empty($_POST['factibilidad'])) {
   $campos[] = "factibilidad = '$factibilidad'";
 }
 
-// Obtén los nombres de los archivos actuales desde la base de datos
-$sql = "SELECT archivo_pdf, archivo_pdf_resumen FROM teg WHERE ID_teg = ?";
+// Obtén los nombres de archivo actuales junto con el nombre y apellido del autor desde la base de datos
+$sql = "SELECT nombres_autor_teg, apellidos_autor_teg, archivo_pdf, archivo_pdf_resumen FROM teg WHERE ID_teg = ?";
 if ($stmt = mysqli_prepare($conection, $sql)) {
   mysqli_stmt_bind_param($stmt, "i", $ID_teg);
   mysqli_stmt_execute($stmt);
-  mysqli_stmt_bind_result($stmt, $archivo_pdf_actual, $archivo_pdf_resumen_actual);
+  mysqli_stmt_bind_result($stmt, $nombres_autor_teg, $apellidos_autor_teg, $archivo_pdf_actual, $archivo_pdf_resumen_actual);
   mysqli_stmt_fetch($stmt);
+
+  // Obtén el primer nombre y apellido del autor
+  $primer_nombre = strtok($nombres_autor_teg, " ");
+  $primer_apellido = strtok($apellidos_autor_teg, " ");
+
   mysqli_stmt_close($stmt);
 }
 
@@ -72,7 +77,7 @@ if ($stmt = mysqli_prepare($conection, $sql)) {
 $pdf_update = false;
 if (isset($_FILES['archivo_pdf']) && $_FILES['archivo_pdf']['error'] == UPLOAD_ERR_OK) {
   $archivo_pdf = $_FILES['archivo_pdf'];
-  $nombre_archivo = $archivo_pdf['name'];
+  $nombre_archivo = strtoupper($primer_nombre . "_" . $primer_apellido . "_TEG.pdf");
   $ruta_archivo = $archivo_pdf['tmp_name'];
   $directorio_archivos = '../Admin/PDF_TEG/';
   $ruta_destino = $directorio_archivos . $nombre_archivo;
@@ -94,7 +99,7 @@ if (isset($_FILES['archivo_pdf']) && $_FILES['archivo_pdf']['error'] == UPLOAD_E
 $pdf_update_resumen = false;
 if (isset($_FILES['archivo_pdf_resumen']) && $_FILES['archivo_pdf_resumen']['error'] == UPLOAD_ERR_OK) {
   $archivo_pdf_resumen = $_FILES['archivo_pdf_resumen'];
-  $nombre_archivo_resumen = $archivo_pdf_resumen['name'];
+  $nombre_archivo_resumen = strtoupper($primer_nombre . "_" . $primer_apellido . "_RESUMEN.pdf");
   $ruta_archivo_resumen = $archivo_pdf_resumen['tmp_name'];
   $directorio_archivos_resumen = '../Admin/PDF_Resumen/';
   $ruta_destino_resumen = $directorio_archivos_resumen . $nombre_archivo_resumen;

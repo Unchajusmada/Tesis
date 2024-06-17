@@ -5,18 +5,32 @@ include 'Auth/funciones_leer_bbdd.php';
 // Obtener los datos de la base de datos
 $datos_teg = leer($conection);
 
-// Definir el número de elementos por página
-$elementos_por_pagina = 6;
+// Verificar si hay elementos cargados
+if (!empty($datos_teg)) {
+  // Definir el número de elementos por página
+  $elementos_por_pagina = 6;
 
-// Obtener el número total de páginas
-$total_paginas = ceil(count($datos_teg) / $elementos_por_pagina);
+  // Obtener el número total de páginas
+  $total_paginas = ceil(count($datos_teg) / $elementos_por_pagina);
 
-// Obtener el número de página actual
-$pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+  // Obtener el número de página actual
+  $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
-// Obtener los elementos correspondientes a la página actual
-$elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actual - 1];
+  // Verificar si la página actual es válida
+  if ($pagina_actual < 1 || $pagina_actual > $total_paginas) {
+    // Establecer la página actual a la primera página
+    $pagina_actual = 1;
+  }
 
+  // Obtener los elementos correspondientes a la página actual
+  $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actual - 1];
+} else {
+  // No hay elementos cargados, inicializar variables
+  $elementos_por_pagina = 0;
+  $total_paginas = 0;
+  $pagina_actual = 1;
+  $elementos_pagina = [];
+}
 ?>
 
 <!DOCTYPE html>
@@ -98,46 +112,60 @@ $elementos_pagina = array_chunk($datos_teg, $elementos_por_pagina)[$pagina_actua
 
       <div class="ordenar">
         <?php
-        // Mostrar los elementos
-        foreach ($elementos_pagina as $row) :
+        if (empty($elementos_pagina)) {
         ?>
-          <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
+          <div class="container texto-error">
             <div class="row">
-              <div class="titulo col-md-12 d-flex justify-content-center">
-                <span><?php echo $row['titulo_teg']; ?></span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="autor col-md-6">
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-2">Autor: </div>
-                <div class="row-md-6 d-flex justify-content-md-start pl-md-2 contenido">
-                  <span><?php echo $row['nombres_autor_teg']; ?>,
-                    <br class="d-none d-md-block">
-                    <?php echo $row['apellidos_autor_teg']; ?></span>
-                </div>
-              </div>
-              <div class="carrera col-md-6">
-                <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
-                <div class="row-md-6 d-flex justify-content-md-start contenido"><span>
-                    <?php
-                    $nombre_carrera = $row['nombre_carrera_autor'];
-
-                    if ($nombre_carrera === 'Ingenieria de Telecomunicaciones') {
-                      $nombre_carrera = 'Ingenieria de Telecom.';
-                    }
-
-                    echo $nombre_carrera;
-                    ?>
-                  </span></div>
-              </div>
-            </div>
-            <div class="row d-flex justify-content-md-end">
-              <div class="year col-md-6 d-flex justify-content-md-end">
-                <p>Año: <span class="contenido"><?php echo $row['year_teg']; ?></span></p>
+              <div class="titulo col-md-12 d-flex justify-content-md-center">
+                <span>¡Proximamente Trabajos Especiales de Grado realizado en la UNEFA!</span>
               </div>
             </div>
           </div>
-        <?php endforeach; ?>
+          <?php
+        } else {
+          // Mostrar los elementos
+          foreach ($elementos_pagina as $row) {
+          ?>
+            <div class="container texto enlace-teg" data-id-teg="<?php echo $row['ID_teg']; ?>">
+              <div class="row">
+                <div class="titulo col-md-12 d-flex justify-content-center">
+                  <span><?php echo $row['titulo_teg']; ?></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="autor col-md-6">
+                  <div class="row-md-6 d-flex justify-content-md-start pl-md-2">Autor: </div>
+                  <div class="row-md-6 d-flex justify-content-md-start pl-md-2 contenido">
+                    <span><?php echo $row['nombres_autor_teg']; ?>,
+                      <br class="d-none d-md-block">
+                      <?php echo $row['apellidos_autor_teg']; ?></span>
+                  </div>
+                </div>
+                <div class="carrera col-md-6">
+                  <div class="row-md-6 d-flex justify-content-md-start">Carrera:</div>
+                  <div class="row-md-6 d-flex justify-content-md-start contenido"><span>
+                      <?php
+                      $nombre_carrera = $row['nombre_carrera_autor'];
+
+                      if ($nombre_carrera === 'Ingenieria de Telecomunicaciones') {
+                        $nombre_carrera = 'Ingenieria de Telecom.';
+                      }
+
+                      echo $nombre_carrera;
+                      ?>
+                    </span></div>
+                </div>
+              </div>
+              <div class="row d-flex justify-content-md-end">
+                <div class="year col-md-6 d-flex justify-content-md-end">
+                  <p>Año: <span class="contenido"><?php echo $row['year_teg']; ?></span></p>
+                </div>
+              </div>
+            </div>
+        <?php
+          }
+        }
+        ?>
       </div>
 
       <!-- Mostrar la paginación -->

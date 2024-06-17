@@ -196,7 +196,7 @@ $ID_teg = $_GET['ID_TEG']
 
     userField.addEventListener('input', function() {
       var userInput = this.value;
-      var regex = /^[a-zA-Z0-9-()*. ]+$/;
+      var regex = /^[a-zA-Z0-9-()*., ÑñáéíóúÁÉÍÓÚ\s]+$/;
 
       if (!regex.test(userInput)) {
         this.setCustomValidity('El campo solo puede contener letras, números, guiones, asteriscos y paréntesis.');
