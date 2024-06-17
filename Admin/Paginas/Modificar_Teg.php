@@ -72,10 +72,12 @@ $ID_teg = $_GET['ID_TEG']
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <label>Nombres del Autor</label>
                       <input type="text" class="form-control form-control-user" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" id="nombres" name="nombres" placeholder="Ejemplo: Jose Maria" value="<?php echo htmlspecialchars($row['nombres_autor_teg']); ?>" />
+                      <label style="font-size: 11px; text-align:left;">SI SE MODIFICA, VOLVER A CARGAR LOS ARCHIVOS</label>
                     </div>
                     <div class="col-sm-6">
                       <label>Apellidos del Autor</label>
                       <input type="text" class="form-control form-control-user" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" id="apellidos" name="apellidos" placeholder="Ejemplo: Palacios Blanco" value="<?php echo htmlspecialchars($row['apellidos_autor_teg']); ?>" />
+                      <label style="font-size: 11px;">PARA QUE COINCIDAN EL NOMBRE ACTUALIZADO</label>
                     </div>
                   </div>
 
